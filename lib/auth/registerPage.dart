@@ -27,9 +27,6 @@ class _registerPageState extends State<registerPage> {
       setState(() {
         signUpStatusMessage = '';
       });
-      setState(() {
-        signUpStatusMessage;
-      });
       signUpStatusMessage = await signUpStatus;
       while (signUpStatusMessage == '') {
         await Future.delayed(Duration(seconds: 1));
@@ -43,6 +40,9 @@ class _registerPageState extends State<registerPage> {
         user.signIn();
       }
     }
+    setState(() {
+      signUpStatusMessage;
+    });
   }
 
   @override

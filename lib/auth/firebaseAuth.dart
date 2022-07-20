@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Auth {
   late String email;
@@ -39,10 +40,15 @@ class Auth {
 
         final emailVerified = user.emailVerified;
 
-        final uid = user.uid;
+        final uid = await user.uid;
+
         CollectionReference users =
-            await FirebaseFirestore.instance.collection('User');
-        await users.add({'userId': uid});
+            FirebaseFirestore.instance.collection('Users');
+        users
+            .doc(uid)
+            .set({'email': this.email})
+            .then((value) => print("User Added"))
+            .catchError((error) => print("Failed to add user: $error"));
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
