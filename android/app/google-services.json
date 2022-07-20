@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "202946508300",
+    "project_id": "schulbuchmanager",
+    "storage_bucket": "schulbuchmanager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202946508300:android:a82bfe0b94e6795fee2029",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202946508300-cdnlugclr2ie7n6esvdnvha56nancua2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzI3g6GCAiCnxaC8ZeeLfO2F3MbtGEZPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202946508300-cdnlugclr2ie7n6esvdnvha56nancua2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
