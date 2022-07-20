@@ -11,6 +11,8 @@ class registerPage extends StatefulWidget {
 class _registerPageState extends State<registerPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  List<String> _dropDownOptions = ['Schüler', 'Lehrer', 'Elternteil'];
+  var DropdownValue = 'Schüler';
 
   String? signUpStatusMessage;
 
@@ -67,6 +69,48 @@ class _registerPageState extends State<registerPage> {
                 ),
                 Align(
                     child: Column(children: [
+                  Text('Registrieren als:'),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 150,
+                        child: Card(
+                            shadowColor: Colors.transparent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            color: const Color(0xFFFFFFFF),
+                            margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
+                            child: Container(
+                                child: DropdownButton(
+                              hint: DropdownValue == null
+                                  ? Text('Dropdown')
+                                  : Text(
+                                      DropdownValue,
+                                      style: TextStyle(color: Colors.orange),
+                                    ),
+                              isExpanded: true,
+                              iconSize: 30.0,
+                              style: TextStyle(color: Colors.orange),
+                              items: _dropDownOptions.map(
+                                (val) {
+                                  return DropdownMenuItem<String>(
+                                    value: val,
+                                    child: Text(val),
+                                  );
+                                },
+                              ).toList(),
+                              onChanged: (val) {
+                                setState(
+                                  () {
+                                    DropdownValue = val.toString();
+                                  },
+                                );
+                              },
+                            ))),
+                      ),
+                    ],
+                  ),
                   Card(
                     shadowColor: Colors.transparent,
                     shape: RoundedRectangleBorder(
