@@ -70,7 +70,7 @@ class _registerPageState extends State<registerPage> {
                 Align(
                     child: Column(children: [
                   Text('Registrieren als:'),
-                  Row(
+                  Column(
                     children: [
                       SizedBox(
                         width: 150,
