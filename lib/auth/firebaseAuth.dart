@@ -42,11 +42,13 @@ class Auth {
 
         final uid = await user.uid;
 
-        CollectionReference users =
-            FirebaseFirestore.instance.collection('Users');
+        DocumentReference users = FirebaseFirestore.instance
+            .collection('School ID')
+            .doc('Classes')
+            .collection('Class 9')
+            .doc('Students');
         users
-            .doc(uid)
-            .set({'email': this.email})
+            .set({'email': email})
             .then((value) => print("User Added"))
             .catchError((error) => print("Failed to add user: $error"));
       }

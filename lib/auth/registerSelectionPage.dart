@@ -50,11 +50,11 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
                             ? const Text('Dropdown')
                             : Text(
                                 roleDropdownValue,
-                                style: TextStyle(color: Colors.orange),
+                                style: TextStyle(color: Colors.black),
                               ),
                         isExpanded: true,
                         iconSize: 30.0,
-                        style: const TextStyle(color: Colors.orange),
+                        style: const TextStyle(color: Colors.black),
                         items: _roleDropdownOptions.map(
                           (val) {
                             return DropdownMenuItem<String>(
