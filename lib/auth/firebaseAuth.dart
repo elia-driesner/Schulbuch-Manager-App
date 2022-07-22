@@ -23,7 +23,7 @@ class Auth {
       }
     } catch (e) {
       debugPrint(e.toString());
-      return ('error');
+      return ('Ein unerwarteter Fehler ist aufgetreten.');
     }
   }
 

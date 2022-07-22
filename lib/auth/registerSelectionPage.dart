@@ -8,45 +8,75 @@ class registerSelectionPage extends StatefulWidget {
 }
 
 class _registerSelectionPageState extends State<registerSelectionPage> {
-  final _dropDownOptions = ['test'];
-
+  var roleDropdownValue = 'Schüler';
+  var _roleDropdownOptions = ['Schüler', 'Lehrer', 'Admin'];
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(
-        width: 150,
-        child: Card(
-            shadowColor: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Container(
+        color: const Color(0xFFFAFAFA),
+        margin: EdgeInsets.fromLTRB(0, 160, 0, 0),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                margin: const EdgeInsets.fromLTRB(0, 15, 0, 5),
+                child: const Text('Registrieren',
+                    style: TextStyle(
+                        fontSize: 32,
+                        color: Color(0xFF1F2226),
+                        fontWeight: FontWeight.bold)),
+              ),
             ),
-            color: const Color(0xFFFFFFFF),
-            margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
-            child: DropdownButton(
-              hint: null == null
-                  ? const Text('Dropdown')
-                  : Text(
-                      'DropdownValue',
-                      style: TextStyle(color: Colors.orange),
-                    ),
-              isExpanded: true,
-              iconSize: 30.0,
-              style: const TextStyle(color: Colors.orange),
-              items: _dropDownOptions.map(
-                (val) {
-                  return DropdownMenuItem<String>(
-                    value: val,
-                    child: Text(val),
-                  );
-                },
-              ).toList(),
-              onChanged: (val) {
-                setState(
-                  () {},
-                );
-              },
-            )),
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
+              child: Column(children: [
+                Container(
+                    child:
+                        Text('Ich bin ein:', style: TextStyle(fontSize: 18))),
+                SizedBox(
+                  width: 200,
+                  child: Card(
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      color: const Color(0xFFFFFFFF),
+                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      child: DropdownButton(
+                        hint: roleDropdownValue == null
+                            ? const Text('Dropdown')
+                            : Text(
+                                roleDropdownValue,
+                                style: TextStyle(color: Colors.orange),
+                              ),
+                        isExpanded: true,
+                        iconSize: 30.0,
+                        style: const TextStyle(color: Colors.orange),
+                        items: _roleDropdownOptions.map(
+                          (val) {
+                            return DropdownMenuItem<String>(
+                              value: val,
+                              child: Text(val),
+                            );
+                          },
+                        ).toList(),
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              roleDropdownValue = val.toString();
+                            },
+                          );
+                        },
+                      )),
+                ),
+              ]),
+            ),
+          ],
+        ),
       ),
-    ]);
+    );
   }
 }
