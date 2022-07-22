@@ -26,14 +26,16 @@ class _registerPageState extends State<registerPage> {
         signUpStatusMessage;
       });
       if (signUpStatusMessage == 'Account erstellt') {
-        await Future.delayed(const Duration(seconds: 3));
-
         signUpStatusMessage = 'Anmelden...';
         setState(() {
           signUpStatusMessage;
         });
-        await Future.delayed(const Duration(seconds: 1));
-        user.signIn();
+        await Future.delayed(const Duration(seconds: 2));
+        var signInMessage = user.signIn();
+        if (signInMessage != '') {
+          await Future.delayed(const Duration(seconds: 1));
+          signInMessage = user.signIn();
+        }
       }
     }
     setState(() {

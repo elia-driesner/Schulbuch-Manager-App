@@ -19,7 +19,7 @@ class Auth {
       if (e.code == 'weak-password') {
         return ('Password min. 6 Zeichen');
       } else if (e.code == 'email-already-in-use') {
-        return ('Diese Email wird schon benutzt');
+        return ('Diese email wird schon benutzt');
       }
     } catch (e) {
       debugPrint(e.toString());
@@ -27,7 +27,7 @@ class Auth {
     }
   }
 
-  void signIn() async {
+  Future<String?> signIn() async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
@@ -50,11 +50,12 @@ class Auth {
             .then((value) => print("User Added"))
             .catchError((error) => print("Failed to add user: $error"));
       }
+      return ('');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        return ('Kein account mir dieser email gefunden');
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        return ('Falsches Password');
       }
     }
   }
