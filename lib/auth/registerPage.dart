@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'firebaseAuth.dart';
 
+import 'registerSelectionPage.dart';
+
 class registerPage extends StatefulWidget {
   const registerPage({Key? key}) : super(key: key);
 

@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 import 'auth/registerPage.dart';
+import 'auth/registerSelectionPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,6 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.orange,
         ),
-        home: Scaffold(body: SafeArea(child: registerPage())));
+        home: Scaffold(body: SafeArea(child: registerSelectionPage())));
   }
 }

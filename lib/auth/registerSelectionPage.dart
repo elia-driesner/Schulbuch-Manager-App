@@ -10,6 +10,6 @@ class registerSelectionPage extends StatefulWidget {
 class _registerSelectionPageState extends State<registerSelectionPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(child: Column(children: [Text('ui')]));
   }
 }
