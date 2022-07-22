@@ -69,7 +69,7 @@ class _registerPageState extends State<registerPage> {
                 ),
                 Align(
                     child: Column(children: [
-                  Text('Registrieren als:'),
+                  const Text('Registrieren als:'),
                   Column(
                     children: [
                       SizedBox(
