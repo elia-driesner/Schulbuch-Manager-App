@@ -14,12 +14,12 @@ class Auth {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: this.email.toString(), password: this.password.toString());
-      return ('User created');
+      return ('Account erstellt');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        return ('Weak password');
+        return ('Password min. 6 Zeichen');
       } else if (e.code == 'email-already-in-use') {
-        return ('Email already in use');
+        return ('Diese Email wird schon benutzt');
       }
     } catch (e) {
       debugPrint(e.toString());

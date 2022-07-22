@@ -13,34 +13,26 @@ class registerPage extends StatefulWidget {
 class _registerPageState extends State<registerPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  List<String> _dropDownOptions = ['Schüler', 'Lehrer', 'Elternteil'];
-  var DropdownValue = 'Schüler';
 
-  String? signUpStatusMessage;
+  String? signUpStatusMessage = '';
 
   void sign_up({required String email, required String password}) async {
-    if (email.contains('@') != true) {
-      signUpStatusMessage = 'Invalid email address';
-    } else if (password.length <= 5) {
-      signUpStatusMessage = 'Password is too short';
-    } else if (signUpStatusMessage == 'Already in use') {
-      signUpStatusMessage = 'Email already in use';
+    if (email == '') {
+      signUpStatusMessage = 'Bitte Email Adresse eingeben';
     } else {
-      final user = Auth(email: email, password: password);
-      var signUpStatus = user.signUp();
-      setState(() {
-        signUpStatusMessage = '';
-      });
-      signUpStatusMessage = await signUpStatus;
-      while (signUpStatusMessage == '') {
-        await Future.delayed(Duration(seconds: 1));
-        signUpStatusMessage = await signUpStatus;
-      }
+      var user = Auth(email: email, password: password);
+      signUpStatusMessage = await user.signUp();
       setState(() {
         signUpStatusMessage;
       });
-      if (signUpStatusMessage == 'User created') {
-        await Future.delayed(Duration(seconds: 2));
+      if (signUpStatusMessage == 'Account erstellt') {
+        await Future.delayed(const Duration(seconds: 3));
+
+        signUpStatusMessage = 'Anmelden...';
+        setState(() {
+          signUpStatusMessage;
+        });
+        await Future.delayed(const Duration(seconds: 1));
         user.signIn();
       }
     }
@@ -51,8 +43,8 @@ class _registerPageState extends State<registerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [
+    return Container(
+      child: Column(children: [
         Container(
           margin: const EdgeInsets.fromLTRB(5, 160, 5, 0),
           child: Container(
@@ -71,48 +63,6 @@ class _registerPageState extends State<registerPage> {
                 ),
                 Align(
                     child: Column(children: [
-                  const Text('Registrieren als:'),
-                  Column(
-                    children: [
-                      SizedBox(
-                        width: 150,
-                        child: Card(
-                            shadowColor: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            color: const Color(0xFFFFFFFF),
-                            margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
-                            child: Container(
-                                child: DropdownButton(
-                              hint: DropdownValue == null
-                                  ? Text('Dropdown')
-                                  : Text(
-                                      DropdownValue,
-                                      style: TextStyle(color: Colors.orange),
-                                    ),
-                              isExpanded: true,
-                              iconSize: 30.0,
-                              style: TextStyle(color: Colors.orange),
-                              items: _dropDownOptions.map(
-                                (val) {
-                                  return DropdownMenuItem<String>(
-                                    value: val,
-                                    child: Text(val),
-                                  );
-                                },
-                              ).toList(),
-                              onChanged: (val) {
-                                setState(
-                                  () {
-                                    DropdownValue = val.toString();
-                                  },
-                                );
-                              },
-                            ))),
-                      ),
-                    ],
-                  ),
                   Card(
                     shadowColor: Colors.transparent,
                     shape: RoundedRectangleBorder(
@@ -150,19 +100,21 @@ class _registerPageState extends State<registerPage> {
                           )),
                     ),
                   ),
-                  Container(
+                  if (signUpStatusMessage == 'Account erstellt' ||
+                      signUpStatusMessage == 'Anmelden...')
+                    Container(
                       margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      child: signUpStatusMessage != null &&
-                              signUpStatusMessage != 'User created'
-                          ? Text(signUpStatusMessage.toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 240, 78, 67)))
-                          : signUpStatusMessage == 'User created'
-                              ? Text('$signUpStatusMessage! Signing in',
-                                  style: const TextStyle(
-                                      color:
-                                          Color.fromARGB(255, 100, 195, 103)))
-                              : Container()),
+                      child: Text(signUpStatusMessage.toString(),
+                          style: const TextStyle(
+                              color: Colors.green, fontSize: 14)),
+                    )
+                  else
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Text(signUpStatusMessage.toString(),
+                          style:
+                              const TextStyle(color: Colors.red, fontSize: 14)),
+                    ),
                   Container(
                     margin: const EdgeInsets.fromLTRB(17, 0, 17, 0),
                     child: ElevatedButton(
@@ -179,24 +131,22 @@ class _registerPageState extends State<registerPage> {
                             email: emailController.text,
                             password: passwordController.text)),
                   ),
-                  signUpStatusMessage != null &&
-                          signUpStatusMessage != 'Password is too short' &&
-                          signUpStatusMessage != 'Invalid email address' &&
-                          signUpStatusMessage != 'Email already in use'
-                      ? Container(
-                          child: CircularProgressIndicator(),
-                          margin: const EdgeInsets.fromLTRB(0, 35, 0, 0),
-                        )
-                      : Container(),
-                  signUpStatusMessage != 'User created'
-                      ? Container(
-                          child: FlatButton(
-                              onPressed: () => {},
-                              child: const Text(
-                                  'Sie haben bereits ein Konto? Einloggen.')),
-                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        )
-                      : Container()
+                  if (signUpStatusMessage == 'Account erstellt' ||
+                      signUpStatusMessage == 'Anmelden...')
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+                      child: const CircularProgressIndicator(),
+                    ),
+                  if (signUpStatusMessage != 'Account wird erstellt...')
+                    Container(
+                      child: FlatButton(
+                          onPressed: () => {},
+                          child: const Text(
+                              'Sie haben bereits ein Konto? Einloggen.')),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    )
+                  else
+                    Container()
                 ]))
               ])),
         )
