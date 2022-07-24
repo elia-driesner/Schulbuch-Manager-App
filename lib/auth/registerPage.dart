@@ -33,10 +33,14 @@ class _registerPageState extends State<registerPage> {
         });
         await Future.delayed(const Duration(seconds: 2));
         var signInMessage = user.signIn();
-        if (signInMessage != '') {
+        while (signInMessage == null) {
           await Future.delayed(const Duration(seconds: 1));
           signInMessage = user.signIn();
         }
+        setState(() {
+          signUpStatusMessage = 'Laden...';
+        });
+        user.addUserToFirestore();
       }
     }
     setState(() {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'globalAuthVariables.dart';
 
 class Auth {
   late String email;
@@ -32,38 +33,8 @@ class Auth {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
               email: this.email, password: this.password);
-      final user = await FirebaseAuth.instance.currentUser;
-      if (user != null) {
-        final name = user.displayName;
-        final email = user.email;
-        final photoUrl = user.photoURL;
 
-        final emailVerified = user.emailVerified;
-
-        final uid = await user.uid;
-
-        DocumentReference users = FirebaseFirestore.instance
-            .collection('Schools')
-            .doc('School name')
-            .collection('Classes')
-            .doc('Class 9 students');
-        users
-            .set(
-              {
-                uid: {
-                  'name': name,
-                  'email': email,
-                  'rights': 0,
-                  'parents': [],
-                  'electives': []
-                }
-              },
-              SetOptions(merge: true),
-            )
-            .then((value) => print("User Added"))
-            .catchError((error) => print("Failed to add user: $error"));
-      }
-      return ('');
+      return 'Ladet...';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         return ('Kein account mir dieser email gefunden');
@@ -73,11 +44,45 @@ class Auth {
     }
   }
 
-  void verifyEmail() async {
-    User? user = FirebaseAuth.instance.currentUser;
+  Future<String?> addUserToFirestore() async {
+    final user = await FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final name = user.displayName;
+      final email = user.email;
+      final photoUrl = user.photoURL;
 
-    if (user != null && !user.emailVerified) {
-      await user.sendEmailVerification();
+      final emailVerified = user.emailVerified;
+
+      final uid = await user.uid;
+      DocumentReference users = FirebaseFirestore.instance
+          .collection('Schools')
+          .doc(selectionData['school'])
+          .collection('Classes')
+          .doc('Class 9 students');
+      users
+          .set(
+            {
+              uid: {
+                'name': 'name',
+                'email': email,
+                'rights': 0,
+                'role': selectionData['role'],
+                'parents': [],
+                'electives': []
+              }
+            },
+            SetOptions(merge: true),
+          )
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+    }
+
+    void verifyEmail() async {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user != null && !user.emailVerified) {
+        await user.sendEmailVerification();
+      }
     }
   }
 }
