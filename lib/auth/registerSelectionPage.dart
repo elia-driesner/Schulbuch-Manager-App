@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'globalAuthVariables.dart';
+import 'registerPage.dart';
 
 class registerSelectionPage extends StatefulWidget {
   const registerSelectionPage({Key? key}) : super(key: key);
@@ -15,9 +16,11 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
 
   var roleDropdownValue = 'Schüler';
   var _roleDropdownOptions = ['Schüler', 'Lehrer', 'Elternteil'];
+  var classDropdownValue = '9';
+  var _classDropdownOptions = ['10', '9', '8', '7', '6', '5'];
   Future<void> getData() async {
-    final db = FirebaseFirestore.instance;
-    var result = await db.collection('Schools').get();
+    final schoolData = FirebaseFirestore.instance;
+    var result = await schoolData.collection('Schools').get();
     result.docs.forEach((res) {
       setState(() {
         _schoolDropdownOptions.add(res.id);
@@ -29,6 +32,11 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
   void writeDataToGlobal() {
     selectionData['school'] = schoolDropdownValue;
     selectionData['role'] = roleDropdownValue;
+    selectionData['class'] = classDropdownValue;
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => registerPage()),
+    );
   }
 
   void initState() {
@@ -129,6 +137,44 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
                           setState(
                             () {
                               roleDropdownValue = val.toString();
+                            },
+                          );
+                        },
+                      )),
+                ),
+                Container(
+                    child: Text('Klasse:', style: TextStyle(fontSize: 18))),
+                SizedBox(
+                  width: 200,
+                  child: Card(
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      color: const Color(0xFFFFFFFF),
+                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      child: DropdownButton(
+                        hint: schoolDropdownValue == null
+                            ? const Text('Dropdown')
+                            : Text(
+                                classDropdownValue,
+                                style: TextStyle(color: Colors.black),
+                              ),
+                        isExpanded: true,
+                        iconSize: 30.0,
+                        style: const TextStyle(color: Colors.black),
+                        items: _classDropdownOptions.map(
+                          (val) {
+                            return DropdownMenuItem<String>(
+                              value: val,
+                              child: Text(val),
+                            );
+                          },
+                        ).toList(),
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              classDropdownValue = val.toString();
                             },
                           );
                         },

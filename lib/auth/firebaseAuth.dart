@@ -26,6 +26,7 @@ class Auth {
       debugPrint(e.toString());
       return ('Ein unerwarteter Fehler ist aufgetreten.');
     }
+    return null;
   }
 
   Future<String?> signIn() async {
@@ -58,7 +59,7 @@ class Auth {
           .collection('Schools')
           .doc(selectionData['school'])
           .collection('Classes')
-          .doc('Class 9 students');
+          .doc('Class ${selectionData['class']} students');
       users
           .set(
             {
