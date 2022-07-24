@@ -24,6 +24,6 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.orange,
         ),
-        home: Scaffold(body: SafeArea(child: registerSelectionPage())));
+        home: Scaffold(body: Container(child: registerSelectionPage())));
   }
 }
