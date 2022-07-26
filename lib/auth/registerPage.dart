@@ -51,114 +51,118 @@ class _registerPageState extends State<registerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.fromLTRB(5, 160, 5, 0),
-            child: Container(
-                color: const Color(0xFFFAFAFA),
-                child: Column(children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.fromLTRB(0, 15, 0, 5),
-                      child: const Text('Registrieren',
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Color(0xFF1F2226),
-                              fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                  Align(
-                      child: Column(children: [
-                    Card(
-                      shadowColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      color: const Color(0xFFFFFFFF),
-                      margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
+      body: Container(
+        color: Color(0xFFF1F4E6),
+        child: SafeArea(
+          child: Column(children: [
+            Container(
+              margin: const EdgeInsets.fromLTRB(5, 160, 5, 0),
+              child: Container(
+                  color: const Color(0xFFF1F4E6),
+                  child: Column(children: [
+                    Align(
+                      alignment: Alignment.topCenter,
                       child: Container(
-                        margin: const EdgeInsets.fromLTRB(15, 7, 5, 0),
-                        child: TextField(
-                          controller: emailController,
-                          obscureText: false,
-                          decoration: const InputDecoration(
-                            labelText: 'Email Adresse',
-                            border: InputBorder.none,
+                        margin: const EdgeInsets.fromLTRB(0, 15, 0, 5),
+                        child: const Text('Registrierenn',
+                            style: TextStyle(
+                                fontSize: 32,
+                                color: Color(0xFF122640),
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                    Align(
+                        child: Column(children: [
+                      Card(
+                        shadowColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        color: const Color(0xFFF1F4E6),
+                        margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
+                        child: Container(
+                          margin: const EdgeInsets.fromLTRB(15, 7, 5, 0),
+                          child: TextField(
+                            controller: emailController,
+                            obscureText: false,
+                            decoration: const InputDecoration(
+                              labelText: 'Email Adresse',
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      shadowColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                      Card(
+                        shadowColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        color: const Color(0xFFF1F4E6),
+                        margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
+                        child: Container(
+                          margin: const EdgeInsets.fromLTRB(15, 7, 5, 0),
+                          child: TextField(
+                              controller: passwordController,
+                              obscureText: true,
+                              decoration: const InputDecoration(
+                                labelText: 'Password',
+                                border: InputBorder.none,
+                              )),
+                        ),
                       ),
-                      color: const Color(0xFFFFFFFF),
-                      margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
-                      child: Container(
-                        margin: const EdgeInsets.fromLTRB(15, 7, 5, 0),
-                        child: TextField(
-                            controller: passwordController,
-                            obscureText: true,
-                            decoration: const InputDecoration(
-                              labelText: 'Password',
-                              border: InputBorder.none,
-                            )),
-                      ),
-                    ),
-                    if (signUpStatusMessage == 'Account erstellt' ||
-                        signUpStatusMessage == 'Anmelden...')
+                      if (signUpStatusMessage == 'Account erstellt' ||
+                          signUpStatusMessage == 'Anmelden...')
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                          child: Text(signUpStatusMessage.toString(),
+                              style: const TextStyle(
+                                  color: Colors.green, fontSize: 14)),
+                        )
+                      else
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                          child: Text(signUpStatusMessage.toString(),
+                              style: const TextStyle(
+                                  color: Colors.red, fontSize: 14)),
+                        ),
                       Container(
-                        margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                        child: Text(signUpStatusMessage.toString(),
-                            style: const TextStyle(
-                                color: Colors.green, fontSize: 14)),
-                      )
-                    else
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                        child: Text(signUpStatusMessage.toString(),
-                            style: const TextStyle(
-                                color: Colors.red, fontSize: 14)),
-                      ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(17, 0, 17, 0),
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(500, 50),
-                            primary: const Color(0xFFFBB827),
-                            shadowColor: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                          margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: const Size(500, 50),
+                              primary: const Color(0xFF2F8B93),
+                              shadowColor: Colors.transparent,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
                             ),
-                          ),
-                          child: const Text('Account erstellen'),
-                          onPressed: () => sign_up(
-                              email: emailController.text,
-                              password: passwordController.text)),
-                    ),
-                    if (signUpStatusMessage == 'Account erstellt' ||
-                        signUpStatusMessage == 'Anmelden...')
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(0, 35, 0, 0),
-                        child: const CircularProgressIndicator(),
-                      ),
-                    if (signUpStatusMessage != 'Account wird erstellt...')
-                      Container(
-                        child: FlatButton(
-                            onPressed: () => {},
-                            child: const Text(
-                                'Sie haben bereits ein Konto? Anmelden.')),
-                        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      )
-                    else
-                      Container()
-                  ]))
-                ])),
-          )
-        ]),
+                            child: const Text('Account erstellen',
+                                style: TextStyle(color: Colors.white)),
+                            onPressed: () => sign_up(
+                                email: emailController.text,
+                                password: passwordController.text),
+                          )),
+                      if (signUpStatusMessage == 'Account erstellt' ||
+                          signUpStatusMessage == 'Anmelden...')
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+                          child: const CircularProgressIndicator(),
+                        ),
+                      if (signUpStatusMessage != 'Account wird erstellt...')
+                        Container(
+                          child: FlatButton(
+                              onPressed: () => {},
+                              child: const Text(
+                                  'Sie haben bereits ein Konto? Anmelden.')),
+                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        )
+                      else
+                        Container()
+                    ]))
+                  ])),
+            )
+          ]),
+        ),
       ),
     );
     ;

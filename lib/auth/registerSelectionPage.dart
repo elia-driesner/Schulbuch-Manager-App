@@ -46,11 +46,21 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFEBDAD1),
+      color: const Color(0xFFF5EFE2),
       child: Column(
         children: [
           Stack(
             children: [
+              ClipRect(
+                child: Container(
+                  width: 500,
+                  height: 750,
+                  child: CustomPaint(
+                    child: Container(),
+                    painter: CanvasPainter(),
+                  ),
+                ),
+              ),
               Container(
                 child: FlatButton(
                     onPressed: () => {},
@@ -82,7 +92,8 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
                         height: 300,
                         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: Card(
-                            color: Color(0xFFF5EDE3),
+                            color: Color.fromARGB(255, 228, 218, 205)
+                                .withOpacity(0.8),
                             shadowColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
@@ -102,7 +113,9 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
                                           borderRadius:
                                               BorderRadius.circular(10.0),
                                         ),
-                                        color: const Color(0xFFF5EDE3),
+                                        color:
+                                            Color.fromARGB(255, 228, 218, 205)
+                                                .withOpacity(0.0),
                                         margin: const EdgeInsets.fromLTRB(
                                             0, 5, 0, 0),
                                         child: DropdownButton(
@@ -149,7 +162,9 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
                                           borderRadius:
                                               BorderRadius.circular(10.0),
                                         ),
-                                        color: const Color(0xFFF5EDE3),
+                                        color:
+                                            Color.fromARGB(255, 228, 218, 205)
+                                                .withOpacity(0),
                                         margin: const EdgeInsets.fromLTRB(
                                             0, 5, 0, 0),
                                         child: DropdownButton(
@@ -196,7 +211,9 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
                                           borderRadius:
                                               BorderRadius.circular(10.0),
                                         ),
-                                        color: const Color(0xFFF5EDE3),
+                                        color:
+                                            Color.fromARGB(255, 228, 218, 205)
+                                                .withOpacity(0),
                                         margin: const EdgeInsets.fromLTRB(
                                             0, 5, 0, 0),
                                         child: DropdownButton(
@@ -266,4 +283,19 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
       ),
     );
   }
+}
+
+class CanvasPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.translate(380, 500);
+    canvas.drawCircle(
+        Offset(0, 0), 150, Paint()..color = Color.fromARGB(255, 253, 231, 151));
+
+    canvas.restore();
+    canvas.save();
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
