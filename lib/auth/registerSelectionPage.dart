@@ -26,7 +26,17 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
                   height: 750,
                   child: CustomPaint(
                     child: Container(),
-                    painter: CanvasPainter(),
+                    painter: yellowPainter(),
+                  ),
+                ),
+              ),
+              ClipRect(
+                child: Container(
+                  width: 500,
+                  height: 750,
+                  child: CustomPaint(
+                    child: Container(),
+                    painter: orangePainter(),
                   ),
                 ),
               ),
@@ -75,12 +85,27 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
   }
 }
 
-class CanvasPainter extends CustomPainter {
+class yellowPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     canvas.translate(380, 500);
     canvas.drawCircle(
-        Offset(0, 0), 150, Paint()..color = Color.fromARGB(255, 253, 231, 151));
+        Offset(0, 0), 150, Paint()..color = Color.fromARGB(255, 253, 234, 157));
+
+    canvas.restore();
+    canvas.save();
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class orangePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.translate(30, 30);
+    canvas.drawCircle(
+        Offset(0, 0), 90, Paint()..color = Color.fromARGB(255, 254, 195, 195));
 
     canvas.restore();
     canvas.save();
