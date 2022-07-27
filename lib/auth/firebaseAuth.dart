@@ -55,7 +55,6 @@ class Auth {
       final emailVerified = user.emailVerified;
 
       final uid = await user.uid;
-      debugPrint(selectionData['school'].toString());
       DocumentReference users = FirebaseFirestore.instance
           .collection('Schools')
           .doc(selectionData['school'])

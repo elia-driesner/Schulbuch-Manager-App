@@ -61,30 +61,6 @@ class _registerSelectionPageState extends State<registerSelectionPage> {
                   ),
                 ),
               ),
-              Container(
-                  margin: const EdgeInsets.fromLTRB(40, 522, 40, 0),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(500, 50),
-                        primary: const Color(0xFF2F2E2C),
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                      ),
-                      child: const Text('Weiter',
-                          style: TextStyle(color: Colors.white)),
-                      onPressed: () {
-                        selection_card.selectionCardState().writeDataToGlobal();
-                        debugPrint(selection_card
-                            .selectionCardState()
-                            .roleDropdownValue);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => registerPage()),
-                        );
-                      })),
             ],
           ),
           Container(

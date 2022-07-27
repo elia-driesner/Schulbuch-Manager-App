@@ -23,6 +23,9 @@ class _registerPageState extends State<registerPage> {
     } else {
       var user = Auth(email: email, password: password);
       signUpStatusMessage = await user.signUp();
+      if (signUpStatusMessage == null) {
+        signUpStatusMessage = 'Email Adresse nicht verfügbar';
+      }
       setState(() {
         signUpStatusMessage;
       });
@@ -111,7 +114,8 @@ class _registerPageState extends State<registerPage> {
                         ),
                       ),
                       if (signUpStatusMessage == 'Account erstellt' ||
-                          signUpStatusMessage == 'Anmelden...')
+                          signUpStatusMessage == 'Anmelden...' ||
+                          signUpStatusMessage == 'Laden...')
                         Container(
                           margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                           child: Text(signUpStatusMessage.toString(),
