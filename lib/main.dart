@@ -22,7 +22,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
-          primarySwatch: Colors.orange,
+          primarySwatch: Colors.grey,
         ),
         home: Scaffold(body: Container(child: registerSelectionPage())));
   }

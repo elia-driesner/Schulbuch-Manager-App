@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../registerPage.dart';
 
 class selectionCard extends StatefulWidget {
-  selectionCard({Key? key}) : super(key: key);
+  const selectionCard({Key? key}) : super(key: key);
 
   @override
   State<selectionCard> createState() => selectionCardState();
