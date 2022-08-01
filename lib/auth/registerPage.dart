@@ -55,64 +55,62 @@ class _registerPageState extends State<registerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFFF1F4E6),
+        color: const Color(0xFFF5EFE2),
         child: SafeArea(
           child: Column(children: [
             Container(
-              margin: const EdgeInsets.fromLTRB(5, 160, 5, 0),
+              margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
               child: Container(
-                  color: const Color(0xFFF1F4E6),
-                  child: Column(children: [
+                  color: const Color(0xFFF5EFE2),
+                  child: Stack(children: [
+                    Container(
+                      child: FlatButton(
+                          onPressed: () => {},
+                          child: const Text('Anmelden',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 175, 163, 160),
+                                  fontSize: 18))),
+                      margin: const EdgeInsets.fromLTRB(260, 30, 0, 0),
+                    ),
                     Align(
-                      alignment: Alignment.topCenter,
+                      alignment: Alignment.topLeft,
                       child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 15, 0, 5),
-                        child: const Text('Registrierenn',
-                            style: TextStyle(
-                                fontSize: 32,
-                                color: Color(0xFF122640),
-                                fontWeight: FontWeight.bold)),
+                        margin: EdgeInsets.fromLTRB(0, 140, 0, 0),
+                        child: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.fromLTRB(15, 25, 0, 45),
+                                child: const Text('Registrieren',
+                                    style: TextStyle(
+                                        fontSize: 32,
+                                        color: Color(0xFF1F2226),
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                            Card(
+                              color: Color.fromARGB(255, 228, 218, 205)
+                                  .withOpacity(0.8),
+                              shadowColor: Colors.transparent,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Container(
+                                height: 300,
+                                width: 1000,
+                                child: Column(
+                                  children: [],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     Align(
                         child: Column(children: [
-                      Card(
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        color: const Color(0xFFF1F4E6),
-                        margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
-                        child: Container(
-                          margin: const EdgeInsets.fromLTRB(15, 7, 5, 0),
-                          child: TextField(
-                            controller: emailController,
-                            obscureText: false,
-                            decoration: const InputDecoration(
-                              labelText: 'Email Adresse',
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        color: const Color(0xFFF1F4E6),
-                        margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
-                        child: Container(
-                          margin: const EdgeInsets.fromLTRB(15, 7, 5, 0),
-                          child: TextField(
-                              controller: passwordController,
-                              obscureText: true,
-                              decoration: const InputDecoration(
-                                labelText: 'Password',
-                                border: InputBorder.none,
-                              )),
-                        ),
-                      ),
                       if (signUpStatusMessage == 'Account erstellt' ||
                           signUpStatusMessage == 'Anmelden...' ||
                           signUpStatusMessage == 'Laden...')
@@ -130,11 +128,11 @@ class _registerPageState extends State<registerPage> {
                                   color: Colors.red, fontSize: 14)),
                         ),
                       Container(
-                          margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                          margin: const EdgeInsets.fromLTRB(40, 400, 40, 0),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               minimumSize: const Size(500, 50),
-                              primary: const Color(0xFF2F8B93),
+                              primary: const Color(0xFF2F2E2C),
                               shadowColor: Colors.transparent,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),
