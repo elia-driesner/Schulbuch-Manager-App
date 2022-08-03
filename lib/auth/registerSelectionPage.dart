@@ -14,72 +14,74 @@ class registerSelectionPage extends StatefulWidget {
 class _registerSelectionPageState extends State<registerSelectionPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xFFF5EFE2),
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              ClipRect(
-                child: Container(
-                  width: 500,
-                  height: 750,
-                  child: CustomPaint(
-                    child: Container(),
-                    painter: yellowPainter(),
+    return Scaffold(
+      body: Container(
+        color: const Color(0xFFF5EFE2),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                ClipRect(
+                  child: Container(
+                    width: 500,
+                    height: 750,
+                    child: CustomPaint(
+                      child: Container(),
+                      painter: yellowPainter(),
+                    ),
                   ),
                 ),
-              ),
-              ClipRect(
-                child: Container(
-                  width: 500,
-                  height: 750,
-                  child: CustomPaint(
-                    child: Container(),
-                    painter: orangePainter(),
+                ClipRect(
+                  child: Container(
+                    width: 500,
+                    height: 750,
+                    child: CustomPaint(
+                      child: Container(),
+                      painter: orangePainter(),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                child: FlatButton(
-                    onPressed: () => {},
-                    child: const Text('Anmelden',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 175, 163, 160),
-                            fontSize: 18))),
-                margin: const EdgeInsets.fromLTRB(270, 30, 0, 0),
-              ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(0, 140, 0, 0),
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Container(
-                          margin: const EdgeInsets.fromLTRB(15, 25, 0, 45),
-                          child: const Text('Registrieren',
-                              style: TextStyle(
-                                  fontSize: 32,
-                                  color: Color(0xFF1F2226),
-                                  fontWeight: FontWeight.bold)),
+                Container(
+                  child: FlatButton(
+                      onPressed: () => {},
+                      child: const Text('Anmelden',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 175, 163, 160),
+                              fontSize: 18))),
+                  margin: const EdgeInsets.fromLTRB(270, 30, 0, 0),
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(0, 140, 0, 0),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Container(
+                            margin: const EdgeInsets.fromLTRB(15, 25, 0, 45),
+                            child: const Text('Registrieren',
+                                style: TextStyle(
+                                    fontSize: 32,
+                                    color: Color(0xFF1F2226),
+                                    fontWeight: FontWeight.bold)),
+                          ),
                         ),
-                      ),
-                      selection_card.selectionCard(),
-                    ],
+                        selection_card.selectionCard(),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Container(
-            child: FlatButton(
-                onPressed: () => {},
-                child: const Text('Sie haben bereits ein Konto? Anmelden.')),
-            margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-          )
-        ],
+              ],
+            ),
+            Container(
+              child: FlatButton(
+                  onPressed: () => {},
+                  child: const Text('Sie haben bereits ein Konto? Anmelden.')),
+              margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+            )
+          ],
+        ),
       ),
     );
   }

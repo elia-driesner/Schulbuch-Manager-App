@@ -3,6 +3,7 @@ import 'firebaseAuth.dart';
 
 import 'registerSelectionPage.dart';
 import 'globalAuthVariables.dart';
+import '../main.dart';
 
 class registerPage extends StatefulWidget {
   const registerPage({Key? key}) : super(key: key);
@@ -44,6 +45,10 @@ class _registerPageState extends State<registerPage> {
           signUpStatusMessage = 'Laden...';
         });
         user.addUserToFirestore();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => App()),
+        );
       }
     }
     setState(() {
