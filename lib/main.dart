@@ -53,6 +53,10 @@ class _AppState extends State<App> {
   void signUserOut() {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     _auth.signOut();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => signSelectPage()),
+    );
   }
 
   @override
