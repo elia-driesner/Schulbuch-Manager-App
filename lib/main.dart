@@ -75,7 +75,14 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-            child: ElevatedButton(
-                child: Text('sign out'), onPressed: signUserOut)));
+            child: Container(
+      margin: EdgeInsets.fromLTRB(0, 400, 0, 0),
+      child: Column(
+        children: [
+          _user != null ? Text('Angemeldet als: ${_user.email}') : Container(),
+          ElevatedButton(child: Text('sign out'), onPressed: signUserOut),
+        ],
+      ),
+    )));
   }
 }

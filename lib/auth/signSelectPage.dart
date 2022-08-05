@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'registerSelectionPage.dart';
+import 'signInPage.dart';
 
 class signSelectPage extends StatelessWidget {
   const signSelectPage({Key? key}) : super(key: key);
@@ -51,7 +52,7 @@ class signSelectPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => registerSelectionPage()),
+                                builder: (context) => signInPage()),
                           )
                         }),
               ),
