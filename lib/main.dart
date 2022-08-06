@@ -1,8 +1,7 @@
 import 'dart:async';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,6 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'auth/registerPage.dart';
 import 'auth/registerSelectionPage.dart';
 import 'auth/signSelectPage.dart';
+
+import 'homepage/studentHome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,15 +75,12 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-            child: Container(
-      margin: EdgeInsets.fromLTRB(0, 400, 0, 0),
+        body: Container(
       child: Column(
         children: [
-          _user != null ? Text('Angemeldet als: ${_user.email}') : Container(),
-          ElevatedButton(child: Text('sign out'), onPressed: signUserOut),
+          _user != null ? studentHomepage() : Container(),
         ],
       ),
-    )));
+    ));
   }
 }

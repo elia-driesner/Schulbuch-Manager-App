@@ -24,17 +24,22 @@ class _signInPageState extends State<signInPage> {
       signInStatusMessage = 'Password min. 6 Zeichen';
     } else {
       var user = Auth(email: email, password: password);
-      var signInMessage = await user.signIn();
-      await Future.delayed(const Duration(seconds: 2));
+      signInStatusMessage = await user.signIn();
+      while (signInStatusMessage == '') {
+        await Future.delayed(const Duration(seconds: 1));
+        signInStatusMessage = await user.signIn();
+      }
       setState(() {
         signInStatusMessage;
       });
       debugPrint(signInStatusMessage);
-      await Future.delayed(const Duration(seconds: 1));
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => App()),
-      );
+      await Future.delayed(const Duration(seconds: 2));
+      if (signInStatusMessage == 'Ladet...') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => App()),
+        );
+      }
     }
     setState(() {
       signInStatusMessage;
