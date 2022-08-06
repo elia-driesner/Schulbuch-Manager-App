@@ -63,7 +63,6 @@ class _AppState extends State<App> {
   @override
   void initState() {
     getUser();
-    timer = Timer.periodic(Duration(seconds: 500), (Timer t) => getUser());
   }
 
   @override
