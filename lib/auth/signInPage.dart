@@ -3,6 +3,7 @@ import 'firebaseAuth.dart';
 
 import 'registerSelectionPage.dart';
 import '../main.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class signInPage extends StatefulWidget {
   const signInPage({Key? key}) : super(key: key);
@@ -50,31 +51,11 @@ class _signInPageState extends State<signInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      color: const Color(0xFFF5EFE2),
+      color: Color(0xFF111111),
       child: Column(
         children: [
           Stack(
             children: [
-              ClipRect(
-                child: Container(
-                  width: 500,
-                  height: 750,
-                  child: CustomPaint(
-                    child: Container(),
-                    painter: yellowPainter(),
-                  ),
-                ),
-              ),
-              ClipRect(
-                child: Container(
-                  width: 500,
-                  height: 750,
-                  child: CustomPaint(
-                    child: Container(),
-                    painter: orangePainter(),
-                  ),
-                ),
-              ),
               Container(
                 child: FlatButton(
                     onPressed: () => {},
@@ -92,19 +73,21 @@ class _signInPageState extends State<signInPage> {
                     children: [
                       Align(
                         alignment: Alignment.topLeft,
-                        child: Container(
-                          margin: const EdgeInsets.fromLTRB(15, 25, 0, 45),
-                          child: const Text('Anmelden',
-                              style: TextStyle(
-                                  fontSize: 32,
-                                  color: Color(0xFF1F2226),
-                                  fontWeight: FontWeight.bold)),
+                        child: Center(
+                          child: Container(
+                            margin: const EdgeInsets.fromLTRB(0, 60, 0, 15),
+                            child: Text('Anmelden',
+                                style: GoogleFonts.roboto(
+                                    fontWeight: FontWeight.w400,
+                                    letterSpacing: 0,
+                                    fontSize: 30,
+                                    color: Color(0xFF494087))),
+                          ),
                         ),
                       ),
                       Card(
                         margin: EdgeInsets.fromLTRB(25, 5, 25, 0),
-                        color:
-                            Color.fromARGB(255, 228, 218, 205).withOpacity(0.8),
+                        color: Color(0xFFE5613A).withOpacity(0),
                         shadowColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
@@ -117,36 +100,41 @@ class _signInPageState extends State<signInPage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              color: Color.fromARGB(255, 228, 218, 205)
-                                  .withOpacity(0),
+                              color: Color(0xFF181818),
                               margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
                               child: Container(
-                                margin: const EdgeInsets.fromLTRB(15, 7, 5, 0),
+                                margin: const EdgeInsets.fromLTRB(15, 0, 5, 0),
                                 child: TextField(
-                                  controller: emailController,
-                                  obscureText: false,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Email Adresse',
-                                  ),
-                                ),
+                                    controller: emailController,
+                                    obscureText: false,
+                                    decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        labelText: 'Password',
+                                        labelStyle: TextStyle(
+                                            color: Color(0xFF494087))),
+                                    style: TextStyle(
+                                        color: Color(0xFF494087), height: 1)),
                               ),
                             ),
                             Card(
                               shadowColor: Colors.transparent,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
-                              color: Color.fromARGB(255, 228, 218, 205)
-                                  .withOpacity(0),
+                              color: Color(0xFF181818),
                               margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
                               child: Container(
-                                margin: const EdgeInsets.fromLTRB(15, 7, 5, 0),
+                                margin: const EdgeInsets.fromLTRB(15, 0, 5, 0),
                                 child: TextField(
                                     controller: passwordController,
                                     obscureText: true,
                                     decoration: const InputDecoration(
-                                      labelText: 'Password',
-                                    )),
+                                        border: InputBorder.none,
+                                        labelText: 'Password',
+                                        labelStyle: TextStyle(
+                                            color: Color(0xFF494087))),
+                                    style: TextStyle(
+                                        color: Color(0xFF494087), height: 1)),
                               ),
                             ),
                           ]),
@@ -157,20 +145,28 @@ class _signInPageState extends State<signInPage> {
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.fromLTRB(40, 485, 40, 0),
+                  margin: const EdgeInsets.fromLTRB(40, 480, 40, 0),
                   child: Column(
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(500, 50),
-                          primary: const Color(0xFF2F2E2C),
+                          primary: Color(0xFFFCC204),
                           shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                         ),
-                        child: const Text('Anmelden',
-                            style: TextStyle(color: Colors.white)),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.fromLTRB(90, 0, 5, 0),
+                              child: Text('Anmelden',
+                                  style: TextStyle(color: Color(0xFF494087))),
+                            ),
+                            Icon(Icons.arrow_forward, color: Color(0xFF494087))
+                          ],
+                        ),
                         onPressed: () => sign_in(
                             email: emailController.text,
                             password: passwordController.text),
@@ -203,16 +199,6 @@ class _signInPageState extends State<signInPage> {
                 ),
             ],
           ),
-          if (signInStatusMessage != 'Ladet...')
-            Container(
-              child: FlatButton(
-                  onPressed: () => {},
-                  child:
-                      const Text('Sie haben noch kein Konto? Registrieren.')),
-              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-            )
-          else
-            Container()
         ],
       ),
     ));

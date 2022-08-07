@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'registerSelectionPage.dart';
 import 'signInPage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class signSelectPage extends StatelessWidget {
   const signSelectPage({Key? key}) : super(key: key);
@@ -11,28 +12,19 @@ class signSelectPage extends StatelessWidget {
         body: Container(
             width: double.infinity,
             height: double.infinity,
-            color: const Color(0xFFF5EFE2),
+            color: Color(0xFF191919),
             child: Stack(children: [
-              ClipRect(
-                child: Container(
-                  width: 500,
-                  height: 750,
-                  child: CustomPaint(
-                    child: Container(),
-                    painter: orangePainter(),
-                  ),
-                ),
-              ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
-                  width: 250,
                   margin: const EdgeInsets.fromLTRB(40, 120, 0, 45),
-                  child: const Text('Schulbuch Manager',
-                      style: TextStyle(
-                          fontSize: 36,
-                          color: Color(0xFF1F2226),
-                          fontWeight: FontWeight.bold)),
+                  child: Text('Schulbuch Manager',
+                      style: GoogleFonts.roboto(
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0,
+                        fontSize: 55,
+                        color: Color(0xFFFEFEFE),
+                      )),
                 ),
               ),
               Container(
@@ -40,7 +32,7 @@ class signSelectPage extends StatelessWidget {
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(500, 50),
-                      primary: const Color(0xFF2F2E2C),
+                      primary: Color.fromARGB(220, 229, 98, 58),
                       shadowColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -61,7 +53,7 @@ class signSelectPage extends StatelessWidget {
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(500, 50),
-                      primary: const Color(0xFF2F2E2C),
+                      primary: Color.fromARGB(220, 37, 221, 132),
                       shadowColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -79,19 +71,4 @@ class signSelectPage extends StatelessWidget {
               ),
             ])));
   }
-}
-
-class orangePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.translate(330, 30);
-    canvas.drawCircle(
-        Offset(0, 0), 450, Paint()..color = Color.fromARGB(255, 254, 195, 195));
-
-    canvas.restore();
-    canvas.save();
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

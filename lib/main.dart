@@ -11,6 +11,7 @@ import 'auth/registerSelectionPage.dart';
 import 'auth/signSelectPage.dart';
 
 import 'homepage/studentHome.dart';
+import 'homepage/widgets/sideMenu.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,8 +19,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Color(0xFF494087),
+        ),
       ),
       home: App()));
 }
@@ -67,19 +71,19 @@ class _AppState extends State<App> {
 
   @override
   void dispose() {
-    timer.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: sideMenu(),
         body: Container(
-      child: Column(
-        children: [
-          _user != null ? studentHomepage() : Container(),
-        ],
-      ),
-    ));
+          child: Column(
+            children: [
+              _user != null ? studentHomepage() : Container(),
+            ],
+          ),
+        ));
   }
 }

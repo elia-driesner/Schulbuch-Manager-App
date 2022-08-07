@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/sideMenu.dart';
 
 class studentHomepage extends StatelessWidget {
   const studentHomepage({Key? key}) : super(key: key);
@@ -9,11 +10,7 @@ class studentHomepage extends StatelessWidget {
         child: SafeArea(
             child: Column(children: [
       Container(
-          child: GestureDetector(
-              child: Icon(Icons.settings),
-              onTap: () {
-                debugPrint('a');
-              }))
+          child: GestureDetector(child: Icon(Icons.settings), onTap: () {})),
     ])));
   }
 }
