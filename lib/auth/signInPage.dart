@@ -51,7 +51,7 @@ class _signInPageState extends State<signInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      color: Color(0xFF111111),
+      color: Color(0xFFECEBE7),
       child: Column(
         children: [
           Stack(
@@ -81,7 +81,7 @@ class _signInPageState extends State<signInPage> {
                                     fontWeight: FontWeight.w400,
                                     letterSpacing: 0,
                                     fontSize: 30,
-                                    color: Color(0xFF494087))),
+                                    color: Color(0xFF103A24))),
                           ),
                         ),
                       ),
@@ -98,9 +98,12 @@ class _signInPageState extends State<signInPage> {
                             Card(
                               shadowColor: Colors.transparent,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
+                                side: BorderSide(
+                                  color: Color.fromARGB(255, 190, 194, 189),
+                                ),
                               ),
-                              color: Color(0xFF181818),
+                              color: Color(0xFFE8E8E6),
                               margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
                               child: Container(
                                 margin: const EdgeInsets.fromLTRB(15, 0, 5, 0),
@@ -109,7 +112,7 @@ class _signInPageState extends State<signInPage> {
                                     obscureText: false,
                                     decoration: const InputDecoration(
                                         border: InputBorder.none,
-                                        labelText: 'Password',
+                                        labelText: 'Email',
                                         labelStyle: TextStyle(
                                             color: Color(0xFF494087))),
                                     style: TextStyle(
@@ -117,11 +120,14 @@ class _signInPageState extends State<signInPage> {
                               ),
                             ),
                             Card(
-                              shadowColor: Colors.transparent,
+                              shadowColor: Color.fromARGB(255, 0, 0, 0),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.0),
+                                side: BorderSide(
+                                  color: Color.fromARGB(255, 190, 194, 189),
+                                ),
                               ),
-                              color: Color(0xFF181818),
+                              color: Color(0xFFE8E8E6),
                               margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
                               child: Container(
                                 margin: const EdgeInsets.fromLTRB(15, 0, 5, 0),
@@ -148,44 +154,48 @@ class _signInPageState extends State<signInPage> {
                   margin: const EdgeInsets.fromLTRB(40, 480, 40, 0),
                   child: Column(
                     children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(500, 50),
-                          primary: Color(0xFFFCC204),
-                          shadowColor: Colors.transparent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.fromLTRB(90, 0, 5, 0),
-                              child: Text('Anmelden',
-                                  style: TextStyle(color: Color(0xFF494087))),
+                      Container(
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                              offset: Offset(8, 6), color: Color(0xFF103A24))
+                        ], borderRadius: BorderRadius.circular(15)),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(500, 50),
+                            primary: Color(0xFF7A6DA9),
+                            shadowColor: Color.fromARGB(0, 0, 0, 0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
                             ),
-                            Icon(Icons.arrow_forward, color: Color(0xFF494087))
-                          ],
+                            side:
+                                BorderSide(width: 1, color: Color(0xFF103A24)),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.fromLTRB(90, 0, 5, 0),
+                                child: Text('Anmelden',
+                                    style: TextStyle(color: Color(0xFF103A24))),
+                              ),
+                              Icon(Icons.arrow_forward,
+                                  color: Color(0xFF103A24))
+                            ],
+                          ),
+                          onPressed: () => sign_in(
+                              email: emailController.text,
+                              password: passwordController.text),
                         ),
-                        onPressed: () => sign_in(
-                            email: emailController.text,
-                            password: passwordController.text),
                       ),
                       Align(
                           child: Column(children: [
                         if (signInStatusMessage == 'Ladet...')
-                          Container(
-                            margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                            child: Text(signInStatusMessage.toString(),
-                                style: const TextStyle(
-                                    color: Colors.black, fontSize: 14)),
-                          )
+                          Container()
                         else
                           Container(
-                            margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                            margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
                             child: Text(signInStatusMessage.toString(),
                                 style: const TextStyle(
-                                    color: Colors.red, fontSize: 14)),
+                                    color: Color(0xFF103A24), fontSize: 14)),
                           ),
                       ]))
                     ],
@@ -193,7 +203,7 @@ class _signInPageState extends State<signInPage> {
               if (signInStatusMessage == 'Ladet...')
                 Center(
                   child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 580, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 600, 0, 0),
                     child: const CircularProgressIndicator(),
                   ),
                 ),

@@ -6,11 +6,6 @@ class studentHomepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: SafeArea(
-            child: Column(children: [
-      Container(
-          child: GestureDetector(child: Icon(Icons.settings), onTap: () {})),
-    ])));
+    return Container(child: SafeArea(child: Column(children: [])));
   }
 }

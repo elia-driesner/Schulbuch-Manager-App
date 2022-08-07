@@ -45,7 +45,6 @@ class _AppState extends State<App> {
 
     setState(() {
       if (_user != null) {
-        debugPrint(_user.email);
       } else {
         Navigator.push(
           context,
