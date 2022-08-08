@@ -22,25 +22,67 @@ class sideMenu extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
+            Stack(children: [
+              ListTile(
+                leading: FaIcon(FontAwesomeIcons.userCircle, size: 42),
+              ),
+              Column(
+                children: [
+                  ListTile(
+                    title: Container(
+                      margin: EdgeInsets.fromLTRB(0, 55, 0, 0),
+                      child: Column(
+                        children: [
+                          Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                userDataVar['name'],
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                            child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  userDataVar['email'],
+                                  style: TextStyle(fontSize: 15),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                    onTap: () => {},
+                  ),
+                ],
+              ),
+            ]),
             ListTile(
-              leading: FaIcon(FontAwesomeIcons.userCircle),
-              title: Text(userDataVar['name']),
-              onTap: () => {},
+              leading: Icon(Icons.book),
+              title: Text('Bücher'),
+              onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
-              leading: Icon(Icons.verified_user),
-              title: Text('Profile'),
+              leading: FaIcon(FontAwesomeIcons.users),
+              title: Text('Familie'),
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              title: Text('Einstellungen'),
               onTap: () => {Navigator.of(context).pop()},
             ),
-            ListTile(
-              leading: Icon(Icons.border_color),
-              title: Text('Feedback'),
-              onTap: () => {Navigator.of(context).pop()},
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+              child: const Divider(
+                thickness: 0,
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black,
+                height: 0,
+              ),
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
