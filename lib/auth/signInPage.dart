@@ -36,9 +36,10 @@ class _signInPageState extends State<signInPage> {
       debugPrint(signInStatusMessage);
       await Future.delayed(const Duration(seconds: 2));
       if (signInStatusMessage == 'Ladet...') {
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => App()),
+          (Route<dynamic> route) => false,
         );
       }
     }
@@ -56,15 +57,6 @@ class _signInPageState extends State<signInPage> {
         children: [
           Stack(
             children: [
-              Container(
-                child: FlatButton(
-                    onPressed: () => {},
-                    child: const Text('Registrieren',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 175, 163, 160),
-                            fontSize: 18))),
-                margin: const EdgeInsets.fromLTRB(250, 30, 0, 0),
-              ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
@@ -81,7 +73,7 @@ class _signInPageState extends State<signInPage> {
                                     fontWeight: FontWeight.w400,
                                     letterSpacing: 0,
                                     fontSize: 30,
-                                    color: Color(0xFF103A24))),
+                                    color: Color.fromARGB(255, 46, 43, 59))),
                           ),
                         ),
                       ),
@@ -104,23 +96,26 @@ class _signInPageState extends State<signInPage> {
                                 ),
                               ),
                               color: Color(0xFFE8E8E6),
-                              margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
+                              margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                               child: Container(
-                                margin: const EdgeInsets.fromLTRB(15, 0, 5, 0),
+                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 child: TextField(
-                                    controller: emailController,
+                                    controller: emailController
+                                      ..text = 'elia.driesner@gmail.com',
                                     obscureText: false,
                                     decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         labelText: 'Email',
+                                        prefixIcon: Icon(Icons.email),
                                         labelStyle: TextStyle(
-                                            color: Color(0xFF494087))),
+                                            color: Color.fromARGB(
+                                                255, 46, 43, 59))),
                                     style: TextStyle(
                                         color: Color(0xFF494087), height: 1)),
                               ),
                             ),
                             Card(
-                              shadowColor: Color.fromARGB(255, 0, 0, 0),
+                              shadowColor: Color.fromARGB(0, 0, 0, 0),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.0),
                                 side: BorderSide(
@@ -128,17 +123,20 @@ class _signInPageState extends State<signInPage> {
                                 ),
                               ),
                               color: Color(0xFFE8E8E6),
-                              margin: const EdgeInsets.fromLTRB(17, 30, 17, 0),
+                              margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                               child: Container(
-                                margin: const EdgeInsets.fromLTRB(15, 0, 5, 0),
+                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 child: TextField(
-                                    controller: passwordController,
+                                    controller: passwordController
+                                      ..text = '123456',
                                     obscureText: true,
                                     decoration: const InputDecoration(
                                         border: InputBorder.none,
+                                        prefixIcon: Icon(Icons.lock),
                                         labelText: 'Password',
                                         labelStyle: TextStyle(
-                                            color: Color(0xFF494087))),
+                                            color: Color.fromARGB(
+                                                255, 46, 43, 59))),
                                     style: TextStyle(
                                         color: Color(0xFF494087), height: 1)),
                               ),
@@ -151,13 +149,14 @@ class _signInPageState extends State<signInPage> {
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.fromLTRB(40, 480, 40, 0),
+                  margin: const EdgeInsets.fromLTRB(30, 480, 30, 0),
                   child: Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
-                              offset: Offset(8, 6), color: Color(0xFF103A24))
+                              offset: Offset(8, 6),
+                              color: Color.fromARGB(255, 46, 43, 59))
                         ], borderRadius: BorderRadius.circular(15)),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -173,12 +172,14 @@ class _signInPageState extends State<signInPage> {
                           child: Row(
                             children: [
                               Container(
-                                margin: EdgeInsets.fromLTRB(90, 0, 5, 0),
+                                margin: EdgeInsets.fromLTRB(100, 0, 5, 0),
                                 child: Text('Anmelden',
-                                    style: TextStyle(color: Color(0xFF103A24))),
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 46, 43, 59))),
                               ),
                               Icon(Icons.arrow_forward,
-                                  color: Color(0xFF103A24))
+                                  color: Color.fromARGB(255, 46, 43, 59))
                             ],
                           ),
                           onPressed: () => sign_in(

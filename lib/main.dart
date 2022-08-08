@@ -9,9 +9,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'auth/registerPage.dart';
 import 'auth/registerSelectionPage.dart';
 import 'auth/signSelectPage.dart';
+import 'auth/signInPage.dart';
 
 import 'homepage/studentHome.dart';
 import 'homepage/widgets/sideMenu.dart';
+
+import 'userData.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +25,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Color(0xFF494087),
+          primary: Color.fromARGB(255, 46, 43, 59),
         ),
       ),
       home: App()));
@@ -43,23 +46,41 @@ class _AppState extends State<App> {
   void getUser() async {
     _user = await FirebaseAuth.instance.currentUser;
 
-    setState(() {
-      if (_user != null) {
-      } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => signSelectPage()),
-        );
-      }
-    });
+    if (_user != null) {
+      await FirebaseFirestore.instance
+          .collection('Accounts')
+          .doc(_user.uid)
+          .get()
+          .then((DocumentSnapshot documentSnapshot) {
+        if (documentSnapshot.exists) {
+          userDataVar = {
+            'email': documentSnapshot['email'],
+            'name': documentSnapshot['name'],
+            'role': documentSnapshot['role']
+          };
+        }
+      });
+    } else {
+      Navigator.pushAndRemoveUntil(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation1, animation2) => signInPage(),
+          transitionDuration: Duration.zero,
+        ),
+        (Route<dynamic> route) => false,
+      );
+    }
   }
 
   void signUserOut() {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     _auth.signOut();
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => signSelectPage()),
+      PageRouteBuilder(
+        pageBuilder: (context, animation1, animation2) => signInPage(),
+        transitionDuration: Duration.zero,
+      ),
     );
   }
 
