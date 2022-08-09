@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../auth/signInPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../userData.dart';
+import '../../pages/settings/settingsPage.dart';
 
 class sideMenu extends StatelessWidget {
   @override
@@ -24,7 +25,8 @@ class sideMenu extends StatelessWidget {
           children: <Widget>[
             Stack(children: [
               ListTile(
-                leading: FaIcon(FontAwesomeIcons.userCircle, size: 42),
+                leading: FaIcon(FontAwesomeIcons.userCircle,
+                    size: 42, color: Color.fromARGB(255, 46, 43, 59)),
               ),
               Column(
                 children: [
@@ -38,6 +40,7 @@ class sideMenu extends StatelessWidget {
                               child: Text(
                                 userDataVar['name'],
                                 style: TextStyle(
+                                  color: Color(0xFF494087),
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -48,7 +51,10 @@ class sideMenu extends StatelessWidget {
                                 alignment: Alignment.topLeft,
                                 child: Text(
                                   userDataVar['email'],
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Color.fromARGB(255, 46, 43, 59),
+                                  ),
                                 )),
                           ),
                         ],
@@ -60,19 +66,35 @@ class sideMenu extends StatelessWidget {
               ),
             ]),
             ListTile(
-              leading: Icon(Icons.book),
-              title: Text('Bücher'),
+              leading: Icon(Icons.book, color: Color.fromARGB(255, 46, 43, 59)),
+              title: Text('Bücher',
+                  style: TextStyle(
+                    color: Color(0xFF494087),
+                  )),
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
-              leading: FaIcon(FontAwesomeIcons.users),
-              title: Text('Familie'),
+              leading: FaIcon(FontAwesomeIcons.users,
+                  color: Color.fromARGB(255, 46, 43, 59)),
+              title: Text('Familie',
+                  style: TextStyle(
+                    color: Color(0xFF494087),
+                  )),
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Einstellungen'),
-              onTap: () => {Navigator.of(context).pop()},
+              leading:
+                  Icon(Icons.settings, color: Color.fromARGB(255, 46, 43, 59)),
+              title: Text('Einstellungen',
+                  style: TextStyle(
+                    color: Color(0xFF494087),
+                  )),
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => settingsPage()),
+                )
+              },
             ),
             Container(
               margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -80,13 +102,17 @@ class sideMenu extends StatelessWidget {
                 thickness: 0,
                 indent: 20,
                 endIndent: 20,
-                color: Colors.black,
+                color: Color.fromARGB(255, 46, 43, 59),
                 height: 0,
               ),
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Abmelden'),
+              leading: Icon(Icons.exit_to_app,
+                  color: Color.fromARGB(255, 46, 43, 59)),
+              title: Text('Abmelden',
+                  style: TextStyle(
+                    color: Color(0xFF494087),
+                  )),
               onTap: () => {signUserOut()},
             ),
           ],

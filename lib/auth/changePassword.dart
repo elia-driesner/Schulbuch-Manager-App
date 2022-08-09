@@ -1,53 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'firebaseAuth.dart';
-
-import 'registerSelectionPage.dart';
-import '../main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../userData.dart';
 
-class signInPage extends StatefulWidget {
-  const signInPage({Key? key}) : super(key: key);
+class changePassword extends StatefulWidget {
+  changePassword({Key? key}) : super(key: key);
 
   @override
-  State<signInPage> createState() => _signInPageState();
+  State<changePassword> createState() => _changePasswordState();
 }
 
-class _signInPageState extends State<signInPage> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+class _changePasswordState extends State<changePassword> {
+  var oldPasswordController = TextEditingController();
+  var newPasswordController = TextEditingController();
 
-  String? signInStatusMessage = '';
-  bool isHidden = true;
+  var changePasswordStatus = '';
 
-  void sign_in({required String email, required String password}) async {
-    if (email == '') {
-      signInStatusMessage = 'Bitte Email Adresse eingeben';
-    } else if (password.length <= 5) {
-      signInStatusMessage = 'Password min. 6 Zeichen';
-    } else {
-      var user = Auth(email: email, password: password);
-      signInStatusMessage = await user.signIn();
-      while (signInStatusMessage == '') {
-        await Future.delayed(const Duration(seconds: 1));
-        signInStatusMessage = await user.signIn();
-      }
-      setState(() {
-        signInStatusMessage;
+  bool isOldHidden = true;
+  bool isNewHidden = true;
+
+  void resetPassword(oldPassword, newPassword) async {
+    final user = await FirebaseAuth.instance.currentUser;
+    final cred = EmailAuthProvider.credential(
+        email: userDataVar['email'], password: oldPassword);
+
+    if (user != null) {
+      user.reauthenticateWithCredential(cred).then((value) {
+        user.updatePassword(newPassword).then((_) {
+          setState(() {
+            changePasswordStatus = 'Password geändert';
+          });
+        }).catchError((error) {
+          debugPrint(error.message);
+          setState(() {
+            if (error.message == 'Password should be at least 6 characters') {
+              changePasswordStatus = 'Password min. 6 Zeichen';
+            } else {
+              changePasswordStatus = error.message;
+            }
+          });
+        });
+      }).catchError((err) {
+        setState(() {
+          if (err.message.toString() ==
+              'The password is invalid or the user does not have a password.') {
+            changePasswordStatus = 'Falsches password';
+          } else {
+            changePasswordStatus = err.message;
+          }
+        });
       });
-      debugPrint(signInStatusMessage);
-      await Future.delayed(const Duration(seconds: 2));
-      if (signInStatusMessage == 'Ladet...') {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => App()),
-          (Route<dynamic> route) => false,
-        );
-      }
     }
-    setState(() {
-      signInStatusMessage;
-    });
   }
 
   @override
@@ -70,7 +73,7 @@ class _signInPageState extends State<signInPage> {
                         child: Center(
                           child: Container(
                             margin: const EdgeInsets.fromLTRB(0, 60, 0, 15),
-                            child: Text('Anmelden',
+                            child: Text('Password ändern',
                                 style: GoogleFonts.roboto(
                                     fontWeight: FontWeight.w400,
                                     letterSpacing: 0,
@@ -90,7 +93,7 @@ class _signInPageState extends State<signInPage> {
                           height: 260,
                           child: Column(children: [
                             Card(
-                              shadowColor: Colors.transparent,
+                              shadowColor: Color.fromARGB(0, 0, 0, 0),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.0),
                                 side: BorderSide(
@@ -102,13 +105,21 @@ class _signInPageState extends State<signInPage> {
                               child: Container(
                                 margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 child: TextField(
-                                    controller: emailController
-                                      ..text = 'elia.driesner@gmail.com',
-                                    obscureText: false,
-                                    decoration: const InputDecoration(
+                                    controller: oldPasswordController,
+                                    obscureText: isOldHidden,
+                                    decoration: InputDecoration(
+                                        suffixIcon: IconButton(
+                                          icon: isOldHidden
+                                              ? Icon(Icons.visibility_off)
+                                              : Icon(Icons.visibility),
+                                          onPressed: () => {
+                                            setState(() =>
+                                                {isOldHidden = !isOldHidden})
+                                          },
+                                        ),
                                         border: InputBorder.none,
-                                        labelText: 'Email',
-                                        prefixIcon: Icon(Icons.email),
+                                        prefixIcon: Icon(Icons.lock),
+                                        labelText: 'Altes Password',
                                         labelStyle: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 46, 43, 59))),
@@ -129,22 +140,21 @@ class _signInPageState extends State<signInPage> {
                               child: Container(
                                 margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 child: TextField(
-                                    controller: passwordController
-                                      ..text = '111112',
-                                    obscureText: isHidden,
+                                    controller: newPasswordController,
+                                    obscureText: isNewHidden,
                                     decoration: InputDecoration(
                                         suffixIcon: IconButton(
-                                          icon: isHidden
+                                          icon: isNewHidden
                                               ? Icon(Icons.visibility_off)
                                               : Icon(Icons.visibility),
                                           onPressed: () => {
-                                            setState(
-                                                () => {isHidden = !isHidden})
+                                            setState(() =>
+                                                {isNewHidden = !isNewHidden})
                                           },
                                         ),
                                         border: InputBorder.none,
                                         prefixIcon: Icon(Icons.lock),
-                                        labelText: 'Password',
+                                        labelText: 'Neues Password',
                                         labelStyle: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 46, 43, 59))),
@@ -170,60 +180,57 @@ class _signInPageState extends State<signInPage> {
                               color: Color.fromARGB(255, 46, 43, 59))
                         ], borderRadius: BorderRadius.circular(15)),
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(500, 50),
-                            primary: Color(0xFF7A6DA9),
-                            shadowColor: Color.fromARGB(0, 0, 0, 0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            side:
-                                BorderSide(width: 1, color: Color(0xFF103A24)),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(100, 0, 5, 0),
-                                child: Text('Anmelden',
-                                    style: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 46, 43, 59))),
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: const Size(500, 50),
+                              primary: Color(0xFF7A6DA9),
+                              shadowColor: Color.fromARGB(0, 0, 0, 0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color.fromARGB(255, 46, 43, 59))
-                            ],
-                          ),
-                          onPressed: () => sign_in(
-                              email: emailController.text,
-                              password: passwordController.text),
-                        ),
+                              side: BorderSide(
+                                  width: 1, color: Color(0xFF103A24)),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(115, 0, 5, 0),
+                                  child: Text('Ändern',
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 46, 43, 59))),
+                                ),
+                                Icon(Icons.arrow_forward,
+                                    color: Color.fromARGB(255, 46, 43, 59))
+                              ],
+                            ),
+                            onPressed: () => {
+                                  resetPassword(oldPasswordController.text,
+                                      newPasswordController.text)
+                                }),
                       ),
                       Align(
                           child: Column(children: [
-                        if (signInStatusMessage == 'Ladet...')
-                          Container()
+                        if (changePasswordStatus == 'Password geändert')
+                          Container(
+                            margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
+                            child: Text(changePasswordStatus.toString(),
+                                style: const TextStyle(
+                                    color: Color(0xFF103A24), fontSize: 14)),
+                          )
                         else
                           Container(
                             margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
-                            child: Text(signInStatusMessage.toString(),
+                            child: Text(changePasswordStatus.toString(),
                                 style: const TextStyle(
                                     color: Color(0xFF103A24), fontSize: 14)),
                           ),
                       ]))
                     ],
                   )),
-              if (signInStatusMessage == 'Ladet...')
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 600, 0, 0),
-                    child: const CircularProgressIndicator(),
-                  ),
-                ),
             ],
           ),
         ],
       ),
     ));
-    ;
   }
 }

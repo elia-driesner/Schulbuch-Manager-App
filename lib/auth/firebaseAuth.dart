@@ -41,6 +41,8 @@ class Auth {
         return ('Kein account mir dieser email gefunden');
       } else if (e.code == 'wrong-password') {
         return ('Falsches Password');
+      } else {
+        return 'Ein unerwarteter Fehler ist aufgetreten';
       }
     }
   }
