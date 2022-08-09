@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../userData.dart';
+import '../main.dart';
 
 class changePassword extends StatefulWidget {
-  changePassword({Key? key}) : super(key: key);
-
+  changePassword({Key? key, required this.oldPasswordSug}) : super(key: key);
+  String oldPasswordSug = '';
   @override
   State<changePassword> createState() => _changePasswordState();
 }
@@ -20,6 +21,9 @@ class _changePasswordState extends State<changePassword> {
   bool isNewHidden = true;
 
   void resetPassword(oldPassword, newPassword) async {
+    setState(() {
+      changePasswordStatus = ' ';
+    });
     final user = await FirebaseAuth.instance.currentUser;
     final cred = EmailAuthProvider.credential(
         email: userDataVar['email'], password: oldPassword);
@@ -28,8 +32,15 @@ class _changePasswordState extends State<changePassword> {
       user.reauthenticateWithCredential(cred).then((value) {
         user.updatePassword(newPassword).then((_) {
           setState(() {
-            changePasswordStatus = 'Password geändert';
+            changePasswordStatus = ' ';
           });
+          if (widget.oldPasswordSug != '') {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => App()),
+              (Route<dynamic> route) => false,
+            );
+          }
         }).catchError((error) {
           debugPrint(error.message);
           setState(() {
@@ -62,6 +73,32 @@ class _changePasswordState extends State<changePassword> {
         children: [
           Stack(
             children: [
+              if (widget.oldPasswordSug == '')
+                SafeArea(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            offset: Offset(2, 2),
+                            color: Color.fromARGB(255, 46, 43, 59))
+                      ],
+                    ),
+                    margin: EdgeInsets.fromLTRB(0, 0, 320, 0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(Icons.arrow_back, size: 20),
+                      style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(13),
+                          primary: Color(0xFF7A6DA9),
+                          onPrimary: Color.fromARGB(255, 46, 43, 59),
+                          side: BorderSide(width: 1, color: Color(0xFF103A24))),
+                    ),
+                  ),
+                ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
@@ -105,7 +142,8 @@ class _changePasswordState extends State<changePassword> {
                               child: Container(
                                 margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 child: TextField(
-                                    controller: oldPasswordController,
+                                    controller: oldPasswordController
+                                      ..text = widget.oldPasswordSug,
                                     obscureText: isOldHidden,
                                     decoration: InputDecoration(
                                         suffixIcon: IconButton(
@@ -224,7 +262,14 @@ class _changePasswordState extends State<changePassword> {
                                 style: const TextStyle(
                                     color: Color(0xFF103A24), fontSize: 14)),
                           ),
-                      ]))
+                      ])),
+                      if (changePasswordStatus == ' ')
+                        Center(
+                          child: Container(
+                            margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                            child: const CircularProgressIndicator(),
+                          ),
+                        ),
                     ],
                   )),
             ],

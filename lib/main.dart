@@ -10,6 +10,7 @@ import 'auth/registerPage.dart';
 import 'auth/registerSelectionPage.dart';
 import 'auth/signSelectPage.dart';
 import 'auth/signInPage.dart';
+import 'auth/changePassword.dart';
 
 import 'homepage/studentHome.dart';
 import 'homepage/widgets/sideMenu.dart';
@@ -58,6 +59,12 @@ class _AppState extends State<App> {
             'name': documentSnapshot['name'],
             'role': documentSnapshot['role']
           };
+          // if (documentSnapshot['accountActive'] == false) {
+          //   Navigator.push(
+          //     context,
+          //     MaterialPageRoute(builder: (context) => changePassword()),
+          //   );
+          // }
         }
       });
     } else {

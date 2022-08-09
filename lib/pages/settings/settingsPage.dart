@@ -59,7 +59,8 @@ class settingsPage extends StatelessWidget {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => changePassword()),
+                MaterialPageRoute(
+                    builder: (context) => changePassword(oldPasswordSug: '')),
               )
             },
             child: Container(

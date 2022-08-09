@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'firebaseAuth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'registerSelectionPage.dart';
 import '../main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'changePassword.dart';
 
 class signInPage extends StatefulWidget {
   const signInPage({Key? key}) : super(key: key);
@@ -35,14 +38,50 @@ class _signInPageState extends State<signInPage> {
       setState(() {
         signInStatusMessage;
       });
-      debugPrint(signInStatusMessage);
-      await Future.delayed(const Duration(seconds: 2));
-      if (signInStatusMessage == 'Ladet...') {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => App()),
-          (Route<dynamic> route) => false,
-        );
+
+      await Future.delayed(const Duration(seconds: 1));
+      final _user = await FirebaseAuth.instance.currentUser;
+      await Future.delayed(const Duration(seconds: 1));
+      if (signInStatusMessage == 'Ladet...' && _user != null) {
+        await FirebaseFirestore.instance
+            .collection('Accounts')
+            .doc(_user.uid)
+            .get()
+            .then((DocumentSnapshot documentSnapshot) {
+          if (documentSnapshot.exists) {
+            if (documentSnapshot['accountActive'] == false) {
+              DocumentReference userRef = FirebaseFirestore.instance
+                  .collection('Accounts')
+                  .doc(_user.uid);
+
+              userRef
+                  .set(
+                    {'accountActive': true},
+                    SetOptions(merge: true),
+                  )
+                  .then((value) => {})
+                  .catchError((error) => print("Failed to add user: $error"));
+              Navigator.pushAndRemoveUntil(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      changePassword(oldPasswordSug: password),
+                  transitionDuration: Duration.zero,
+                ),
+                (Route<dynamic> route) => false,
+              );
+            } else {
+              Navigator.pushAndRemoveUntil(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) => App(),
+                  transitionDuration: Duration.zero,
+                ),
+                (Route<dynamic> route) => false,
+              );
+            }
+          }
+        });
       }
     }
     setState(() {
