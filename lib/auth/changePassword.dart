@@ -280,9 +280,10 @@ class _changePasswordState extends State<changePassword> {
                                       width: 1, color: Color(0xFF103A24)),
                                 ),
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.fromLTRB(115, 0, 5, 0),
+                                      margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                       child: Text('Ändern',
                                           style: TextStyle(
                                               color: Color.fromARGB(

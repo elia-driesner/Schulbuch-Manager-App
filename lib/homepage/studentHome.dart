@@ -9,6 +9,9 @@ class studentHomepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Color(0xFFECEBE7), child: SafeArea(child: Column(children: [])));
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Color(0xFFECEBE7),
+        child: SafeArea(child: Column(children: [])));
   }
 }
