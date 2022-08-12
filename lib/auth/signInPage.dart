@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'firebaseAuth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'registerSelectionPage.dart';
+import '../not_used_code/registerSelectionPage.dart';
 import '../main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -221,9 +221,10 @@ class _signInPageState extends State<signInPage> {
                                   width: 1, color: Color(0xFF103A24)),
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(100, 0, 5, 0),
+                                  margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                   child: Text('Anmelden',
                                       style: TextStyle(
                                           color:
