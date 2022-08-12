@@ -61,12 +61,12 @@ class _signInPageState extends State<signInPage> {
                   )
                   .then((value) => {})
                   .catchError((error) => print("Failed to add user: $error"));
+              FocusManager.instance.primaryFocus?.unfocus();
               Navigator.pushAndRemoveUntil(
                 context,
                 PageRouteBuilder(
                   pageBuilder: (context, animation1, animation2) =>
                       changePassword(oldPasswordSug: password),
-                  transitionDuration: Duration.zero,
                 ),
                 (Route<dynamic> route) => false,
               );
@@ -75,7 +75,6 @@ class _signInPageState extends State<signInPage> {
                 context,
                 PageRouteBuilder(
                   pageBuilder: (context, animation1, animation2) => App(),
-                  transitionDuration: Duration.zero,
                 ),
                 (Route<dynamic> route) => false,
               );
@@ -92,175 +91,178 @@ class _signInPageState extends State<signInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      color: Color(0xFFECEBE7),
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(0, 140, 0, 0),
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Center(
-                          child: Container(
-                            margin: const EdgeInsets.fromLTRB(0, 60, 0, 15),
-                            child: Text('Anmelden',
-                                style: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.w400,
-                                    letterSpacing: 0,
-                                    fontSize: 30,
-                                    color: Color.fromARGB(255, 46, 43, 59))),
+        body: SingleChildScrollView(
+      child: Container(
+        height: 1000,
+        color: Color(0xFFECEBE7),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(0, 140, 0, 0),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Center(
+                            child: Container(
+                              margin: const EdgeInsets.fromLTRB(0, 60, 0, 15),
+                              child: Text('Anmelden',
+                                  style: GoogleFonts.roboto(
+                                      fontWeight: FontWeight.w400,
+                                      letterSpacing: 0,
+                                      fontSize: 30,
+                                      color: Color.fromARGB(255, 46, 43, 59))),
+                            ),
                           ),
                         ),
-                      ),
-                      Card(
-                        margin: EdgeInsets.fromLTRB(25, 5, 25, 0),
-                        color: Color(0xFFE5613A).withOpacity(0),
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Container(
-                          height: 260,
-                          child: Column(children: [
-                            Card(
-                              shadowColor: Colors.transparent,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0),
-                                side: BorderSide(
-                                  color: Color.fromARGB(255, 190, 194, 189),
+                        Card(
+                          margin: EdgeInsets.fromLTRB(25, 5, 25, 0),
+                          color: Color(0xFFE5613A).withOpacity(0),
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Container(
+                            height: 260,
+                            child: Column(children: [
+                              Card(
+                                shadowColor: Colors.transparent,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  side: BorderSide(
+                                    color: Color.fromARGB(255, 190, 194, 189),
+                                  ),
+                                ),
+                                color: Color(0xFFE8E8E6),
+                                margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                child: Container(
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  child: TextField(
+                                      controller: emailController
+                                        ..text = 'elia.driesner@gmail.com',
+                                      obscureText: false,
+                                      decoration: const InputDecoration(
+                                          border: InputBorder.none,
+                                          labelText: 'Email',
+                                          prefixIcon: Icon(Icons.email),
+                                          labelStyle: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 46, 43, 59))),
+                                      style: TextStyle(
+                                          color: Color(0xFF494087), height: 1)),
                                 ),
                               ),
-                              color: Color(0xFFE8E8E6),
-                              margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                              child: Container(
-                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                child: TextField(
-                                    controller: emailController
-                                      ..text = 'elia.driesner@gmail.com',
-                                    obscureText: false,
-                                    decoration: const InputDecoration(
-                                        border: InputBorder.none,
-                                        labelText: 'Email',
-                                        prefixIcon: Icon(Icons.email),
-                                        labelStyle: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 46, 43, 59))),
-                                    style: TextStyle(
-                                        color: Color(0xFF494087), height: 1)),
+                              Card(
+                                shadowColor: Color.fromARGB(0, 0, 0, 0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  side: BorderSide(
+                                    color: Color.fromARGB(255, 190, 194, 189),
+                                  ),
+                                ),
+                                color: Color(0xFFE8E8E6),
+                                margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                child: Container(
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  child: TextField(
+                                      controller: passwordController
+                                        ..text = '111112',
+                                      obscureText: isHidden,
+                                      decoration: InputDecoration(
+                                          suffixIcon: IconButton(
+                                            icon: isHidden
+                                                ? Icon(Icons.visibility_off)
+                                                : Icon(Icons.visibility),
+                                            onPressed: () => {
+                                              setState(
+                                                  () => {isHidden = !isHidden})
+                                            },
+                                          ),
+                                          border: InputBorder.none,
+                                          prefixIcon: Icon(Icons.lock),
+                                          labelText: 'Password',
+                                          labelStyle: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 46, 43, 59))),
+                                      style: TextStyle(
+                                          color: Color(0xFF494087), height: 1)),
+                                ),
                               ),
-                            ),
-                            Card(
+                            ]),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                    margin: const EdgeInsets.fromLTRB(30, 480, 30, 0),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                                offset: Offset(8, 6),
+                                color: Color.fromARGB(255, 46, 43, 59))
+                          ], borderRadius: BorderRadius.circular(15)),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: const Size(500, 50),
+                              primary: Color(0xFF7A6DA9),
                               shadowColor: Color.fromARGB(0, 0, 0, 0),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0),
-                                side: BorderSide(
-                                  color: Color.fromARGB(255, 190, 194, 189),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              side: BorderSide(
+                                  width: 1, color: Color(0xFF103A24)),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(100, 0, 5, 0),
+                                  child: Text('Anmelden',
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 46, 43, 59))),
                                 ),
-                              ),
-                              color: Color(0xFFE8E8E6),
-                              margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                              child: Container(
-                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                child: TextField(
-                                    controller: passwordController
-                                      ..text = '111112',
-                                    obscureText: isHidden,
-                                    decoration: InputDecoration(
-                                        suffixIcon: IconButton(
-                                          icon: isHidden
-                                              ? Icon(Icons.visibility_off)
-                                              : Icon(Icons.visibility),
-                                          onPressed: () => {
-                                            setState(
-                                                () => {isHidden = !isHidden})
-                                          },
-                                        ),
-                                        border: InputBorder.none,
-                                        prefixIcon: Icon(Icons.lock),
-                                        labelText: 'Password',
-                                        labelStyle: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 46, 43, 59))),
-                                    style: TextStyle(
-                                        color: Color(0xFF494087), height: 1)),
-                              ),
+                                Icon(Icons.arrow_forward,
+                                    color: Color.fromARGB(255, 46, 43, 59))
+                              ],
                             ),
-                          ]),
+                            onPressed: () => sign_in(
+                                email: emailController.text,
+                                password: passwordController.text),
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                  margin: const EdgeInsets.fromLTRB(30, 480, 30, 0),
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                              offset: Offset(8, 6),
-                              color: Color.fromARGB(255, 46, 43, 59))
-                        ], borderRadius: BorderRadius.circular(15)),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(500, 50),
-                            primary: Color(0xFF7A6DA9),
-                            shadowColor: Color.fromARGB(0, 0, 0, 0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
+                        Align(
+                            child: Column(children: [
+                          if (signInStatusMessage == 'Ladet...')
+                            Container()
+                          else
+                            Container(
+                              margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
+                              child: Text(signInStatusMessage.toString(),
+                                  style: const TextStyle(
+                                      color: Color(0xFF103A24), fontSize: 14)),
                             ),
-                            side:
-                                BorderSide(width: 1, color: Color(0xFF103A24)),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(100, 0, 5, 0),
-                                child: Text('Anmelden',
-                                    style: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 46, 43, 59))),
-                              ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color.fromARGB(255, 46, 43, 59))
-                            ],
-                          ),
-                          onPressed: () => sign_in(
-                              email: emailController.text,
-                              password: passwordController.text),
-                        ),
-                      ),
-                      Align(
-                          child: Column(children: [
-                        if (signInStatusMessage == 'Ladet...')
-                          Container()
-                        else
-                          Container(
-                            margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
-                            child: Text(signInStatusMessage.toString(),
-                                style: const TextStyle(
-                                    color: Color(0xFF103A24), fontSize: 14)),
-                          ),
-                      ]))
-                    ],
-                  )),
-              if (signInStatusMessage == 'Ladet...')
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 600, 0, 0),
-                    child: const CircularProgressIndicator(),
+                        ]))
+                      ],
+                    )),
+                if (signInStatusMessage == 'Ladet...')
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(0, 600, 0, 0),
+                      child: const CircularProgressIndicator(),
+                    ),
                   ),
-                ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     ));
     ;
