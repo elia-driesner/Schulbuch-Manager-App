@@ -14,6 +14,17 @@ class studentHomepage extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Color(0xFFECEBE7),
-        child: SafeArea(child: Column(children: [qrCodeScannerWidget()])));
+        child: SafeArea(
+            child: Column(children: [
+          ElevatedButton(
+              onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => new qrCodeScannerWidget()),
+                    )
+                  },
+              child: Text('a'))
+        ])));
   }
 }
