@@ -27,7 +27,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Color.fromARGB(255, 46, 43, 59),
+          primary: const Color.fromARGB(255, 46, 43, 59),
         ),
       ),
       home: App()));
@@ -60,12 +60,6 @@ class _AppState extends State<App> {
             'name': documentSnapshot['name'],
             'role': documentSnapshot['role']
           };
-          // if (documentSnapshot['accountActive'] == false) {
-          //   Navigator.push(
-          //     context,
-          //     MaterialPageRoute(builder: (context) => changePassword()),
-          //   );
-          // }
         }
       });
     } else {
@@ -86,7 +80,7 @@ class _AppState extends State<App> {
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
-        pageBuilder: (context, animation1, animation2) => signInPage(),
+        pageBuilder: (context, animation1, animation2) => const signInPage(),
         transitionDuration: Duration.zero,
       ),
     );
@@ -109,7 +103,7 @@ class _AppState extends State<App> {
         floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
         floatingActionButton: Builder(builder: (context) {
           return Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
@@ -120,14 +114,14 @@ class _AppState extends State<App> {
             margin: EdgeInsets.fromLTRB(0, 0, 320, 0),
             child: ElevatedButton(
               onPressed: () => Scaffold.of(context).openDrawer(),
+              style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(13),
+                  primary: const Color(0xFF7A6DA9),
+                  onPrimary: const Color.fromARGB(255, 46, 43, 59),
+                  side: BorderSide(width: 1, color: Color(0xFF103A24))),
               child: FaIcon(FontAwesomeIcons.user,
                   size: 25, color: Color.fromARGB(255, 46, 43, 59)),
-              style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(13),
-                  primary: Color(0xFF7A6DA9),
-                  onPrimary: Color.fromARGB(255, 46, 43, 59),
-                  side: BorderSide(width: 1, color: Color(0xFF103A24))),
             ),
           );
         }),
@@ -135,7 +129,7 @@ class _AppState extends State<App> {
         body: Container(
           child: Column(
             children: [
-              studentHomepage(),
+              const studentHomepage(),
             ],
           ),
         ));
