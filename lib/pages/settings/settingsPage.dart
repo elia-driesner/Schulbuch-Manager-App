@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../userData.dart';
+import '../../user_data_cache.dart';
 import 'changePassword/changePasswordCard.dart';
 
 class settingsPage extends StatelessWidget {

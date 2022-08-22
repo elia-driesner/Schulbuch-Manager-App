@@ -12,10 +12,10 @@ import 'not_used_code/signSelectPage.dart';
 import 'auth/signInPage.dart';
 import 'auth/changePassword.dart';
 
-import 'homepage/studentHome.dart';
-import 'homepage/widgets/sideMenu.dart';
+import 'pages/homepage/studentHome.dart';
+import 'pages/homepage/widgets/sideMenu.dart';
 
-import 'userData.dart';
+import 'user_data_cache.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() async {

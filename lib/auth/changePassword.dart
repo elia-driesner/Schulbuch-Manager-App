@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../userData.dart';
+import '../user_data_cache.dart';
 import '../main.dart';
 
 class changePassword extends StatefulWidget {

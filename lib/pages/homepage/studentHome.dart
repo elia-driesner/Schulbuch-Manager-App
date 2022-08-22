@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'widgets/sideMenu.dart';
 
-import '../userData.dart';
+import '../../user_data_cache.dart';
 
-import '../codeScanner/qrCodeWidget.dart';
+import '../../codeScanner/qrCodeWidget.dart';
 
 class studentHomepage extends StatelessWidget {
   const studentHomepage({Key? key}) : super(key: key);

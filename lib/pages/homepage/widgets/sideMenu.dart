@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../auth/signInPage.dart';
+import '../../../auth/signInPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../userData.dart';
-import '../../pages/settings/settingsPage.dart';
+import '../../../user_data_cache.dart';
+import '../../../pages/settings/settingsPage.dart';
 
 class sideMenu extends StatelessWidget {
   @override

@@ -10,6 +10,7 @@
 .svn/
 migrate_working_dir/
 lib/firebaseSecrets
+lib/not_used_code
 
 
 # IntelliJ related
