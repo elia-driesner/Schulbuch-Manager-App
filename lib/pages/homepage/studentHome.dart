@@ -16,15 +16,16 @@ class studentHomepage extends StatelessWidget {
         color: Color(0xFFECEBE7),
         child: SafeArea(
             child: Column(children: [
-          ElevatedButton(
-              onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => new qrCodeScannerWidget()),
-                    )
-                  },
-              child: Text('a'))
+          // ElevatedButton(
+          //     onPressed: () => {
+          //           Navigator.push(
+          //             context,
+          //             MaterialPageRoute(
+          //                 builder: (context) => new qrCodeScannerWidget()),
+          //           )
+          //         },
+          //     child: Text('a'))
+          Text('Schulbuch Manager')
         ])));
   }
 }
