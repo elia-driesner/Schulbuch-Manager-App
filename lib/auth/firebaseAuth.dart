@@ -41,6 +41,8 @@ class Auth {
         return ('Kein account mir dieser email gefunden');
       } else if (e.code == 'wrong-password') {
         return ('Falsches Password');
+      } else {
+        return 'Ein unerwarteter Fehler ist aufgetreten';
       }
     }
   }
@@ -55,12 +57,12 @@ class Auth {
       final emailVerified = user.emailVerified;
 
       final uid = await user.uid;
-      DocumentReference users = FirebaseFirestore.instance
+      DocumentReference userInSchool = FirebaseFirestore.instance
           .collection('Schools')
           .doc(selectionData['school'])
           .collection('Classes')
           .doc('Class ${selectionData['class']} students');
-      users
+      userInSchool
           .set(
             {
               uid: {
@@ -76,6 +78,9 @@ class Auth {
           )
           .then((value) => print("User Added"))
           .catchError((error) => print("Failed to add user: $error"));
+
+      await FirebaseFirestore.instance.collection('Accounts').doc(uid).set(
+          {"school": selectionData['school'], 'class': selectionData['class']});
     }
 
     void verifyEmail() async {

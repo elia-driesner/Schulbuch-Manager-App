@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../globalAuthVariables.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../registerPage.dart';
+import '../../not_used_code/registerPage.dart';
 
 class selectionCard extends StatefulWidget {
   const selectionCard({Key? key}) : super(key: key);
