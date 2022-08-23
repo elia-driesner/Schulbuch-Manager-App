@@ -96,9 +96,37 @@ class _AppState extends State<App> {
     super.dispose();
   }
 
+  var _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color(0xFFECEBE7),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.book_outlined),
+              label: 'Bücher',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school_outlined),
+              label: 'Klasse',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: const Color(0xFF7A6DA9),
+          onTap: _onItemTapped,
+        ),
         resizeToAvoidBottomInset: false,
         floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
         floatingActionButton: Builder(builder: (context) {

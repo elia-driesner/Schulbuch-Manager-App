@@ -71,6 +71,8 @@ class _changePasswordState extends State<changePassword> {
           body: SingleChildScrollView(
         reverse: true,
         child: Container(
+          color: Color(0xFFECEBE7),
+          height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
               Stack(

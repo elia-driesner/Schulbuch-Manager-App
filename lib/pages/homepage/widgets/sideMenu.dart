@@ -19,6 +19,7 @@ class sideMenu extends StatelessWidget {
     }
 
     return Drawer(
+      backgroundColor: Color(0xFFECEBE7),
       child: SafeArea(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -66,7 +67,8 @@ class sideMenu extends StatelessWidget {
               ),
             ]),
             ListTile(
-              leading: Icon(Icons.book, color: Color.fromARGB(255, 46, 43, 59)),
+              leading: Icon(Icons.book_outlined,
+                  color: Color.fromARGB(255, 46, 43, 59)),
               title: Text('Bücher',
                   style: TextStyle(
                     color: Color(0xFF494087),
@@ -74,7 +76,7 @@ class sideMenu extends StatelessWidget {
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
-              leading: FaIcon(FontAwesomeIcons.users,
+              leading: FaIcon(FontAwesomeIcons.user,
                   color: Color.fromARGB(255, 46, 43, 59)),
               title: Text('Familie',
                   style: TextStyle(
@@ -83,8 +85,8 @@ class sideMenu extends StatelessWidget {
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
-              leading:
-                  Icon(Icons.settings, color: Color.fromARGB(255, 46, 43, 59)),
+              leading: Icon(Icons.settings_outlined,
+                  color: Color.fromARGB(255, 46, 43, 59)),
               title: Text('Einstellungen',
                   style: TextStyle(
                     color: Color(0xFF494087),
