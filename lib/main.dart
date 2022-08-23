@@ -27,7 +27,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: const Color.fromARGB(255, 46, 43, 59),
+          primary: Color.fromARGB(255, 47, 17, 16),
         ),
       ),
       home: App()));
@@ -96,37 +96,9 @@ class _AppState extends State<App> {
     super.dispose();
   }
 
-  var _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xFFECEBE7),
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.book_outlined),
-              label: 'Bücher',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.school_outlined),
-              label: 'Klasse',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: const Color(0xFF7A6DA9),
-          onTap: _onItemTapped,
-        ),
         resizeToAvoidBottomInset: false,
         floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
         floatingActionButton: Builder(builder: (context) {
@@ -135,8 +107,7 @@ class _AppState extends State<App> {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                    offset: Offset(2, 2),
-                    color: Color.fromARGB(255, 46, 43, 59))
+                    offset: Offset(3, 3), color: Color.fromARGB(255, 0, 0, 0))
               ],
             ),
             margin: EdgeInsets.fromLTRB(0, 0, 320, 0),
@@ -145,11 +116,11 @@ class _AppState extends State<App> {
               style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
                   padding: const EdgeInsets.all(13),
-                  primary: const Color(0xFF7A6DA9),
+                  primary: const Color(0xFFDF5953),
                   onPrimary: const Color.fromARGB(255, 46, 43, 59),
                   side: BorderSide(width: 1, color: Color(0xFF103A24))),
               child: FaIcon(FontAwesomeIcons.user,
-                  size: 25, color: Color.fromARGB(255, 46, 43, 59)),
+                  size: 25, color: Color.fromARGB(255, 0, 0, 0)),
             ),
           );
         }),

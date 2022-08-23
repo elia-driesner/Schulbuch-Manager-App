@@ -154,7 +154,9 @@ class _signInPageState extends State<signInPage> {
                                               color: Color.fromARGB(
                                                   255, 46, 43, 59))),
                                       style: TextStyle(
-                                          color: Color(0xFF494087), height: 1)),
+                                          color:
+                                              Color.fromARGB(255, 46, 43, 59),
+                                          height: 1)),
                                 ),
                               ),
                               Card(
@@ -190,7 +192,9 @@ class _signInPageState extends State<signInPage> {
                                               color: Color.fromARGB(
                                                   255, 46, 43, 59))),
                                       style: TextStyle(
-                                          color: Color(0xFF494087), height: 1)),
+                                          color:
+                                              Color.fromARGB(255, 46, 43, 59),
+                                          height: 1)),
                                 ),
                               ),
                             ]),
@@ -213,7 +217,7 @@ class _signInPageState extends State<signInPage> {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               minimumSize: const Size(500, 50),
-                              primary: Color(0xFF7A6DA9),
+                              primary: const Color(0xFFDF5953),
                               shadowColor: Color.fromARGB(0, 0, 0, 0),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),

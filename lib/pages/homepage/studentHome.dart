@@ -10,7 +10,7 @@ class studentHomepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height - 90,
+        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Color(0xFFECEBE7),
         child: SafeArea(
@@ -26,7 +26,7 @@ class studentHomepage extends StatelessWidget {
           //     child: Text('a'))
 
           Container(
-              margin: EdgeInsets.fromLTRB(15, 70, 15, 0), child: bookListView())
+              margin: EdgeInsets.fromLTRB(15, 90, 15, 0), child: bookListView())
         ])));
   }
 }
