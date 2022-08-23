@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'firebaseAuth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../not_used_code/registerSelectionPage.dart';
 import '../main.dart';
@@ -257,7 +258,7 @@ class _signInPageState extends State<signInPage> {
                   Center(
                     child: Container(
                       margin: const EdgeInsets.fromLTRB(0, 600, 0, 0),
-                      child: const CircularProgressIndicator(),
+                      child: const CupertinoActivityIndicator(radius: 18),
                     ),
                   ),
               ],

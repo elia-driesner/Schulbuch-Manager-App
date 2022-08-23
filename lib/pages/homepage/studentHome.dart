@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'widgets/sideMenu.dart';
-
 import '../../user_data_cache.dart';
-
 import '../../codeScanner/qrCodeWidget.dart';
+import 'booksListView.dart';
 
 class studentHomepage extends StatelessWidget {
   const studentHomepage({Key? key}) : super(key: key);
@@ -25,7 +24,9 @@ class studentHomepage extends StatelessWidget {
           //           )
           //         },
           //     child: Text('a'))
-          Text('Schulbuch Manager')
+
+          Container(
+              margin: EdgeInsets.fromLTRB(15, 70, 15, 0), child: bookListView())
         ])));
   }
 }
