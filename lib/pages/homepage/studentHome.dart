@@ -23,10 +23,25 @@ class studentHomepage extends StatelessWidget {
           //                 builder: (context) => new qrCodeScannerWidget()),
           //           )
           //         },
-          //     child: Text('a'))
+          //     child: Text('a'))d
 
           Container(
-              margin: EdgeInsets.fromLTRB(15, 90, 15, 0), child: bookListView())
+              margin: EdgeInsets.fromLTRB(15, 90, 15, 0),
+              child: bookListView()),
+          Container(
+            child: Stack(children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 100,
+                  color: Colors.blue,
+                  child: ElevatedButton(
+                      child: const Text('add book'), onPressed: () => {}),
+                ),
+              )
+            ]),
+          )
         ])));
   }
 }
