@@ -3,6 +3,7 @@ import 'widgets/sideMenu.dart';
 import '../../user_data_cache.dart';
 import '../../codeScanner/qrCodeWidget.dart';
 import 'booksListView.dart';
+import 'widgets/qrCodeCard.dart';
 
 class studentHomepage extends StatelessWidget {
   const studentHomepage({Key? key}) : super(key: key);
@@ -28,20 +29,7 @@ class studentHomepage extends StatelessWidget {
           Container(
               margin: EdgeInsets.fromLTRB(15, 90, 15, 0),
               child: bookListView()),
-          Container(
-            child: Stack(children: [
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 100,
-                  color: Colors.blue,
-                  child: ElevatedButton(
-                      child: const Text('add book'), onPressed: () => {}),
-                ),
-              )
-            ]),
-          )
+          qrCodeCard(),
         ])));
   }
 }
