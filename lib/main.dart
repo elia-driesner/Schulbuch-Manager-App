@@ -18,19 +18,24 @@ import 'pages/homepage/widgets/sideMenu.dart';
 import 'user_data_cache.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:flutter/services.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: const Color(0xFFDF5953),
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: const Color(0xFFDF5953),
+          ),
         ),
-      ),
-      home: App()));
+        home: App()));
+  });
 }
 
 class App extends StatefulWidget {
