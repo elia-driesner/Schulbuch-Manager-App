@@ -16,16 +16,6 @@ class studentHomepage extends StatelessWidget {
         color: Color(0xFFECEBE7),
         child: SafeArea(
             child: Column(children: [
-          // ElevatedButton(
-          //     onPressed: () => {
-          //           Navigator.push(
-          //             context,
-          //             MaterialPageRoute(
-          //                 builder: (context) => new qrCodeScannerWidget()),
-          //           )
-          //         },
-          //     child: Text('a'))d
-
           Container(
               margin: EdgeInsets.fromLTRB(15, 90, 15, 0),
               child: bookListView()),
