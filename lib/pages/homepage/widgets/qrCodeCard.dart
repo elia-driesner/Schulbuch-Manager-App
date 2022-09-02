@@ -10,24 +10,42 @@ class qrCodeCard extends StatelessWidget {
           MediaQuery.of(context).size.width * .0,
           MediaQuery.of(context).size.height * .35,
           0.0),
-      child: ClipRect(
-        child: Container(
-          child: Stack(children: [
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-              color: Colors.blue,
-              child: Container(
-                height: 170,
-                width: MediaQuery.of(context).size.width - 20,
-                child: ElevatedButton(
-                    child: const Text('add book'), onPressed: () => {}),
-              ),
-            )
-          ]),
-        ),
-      ),
+      child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * .35,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(child: Text('Bücher hinzufügen ->')),
+                Container(
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset(3, 3),
+                          color: Color.fromARGB(255, 0, 0, 0))
+                    ],
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () => {},
+                    style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        padding: const EdgeInsets.all(13),
+                        primary: const Color(0xFFDF5953),
+                        onPrimary: const Color.fromARGB(255, 46, 43, 59),
+                        side: const BorderSide(
+                            width: 1, color: Color(0xFF103A24))),
+                    child: const Icon(Icons.qr_code,
+                        size: 25, color: Color.fromARGB(255, 0, 0, 0)),
+                  ),
+                ),
+              ],
+            ),
+          )),
     );
   }
 }
