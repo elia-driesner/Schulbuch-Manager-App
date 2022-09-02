@@ -29,7 +29,7 @@ class studentHomepage extends StatelessWidget {
           Container(
               margin: EdgeInsets.fromLTRB(15, 90, 15, 0),
               child: bookListView()),
-          qrCodeCard(),
+          Container(child: qrCodeCard()),
         ])));
   }
 }

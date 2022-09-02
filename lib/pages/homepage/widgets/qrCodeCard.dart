@@ -6,22 +6,28 @@ class qrCodeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Stack(children: [
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-            color: Colors.blue,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              child: ElevatedButton(
-                  child: const Text('add book'), onPressed: () => {}),
-            ),
-          ),
-        )
-      ]),
+      transform: Matrix4.translationValues(
+          MediaQuery.of(context).size.width * .0,
+          MediaQuery.of(context).size.height * .35,
+          0.0),
+      child: ClipRect(
+        child: Container(
+          child: Stack(children: [
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              color: Colors.blue,
+              child: Container(
+                height: 170,
+                width: MediaQuery.of(context).size.width - 20,
+                child: ElevatedButton(
+                    child: const Text('add book'), onPressed: () => {}),
+              ),
+            )
+          ]),
+        ),
+      ),
     );
   }
 }
