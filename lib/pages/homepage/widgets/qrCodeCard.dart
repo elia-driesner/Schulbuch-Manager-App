@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../codeScanner/qrCodeWidget.dart';
+
 class qrCodeCard extends StatelessWidget {
   const qrCodeCard({Key? key}) : super(key: key);
 
@@ -20,8 +22,14 @@ class qrCodeCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Container(child: Text('Bücher hinzufügen ->')),
                 Container(
+                    child: const Text('Bücher hinzufügen ->',
+                        style: TextStyle(fontSize: 18)),
+                    margin: EdgeInsets.fromLTRB(
+                        0, MediaQuery.of(context).size.height * .03, 0, 0)),
+                Container(
+                  margin: EdgeInsets.fromLTRB(
+                      0, MediaQuery.of(context).size.height * .02, 0, 0),
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     boxShadow: [
@@ -31,7 +39,13 @@ class qrCodeCard extends StatelessWidget {
                     ],
                   ),
                   child: ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => new qrCodeScannerWidget()),
+                      )
+                    },
                     style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         padding: const EdgeInsets.all(13),
