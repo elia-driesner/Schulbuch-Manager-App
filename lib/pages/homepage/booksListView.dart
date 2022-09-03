@@ -8,24 +8,24 @@ class bookListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+          margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Meine Bücher:', style: const TextStyle(fontSize: 25)),
+              const Text('Meine Bücher:', style: TextStyle(fontSize: 25)),
               Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                   child:
-                      Icon(Icons.arrow_forward, color: const Color(0xFFDF5953)))
+                      const Icon(Icons.arrow_forward, color: Color(0xFFDF5953)))
             ],
           )),
       Container(
-        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         height: 240,
         child: ListView(
-          // This next line does the trick.
           scrollDirection: Axis.horizontal,
-          children: <Widget>[
+          children: const <Widget>[
+            // ! remove const if getting books from firebase
             bookCard(),
             bookCard(),
             bookCard(),

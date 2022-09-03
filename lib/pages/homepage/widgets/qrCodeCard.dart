@@ -16,16 +16,16 @@ class qrCodeCard extends StatelessWidget {
             0.0),
         child: ClipRRect(
           child: BackdropFilter(
-            filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
             child: Card(
-                color: Color.fromARGB(76, 0, 0, 0),
+                color: const Color.fromARGB(76, 0, 0, 0),
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(
                     color: Colors.transparent,
                   ),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * .35,
                   child: Column(
@@ -59,6 +59,7 @@ class qrCodeCard extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
+                                      // ignore: unnecessary_new
                                       new qrCodeScannerWidget()),
                             )
                           },

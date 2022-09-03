@@ -68,10 +68,11 @@ class _AppState extends State<App> {
         }
       });
     } else {
+      // ignore: use_build_context_synchronously
       Navigator.pushAndRemoveUntil(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation1, animation2) => signInPage(),
+          pageBuilder: (context, animation1, animation2) => const signInPage(),
           transitionDuration: Duration.zero,
         ),
         (Route<dynamic> route) => false,
@@ -115,7 +116,7 @@ class _AppState extends State<App> {
                     offset: Offset(3, 3), color: Color.fromARGB(255, 0, 0, 0))
               ],
             ),
-            margin: EdgeInsets.fromLTRB(0, 0, 320, 0),
+            margin: const EdgeInsets.fromLTRB(0, 0, 320, 0),
             child: ElevatedButton(
               onPressed: () => Scaffold.of(context).openDrawer(),
               style: ElevatedButton.styleFrom(
@@ -130,10 +131,11 @@ class _AppState extends State<App> {
           );
         }),
         drawer: sideMenu(),
+        // ignore: avoid_unnecessary_containers
         body: Container(
           child: Column(
-            children: [
-              const studentHomepage(),
+            children: const [
+              studentHomepage(),
             ],
           ),
         ));
