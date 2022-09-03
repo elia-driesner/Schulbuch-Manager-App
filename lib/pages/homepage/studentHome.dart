@@ -25,7 +25,7 @@ class studentHomepage extends StatelessWidget {
                 height: 100,
                 width: 100,
                 color: Colors.red),
-            Container(child: qrCodeCard()),
+            Container(child: const qrCodeCard()),
           ])
         ])));
   }
