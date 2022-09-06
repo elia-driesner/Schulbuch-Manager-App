@@ -41,7 +41,7 @@ class sideMenu extends StatelessWidget {
                               child: Text(
                                 userDataVar['name'],
                                 style: TextStyle(
-                                  color: Color(0xFF494087),
+                                  color: Color.fromARGB(255, 217, 82, 82),
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -54,7 +54,7 @@ class sideMenu extends StatelessWidget {
                                   userDataVar['email'],
                                   style: TextStyle(
                                     fontSize: 15,
-                                    color: Color.fromARGB(255, 46, 43, 59),
+                                    color: Color.fromARGB(255, 0, 0, 0),
                                   ),
                                 )),
                           ),
@@ -68,28 +68,28 @@ class sideMenu extends StatelessWidget {
             ]),
             ListTile(
               leading: Icon(Icons.book_outlined,
-                  color: Color.fromARGB(255, 46, 43, 59)),
+                  color: Color.fromARGB(255, 0, 0, 0)),
               title: Text('Bücher',
                   style: TextStyle(
-                    color: Color(0xFF494087),
+                    color: Color.fromARGB(255, 0, 0, 0),
                   )),
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
               leading: FaIcon(FontAwesomeIcons.user,
-                  color: Color.fromARGB(255, 46, 43, 59)),
+                  color: Color.fromARGB(255, 0, 0, 0)),
               title: Text('Familie',
                   style: TextStyle(
-                    color: Color(0xFF494087),
+                    color: Color.fromARGB(255, 0, 0, 0),
                   )),
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
               leading: Icon(Icons.settings_outlined,
-                  color: Color.fromARGB(255, 46, 43, 59)),
+                  color: Color.fromARGB(255, 0, 0, 0)),
               title: Text('Einstellungen',
                   style: TextStyle(
-                    color: Color(0xFF494087),
+                    color: Color.fromARGB(255, 0, 0, 0),
                   )),
               onTap: () => {
                 Navigator.push(
@@ -109,11 +109,11 @@ class sideMenu extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app,
-                  color: Color.fromARGB(255, 46, 43, 59)),
+              leading:
+                  Icon(Icons.exit_to_app, color: Color.fromARGB(255, 0, 0, 0)),
               title: Text('Abmelden',
                   style: TextStyle(
-                    color: Color(0xFF494087),
+                    color: Color.fromARGB(255, 0, 0, 0),
                   )),
               onTap: () => {signUserOut()},
             ),

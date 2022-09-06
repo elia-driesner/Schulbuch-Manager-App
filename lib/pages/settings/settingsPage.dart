@@ -50,8 +50,8 @@ class settingsPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   shape: CircleBorder(),
                   padding: EdgeInsets.all(13),
-                  primary: Color(0xFF7A6DA9),
-                  onPrimary: Color.fromARGB(255, 46, 43, 59),
+                  primary: const Color(0xFFDF5953),
+                  onPrimary: Color.fromARGB(255, 0, 0, 0),
                   side: BorderSide(width: 1, color: Color(0xFF103A24))),
             ),
           ),
