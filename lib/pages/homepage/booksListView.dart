@@ -4,6 +4,10 @@ import 'widgets/bookCard.dart';
 class bookListView extends StatelessWidget {
   const bookListView({Key? key}) : super(key: key);
 
+  List<book> getUserBooks() async {
+    return [book(name: '')];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
