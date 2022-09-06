@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class book {
-  late String name;
+  String? name;
   late var alreadyPaid;
   late var damages;
   late var userHistory;
