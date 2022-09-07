@@ -251,7 +251,7 @@ class _signInPageState extends State<signInPage> {
                               margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
                               child: Text(signInStatusMessage.toString(),
                                   style: const TextStyle(
-                                      color: Color(0xFF103A24), fontSize: 14)),
+                                      color: Color(0xFF18191F), fontSize: 14)),
                             ),
                         ]))
                       ],

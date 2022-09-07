@@ -27,7 +27,7 @@ class sideMenu extends StatelessWidget {
             Stack(children: [
               ListTile(
                 leading: FaIcon(FontAwesomeIcons.userCircle,
-                    size: 42, color: Color.fromARGB(255, 46, 43, 59)),
+                    size: 42, color: Color(0xFF18191F)),
               ),
               Column(
                 children: [
@@ -41,7 +41,7 @@ class sideMenu extends StatelessWidget {
                               child: Text(
                                 userDataVar['name'],
                                 style: TextStyle(
-                                  color: Color(0xFF494087),
+                                  color: Color(0xFF18191F),
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -54,7 +54,7 @@ class sideMenu extends StatelessWidget {
                                   userDataVar['email'],
                                   style: TextStyle(
                                     fontSize: 15,
-                                    color: Color.fromARGB(255, 46, 43, 59),
+                                    color: Color(0xFF18191F),
                                   ),
                                 )),
                           ),
@@ -67,29 +67,26 @@ class sideMenu extends StatelessWidget {
               ),
             ]),
             ListTile(
-              leading: Icon(Icons.book_outlined,
-                  color: Color.fromARGB(255, 46, 43, 59)),
+              leading: Icon(Icons.book_outlined, color: Color(0xFF18191F)),
               title: Text('Bücher',
                   style: TextStyle(
-                    color: Color(0xFF494087),
+                    color: Color(0xFF18191F),
                   )),
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
-              leading: FaIcon(FontAwesomeIcons.user,
-                  color: Color.fromARGB(255, 46, 43, 59)),
+              leading: FaIcon(FontAwesomeIcons.user, color: Color(0xFF18191F)),
               title: Text('Familie',
                   style: TextStyle(
-                    color: Color(0xFF494087),
+                    color: Color(0xFF18191F),
                   )),
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
-              leading: Icon(Icons.settings_outlined,
-                  color: Color.fromARGB(255, 46, 43, 59)),
+              leading: Icon(Icons.settings_outlined, color: Color(0xFF18191F)),
               title: Text('Einstellungen',
                   style: TextStyle(
-                    color: Color(0xFF494087),
+                    color: Color(0xFF18191F),
                   )),
               onTap: () => {
                 Navigator.push(
@@ -104,16 +101,15 @@ class sideMenu extends StatelessWidget {
                 thickness: 0,
                 indent: 20,
                 endIndent: 20,
-                color: Color.fromARGB(255, 46, 43, 59),
+                color: Color(0xFF18191F),
                 height: 0,
               ),
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app,
-                  color: Color.fromARGB(255, 46, 43, 59)),
+              leading: Icon(Icons.exit_to_app, color: Color(0xFF18191F)),
               title: Text('Abmelden',
                   style: TextStyle(
-                    color: Color(0xFF494087),
+                    color: Color(0xFF18191F),
                   )),
               onTap: () => {signUserOut()},
             ),

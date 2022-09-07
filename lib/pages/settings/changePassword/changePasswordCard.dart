@@ -26,16 +26,18 @@ class changePasswordCard extends StatelessWidget {
                 Container(
                     child: Text(
                   'Password ändern',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, color: Color(0xFF18191F)),
                 )),
                 Container(
                     child: Text('Password für diesen Account ändern',
-                        style: TextStyle(fontSize: 14)))
+                        style:
+                            TextStyle(fontSize: 14, color: Color(0xFF18191F))))
               ]),
             ]),
             Container(
               margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: Icon(Icons.keyboard_arrow_right, size: 30),
+              child: Icon(Icons.keyboard_arrow_right,
+                  size: 30, color: Color(0xFF18191F)),
             )
           ])),
     );
