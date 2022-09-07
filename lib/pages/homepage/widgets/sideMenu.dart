@@ -19,7 +19,7 @@ class sideMenu extends StatelessWidget {
     }
 
     return Drawer(
-      backgroundColor: Color(0xFFECEBE7),
+      backgroundColor: Colors.white,
       child: SafeArea(
         child: ListView(
           padding: EdgeInsets.zero,
