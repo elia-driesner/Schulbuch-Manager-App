@@ -103,17 +103,19 @@ class _signInPageState extends State<signInPage> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 200, 0, 0),
+                    margin: EdgeInsets.fromLTRB(0, 160, 0, 0),
                     child: Column(
                       children: [
                         Container(
-                            child: Image.asset(
-                                '../assets/images/logo/Screen Shot 2022-09-07 at 18.55.32.png')),
+                            child: Image.network(
+                                'https://cdn-icons-png.flaticon.com/512/1160/1160358.png',
+                                height: 100,
+                                width: 100)),
                         Align(
                           alignment: Alignment.topLeft,
                           child: Center(
                             child: Container(
-                              margin: const EdgeInsets.fromLTRB(0, 60, 0, 15),
+                              margin: const EdgeInsets.fromLTRB(0, 60, 0, 0),
                               child: Text('Anmelden',
                                   style: GoogleFonts.roboto(
                                       fontWeight: FontWeight.w500,
@@ -124,7 +126,7 @@ class _signInPageState extends State<signInPage> {
                           ),
                         ),
                         Card(
-                          margin: EdgeInsets.fromLTRB(25, 5, 25, 0),
+                          margin: EdgeInsets.fromLTRB(25, 0, 25, 0),
                           color: Color(0xFF18191F).withOpacity(0),
                           shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
@@ -203,7 +205,7 @@ class _signInPageState extends State<signInPage> {
                   ),
                 ),
                 Container(
-                    margin: const EdgeInsets.fromLTRB(30, 540, 30, 0),
+                    margin: const EdgeInsets.fromLTRB(30, 590, 30, 0),
                     child: Column(
                       children: [
                         Container(
@@ -257,7 +259,7 @@ class _signInPageState extends State<signInPage> {
                 if (signInStatusMessage == 'Ladet...')
                   Center(
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(0, 600, 0, 0),
+                      margin: const EdgeInsets.fromLTRB(0, 720, 0, 0),
                       child: const CupertinoActivityIndicator(radius: 18),
                     ),
                   ),
