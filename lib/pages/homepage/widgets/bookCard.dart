@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 
-class book {}
+class book {
+  String? name;
+  late var alreadyPaid;
+  late var damages;
+  late var userHistory;
 
-class bookCard extends StatelessWidget {
-  const bookCard({Key? key}) : super(key: key);
+  book({required String name, var alreadyPaid, damages, userHistory});
+}
 
+class bookCard extends StatefulWidget {
+  bookCard({Key? key, required this.bookInfo}) : super(key: key);
+  var bookInfo;
+  @override
+  State<bookCard> createState() => _bookCardState();
+}
+
+class _bookCardState extends State<bookCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,7 +50,8 @@ class bookCard extends StatelessWidget {
               ),
               Container(
                   margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Text('Mathematik', style: TextStyle(fontSize: 20)))
+                  child: Text(widget.bookInfo.name,
+                      style: TextStyle(fontSize: 20)))
             ],
           ),
         ),
