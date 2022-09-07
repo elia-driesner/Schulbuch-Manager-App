@@ -211,19 +211,18 @@ class _signInPageState extends State<signInPage> {
                         Container(
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
-                                offset: Offset(8, 6),
-                                color: Color.fromARGB(255, 46, 43, 59))
+                                offset: Offset(4, 5), color: Color(0xFF18191F))
                           ], borderRadius: BorderRadius.circular(15)),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               minimumSize: const Size(500, 50),
-                              primary: const Color(0xFFDF5953),
+                              primary: const Color(0xFFFFBD12),
                               shadowColor: Color.fromARGB(0, 0, 0, 0),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                               side: BorderSide(
-                                  width: 1, color: Color(0xFF103A24)),
+                                  width: 2, color: Color(0xFF18191F)),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
