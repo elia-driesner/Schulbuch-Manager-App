@@ -32,7 +32,7 @@ class studentHomepage extends StatelessWidget {
                     shape: const CircleBorder(),
                     padding: const EdgeInsets.all(13),
                     primary: Colors.white,
-                    onPrimary: const Color.fromARGB(255, 46, 43, 59),
+                    onPrimary: Color(0xFF18191F),
                     side: BorderSide(width: 2, color: Color(0xFF18191F))),
                 child: FaIcon(FontAwesomeIcons.user,
                     size: 25, color: Color(0xFF18191F)),
@@ -40,16 +40,47 @@ class studentHomepage extends StatelessWidget {
             ),
           ),
           Container(
-              margin: const EdgeInsets.fromLTRB(15, 90, 15, 0),
+              margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(
+                      children: <Widget>[
+                        Text(
+                          'Meine',
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 3
+                              ..color = Color(0xFF18191F),
+                          ),
+                        ),
+                        const Text(
+                          'Meine',
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      'Bücher',
+                      style: TextStyle(
+                        fontSize: 45,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF18191F),
+                      ),
+                    )
+                  ])),
+          Container(
+              margin: const EdgeInsets.fromLTRB(15, 35, 15, 0),
               child: const bookListView()),
-          Stack(children: <Widget>[
-            Container(
-                margin: const EdgeInsets.fromLTRB(0, 300, 0, 0),
-                height: 100,
-                width: 100,
-                color: Colors.red),
-            Container(child: const qrCodeCard()),
-          ])
+          Stack(children: <Widget>[])
         ])));
   }
 }
