@@ -81,6 +81,11 @@ class studentHomepage extends StatelessWidget {
           Container(
               margin: const EdgeInsets.fromLTRB(15, 35, 15, 0),
               child: const bookListView()),
+          classMemberCard({
+            'name': 'Roman Martens',
+            'role': 'Klassenlehrer',
+            'rights': 500
+          }),
           Stack(children: <Widget>[])
         ])));
   }

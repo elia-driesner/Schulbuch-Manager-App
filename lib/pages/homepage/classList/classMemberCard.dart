@@ -10,17 +10,66 @@ class classMemberCard extends StatelessWidget {
     return Container(
         child: Row(
       children: [
-        classMemberContainer(data),
-        Column(children: [Text(data.name), Text(data.role)]),
+        classMemberContainer(context),
+        Container(
+          margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(data['name'],
+                    style: TextStyle(
+                        color: Color(0xFF18191F),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 22)),
+                Text(data['role'],
+                    style: TextStyle(
+                        color: Color(0xFF18191F),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 17))
+              ]),
+        ),
       ],
     ));
   }
 
   @override
   Widget classMemberContainer(BuildContext context) {
-    if (data.rights <= 500)
-      return Container(color: Color(0xFFF95A2C), height: 30, width: 30);
+    if (data['rights'] >= 500)
+      return Container(
+          height: 55,
+          width: 55,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Color(0xFF18191F),
+              width: 2,
+            ),
+            color: Color(0xFFF95A2C),
+            borderRadius: BorderRadius.circular(10.0),
+          ));
+    else if (data['rights'] == 250)
+      return Container(
+          height: 55,
+          width: 55,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Color(0xFF18191F),
+              width: 2,
+            ),
+            color: Color(0xFF1947E5),
+            borderRadius: BorderRadius.circular(10.0),
+          ));
     else
-      return Container(color: Color(0xFF00C6AE), height: 30, width: 30);
+      return Container(
+          height: 55,
+          width: 55,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Color(0xFF18191F),
+              width: 2,
+            ),
+            color: Color(0xFF00C6AE),
+            borderRadius: BorderRadius.circular(10.0),
+          ));
   }
 }
