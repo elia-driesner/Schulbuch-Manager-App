@@ -5,6 +5,7 @@ import '../../codeScanner/qrCodeWidget.dart';
 import 'booksListView.dart';
 import 'widgets/qrCodeCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'classList/classMemberCard.dart';
 
 class studentHomepage extends StatelessWidget {
   const studentHomepage({Key? key}) : super(key: key);
