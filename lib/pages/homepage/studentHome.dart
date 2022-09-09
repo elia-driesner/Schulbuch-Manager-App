@@ -3,7 +3,6 @@ import 'widgets/sideMenu.dart';
 import '../../user_data_cache.dart';
 import '../../codeScanner/qrCodeWidget.dart';
 import 'booksListView.dart';
-import 'widgets/qrCodeCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'classList/classMemberCard.dart';
 
