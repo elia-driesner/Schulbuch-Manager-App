@@ -103,7 +103,7 @@ class _signInPageState extends State<signInPage> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 160, 0, 0),
+                    margin: EdgeInsets.fromLTRB(0, 120, 0, 0),
                     child: Column(
                       children: [
                         Container(
@@ -210,7 +210,7 @@ class _signInPageState extends State<signInPage> {
                   ),
                 ),
                 Container(
-                    margin: const EdgeInsets.fromLTRB(30, 590, 30, 0),
+                    margin: const EdgeInsets.fromLTRB(30, 550, 30, 0),
                     child: Column(
                       children: [
                         Container(
@@ -264,7 +264,7 @@ class _signInPageState extends State<signInPage> {
                 if (signInStatusMessage == 'Ladet...')
                   Center(
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(0, 720, 0, 0),
+                      margin: const EdgeInsets.fromLTRB(0, 680, 0, 0),
                       child: const CupertinoActivityIndicator(radius: 18),
                     ),
                   ),
