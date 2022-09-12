@@ -42,6 +42,7 @@ class Auth {
       } else if (e.code == 'wrong-password') {
         return ('Falsches Password');
       } else {
+        debugPrint('**** Firebase error *****:   ' + e.code);
         return 'Ein unerwarteter Fehler ist aufgetreten';
       }
     }

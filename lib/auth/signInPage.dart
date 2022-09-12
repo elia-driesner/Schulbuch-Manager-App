@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../not_used_code/registerSelectionPage.dart';
 import '../main.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'changePassword.dart';
 
@@ -117,7 +117,12 @@ class _signInPageState extends State<signInPage> {
                             child: Container(
                               margin: const EdgeInsets.fromLTRB(0, 60, 0, 0),
                               child: Text('Anmelden',
-                                  style: GoogleFonts.roboto(
+                                  // style: GoogleFonts.roboto(
+                                  //     fontWeight: FontWeight.w500,
+                                  //     letterSpacing: 0,
+                                  //     fontSize: 35,
+                                  //     color: Color(0xFF18191F))
+                                  style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 0,
                                       fontSize: 35,
