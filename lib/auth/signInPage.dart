@@ -91,6 +91,8 @@ class _signInPageState extends State<signInPage> {
 
   @override
   Widget build(BuildContext context) {
+    final sWidth = MediaQuery.of(context).size.width;
+    final sHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
@@ -103,19 +105,21 @@ class _signInPageState extends State<signInPage> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 120, 0, 0),
+                    margin: EdgeInsets.fromLTRB(
+                        0, MediaQuery.of(context).size.height * .15, 0, 0),
                     child: Column(
                       children: [
                         Container(
                             child: Image.network(
                                 'https://cdn-icons-png.flaticon.com/512/1160/1160358.png',
-                                height: 100,
-                                width: 100)),
+                                height: sHeight * .28,
+                                width: sWidth * .28)),
                         Align(
                           alignment: Alignment.topLeft,
                           child: Center(
                             child: Container(
-                              margin: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+                              margin:
+                                  EdgeInsets.fromLTRB(0, sHeight * .07, 0, 0),
                               child: Text('Anmelden',
                                   // style: GoogleFonts.roboto(
                                   //     fontWeight: FontWeight.w500,
@@ -131,7 +135,7 @@ class _signInPageState extends State<signInPage> {
                           ),
                         ),
                         Card(
-                          margin: EdgeInsets.fromLTRB(25, 0, 25, 0),
+                          margin: EdgeInsets.fromLTRB(sHeight * .04, 0, 25, 0),
                           color: Color(0xFF18191F).withOpacity(0),
                           shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
@@ -148,7 +152,7 @@ class _signInPageState extends State<signInPage> {
                                       color: Color(0xFF18191F), width: 2),
                                 ),
                                 color: Color.fromARGB(255, 255, 255, 255),
-                                margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 child: Container(
                                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: TextField(
@@ -210,7 +214,8 @@ class _signInPageState extends State<signInPage> {
                   ),
                 ),
                 Container(
-                    margin: const EdgeInsets.fromLTRB(30, 550, 30, 0),
+                    margin: EdgeInsets.fromLTRB(
+                        30, MediaQuery.of(context).size.height * .68, 30, 0),
                     child: Column(
                       children: [
                         Container(
@@ -264,7 +269,8 @@ class _signInPageState extends State<signInPage> {
                 if (signInStatusMessage == 'Ladet...')
                   Center(
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(0, 680, 0, 0),
+                      margin: EdgeInsets.fromLTRB(
+                          0, MediaQuery.of(context).size.height * .8, 0, 0),
                       child: const CupertinoActivityIndicator(radius: 18),
                     ),
                   ),
