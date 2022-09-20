@@ -20,6 +20,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter/services.dart';
 
+import 'pages/homepage/teacherHomepage.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -48,6 +50,8 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   var _user;
 
+  var page;
+
   late Timer timer;
 
   void getUser() async {
@@ -65,6 +69,12 @@ class _AppState extends State<App> {
             'name': documentSnapshot['name'],
             'role': documentSnapshot['role']
           };
+          setState(() => {
+                if (documentSnapshot['role'] == 'Schüler')
+                  {page = studentHomepage()}
+                else if (documentSnapshot['role'] == 'Lehrer')
+                  {page = teacherHomepage()}
+              });
         }
       });
     } else {
@@ -110,8 +120,8 @@ class _AppState extends State<App> {
         // ignore: avoid_unnecessary_containers
         body: Container(
           child: Column(
-            children: const [
-              studentHomepage(),
+            children: [
+              if (page != null) page,
             ],
           ),
         ));

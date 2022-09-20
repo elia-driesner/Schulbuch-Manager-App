@@ -92,7 +92,7 @@ class _signInPageState extends State<signInPage> {
   @override
   Widget build(BuildContext context) {
     final sWidth = MediaQuery.of(context).size.width;
-    final sHeight = MediaQuery.of(context).size.height;
+    final sHeigth = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
@@ -100,7 +100,7 @@ class _signInPageState extends State<signInPage> {
         color: Color.fromARGB(255, 255, 255, 255),
         child: Column(
           children: [
-            Stack(
+            Column(
               children: [
                 Align(
                   alignment: Alignment.topLeft,
@@ -112,20 +112,15 @@ class _signInPageState extends State<signInPage> {
                         Container(
                             child: Image.network(
                                 'https://cdn-icons-png.flaticon.com/512/1160/1160358.png',
-                                height: sHeight * .28,
+                                height: sHeigth * .28,
                                 width: sWidth * .28)),
                         Align(
                           alignment: Alignment.topLeft,
                           child: Center(
                             child: Container(
-                              margin:
-                                  EdgeInsets.fromLTRB(0, sHeight * .07, 0, 0),
+                              margin: EdgeInsets.fromLTRB(
+                                  0, sHeigth * .00, 0, sHeigth * .04),
                               child: Text('Anmelden',
-                                  // style: GoogleFonts.roboto(
-                                  //     fontWeight: FontWeight.w500,
-                                  //     letterSpacing: 0,
-                                  //     fontSize: 35,
-                                  //     color: Color(0xFF18191F))
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 0,
@@ -135,14 +130,14 @@ class _signInPageState extends State<signInPage> {
                           ),
                         ),
                         Card(
-                          margin: EdgeInsets.fromLTRB(sHeight * .04, 0, 25, 0),
+                          margin: EdgeInsets.fromLTRB(
+                              sWidth * .06, 0, sWidth * .06, 0),
                           color: Color(0xFF18191F).withOpacity(0),
                           shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Container(
-                            height: 260,
                             child: Column(children: [
                               Card(
                                 shadowColor: Colors.transparent,
@@ -157,7 +152,8 @@ class _signInPageState extends State<signInPage> {
                                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: TextField(
                                       controller: emailController
-                                        ..text = 'elia.driesner@gmail.com',
+                                      // ..text = 'elia.driesner@gmail.com'
+                                      ,
                                       obscureText: false,
                                       decoration: const InputDecoration(
                                           border: InputBorder.none,
@@ -178,12 +174,14 @@ class _signInPageState extends State<signInPage> {
                                       color: Color(0xFF18191F), width: 2),
                                 ),
                                 color: Color.fromARGB(255, 255, 255, 255),
-                                margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                margin: EdgeInsets.fromLTRB(
+                                    0, sHeigth * 0.035, 0, 0),
                                 child: Container(
                                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: TextField(
                                       controller: passwordController
-                                        ..text = '111112',
+                                      // ..text = '111112'
+                                      ,
                                       obscureText: isHidden,
                                       decoration: InputDecoration(
                                           suffixIcon: IconButton(
@@ -215,7 +213,7 @@ class _signInPageState extends State<signInPage> {
                 ),
                 Container(
                     margin: EdgeInsets.fromLTRB(
-                        30, MediaQuery.of(context).size.height * .68, 30, 0),
+                        sWidth * .06, sHeigth * .055, sWidth * .06, 0),
                     child: Column(
                       children: [
                         Container(
@@ -270,7 +268,7 @@ class _signInPageState extends State<signInPage> {
                   Center(
                     child: Container(
                       margin: EdgeInsets.fromLTRB(
-                          0, MediaQuery.of(context).size.height * .8, 0, 0),
+                          0, MediaQuery.of(context).size.height * .05, 0, 0),
                       child: const CupertinoActivityIndicator(radius: 18),
                     ),
                   ),
