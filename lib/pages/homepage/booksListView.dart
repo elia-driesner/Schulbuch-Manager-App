@@ -12,8 +12,7 @@ class bookListView extends StatelessWidget {
         height: 220,
         child: ListView(
           scrollDirection: Axis.horizontal,
-          children: const <Widget>[
-            // ! remove const if getting books from firebase
+          children: <Widget>[
             bookCard(),
             bookCard(),
             bookCard(),
