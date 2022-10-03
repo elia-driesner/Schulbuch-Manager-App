@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class book {
-  String? name;
+
+  late String name;
+
   late var alreadyPaid;
   late var damages;
   late var userHistory;
@@ -10,8 +12,11 @@ class book {
 }
 
 class bookCard extends StatefulWidget {
-  bookCard({Key? key, required this.bookInfo}) : super(key: key);
-  var bookInfo;
+
+  const bookCard({Key? key}) : super(key: key);
+
+
+class _bookCardState extends State<bookCard> {
   @override
   State<bookCard> createState() => _bookCardState();
 }
@@ -23,35 +28,44 @@ class _bookCardState extends State<bookCard> {
       children: [
         Container(
           margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-          child: Column(
+          child: Stack(
             children: [
               Container(
-                height: 180,
+                width: 124,
+                height: 167,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
-                    BoxShadow(
-                        offset: Offset(5, 5),
-                        color: Color.fromARGB(255, 0, 0, 0))
+                    BoxShadow(offset: Offset(10, 4), color: Color(0xFF18191F))
                   ],
                 ),
-                child: Card(
-                    shadowColor: Colors.transparent,
-                    color: Color.fromARGB(245, 236, 235, 231),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Container(
-                        child: Column(
-                      children: [
-                        Icon(Icons.book_outlined, size: 130),
-                      ],
-                    ))),
               ),
-              Container(
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Text(widget.bookInfo.name,
-                      style: TextStyle(fontSize: 20)))
+
+              Column(
+                children: [
+                  Container(
+                    height: 170,
+                    child: Card(
+                        shadowColor: Colors.transparent,
+                        color: Color(0xFF6796FF).withOpacity(1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                          side: BorderSide(
+                            color: Color(0xFF18191F),
+                            width: 2,
+                          ),
+                        ),
+                        child: Container(
+                          width: 125,
+                          child: Icon(Icons.image_outlined, size: 40),
+                        )),
+                  ),
+                  Container(
+                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Text('Mathematik', style: TextStyle(fontSize: 20)))
+                ],
+              ),
+
             ],
           ),
         ),

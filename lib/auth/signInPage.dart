@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../not_used_code/registerSelectionPage.dart';
 import '../main.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'changePassword.dart';
 
@@ -91,72 +91,79 @@ class _signInPageState extends State<signInPage> {
 
   @override
   Widget build(BuildContext context) {
+    final sWidth = MediaQuery.of(context).size.width;
+    final sHeigth = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
         height: 1000,
-        color: Color(0xFFECEBE7),
+        color: Color.fromARGB(255, 255, 255, 255),
         child: Column(
           children: [
-            Stack(
+            Column(
               children: [
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 140, 0, 0),
+                    margin: EdgeInsets.fromLTRB(
+                        0, MediaQuery.of(context).size.height * .15, 0, 0),
                     child: Column(
                       children: [
+                        Container(
+                            child: Image.network(
+                                'https://cdn-icons-png.flaticon.com/512/1160/1160358.png',
+                                height: sHeigth * .28,
+                                width: sWidth * .28)),
                         Align(
                           alignment: Alignment.topLeft,
                           child: Center(
                             child: Container(
-                              margin: const EdgeInsets.fromLTRB(0, 60, 0, 15),
+                              margin: EdgeInsets.fromLTRB(
+                                  0, sHeigth * .00, 0, sHeigth * .04),
                               child: Text('Anmelden',
-                                  style: GoogleFonts.roboto(
-                                      fontWeight: FontWeight.w400,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
                                       letterSpacing: 0,
-                                      fontSize: 30,
-                                      color: Color.fromARGB(255, 46, 43, 59))),
+                                      fontSize: 35,
+                                      color: Color(0xFF18191F))),
                             ),
                           ),
                         ),
                         Card(
-                          margin: EdgeInsets.fromLTRB(25, 5, 25, 0),
-                          color: Color(0xFFE5613A).withOpacity(0),
+                          margin: EdgeInsets.fromLTRB(
+                              sWidth * .06, 0, sWidth * .06, 0),
+                          color: Color(0xFF18191F).withOpacity(0),
                           shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Container(
-                            height: 260,
                             child: Column(children: [
                               Card(
                                 shadowColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.0),
                                   side: BorderSide(
-                                    color: Color.fromARGB(255, 190, 194, 189),
-                                  ),
+                                      color: Color(0xFF18191F), width: 2),
                                 ),
-                                color: Color(0xFFE8E8E6),
-                                margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 child: Container(
                                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: TextField(
                                       controller: emailController
-                                        ..text = 'elia.driesner@gmail.com',
+                                      // ..text = 'elia.driesner@gmail.com'
+                                      ,
                                       obscureText: false,
                                       decoration: const InputDecoration(
                                           border: InputBorder.none,
                                           labelText: 'Email',
-                                          prefixIcon: Icon(Icons.email),
+                                          prefixIcon:
+                                              Icon(Icons.email_outlined),
                                           labelStyle: TextStyle(
-                                              color: Color.fromARGB(
-                                                  255, 46, 43, 59))),
+                                              color: Color(0xFF18191F))),
                                       style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 46, 43, 59),
-                                          height: 1)),
+                                          color: Color(0xFF18191F), height: 1)),
                                 ),
                               ),
                               Card(
@@ -164,37 +171,37 @@ class _signInPageState extends State<signInPage> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.0),
                                   side: BorderSide(
-                                    color: Color.fromARGB(255, 190, 194, 189),
-                                  ),
+                                      color: Color(0xFF18191F), width: 2),
                                 ),
-                                color: Color(0xFFE8E8E6),
-                                margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                margin: EdgeInsets.fromLTRB(
+                                    0, sHeigth * 0.035, 0, 0),
                                 child: Container(
                                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: TextField(
                                       controller: passwordController
-                                        ..text = '111112',
+                                      // ..text = '111112'
+                                      ,
                                       obscureText: isHidden,
                                       decoration: InputDecoration(
                                           suffixIcon: IconButton(
                                             icon: isHidden
-                                                ? Icon(Icons.visibility_off)
-                                                : Icon(Icons.visibility),
+                                                ? Icon(Icons
+                                                    .visibility_off_outlined)
+                                                : Icon(
+                                                    Icons.visibility_outlined),
                                             onPressed: () => {
                                               setState(
                                                   () => {isHidden = !isHidden})
                                             },
                                           ),
                                           border: InputBorder.none,
-                                          prefixIcon: Icon(Icons.lock),
+                                          prefixIcon: Icon(Icons.lock_outlined),
                                           labelText: 'Password',
                                           labelStyle: TextStyle(
-                                              color: Color.fromARGB(
-                                                  255, 46, 43, 59))),
+                                              color: Color(0xFF18191F))),
                                       style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 46, 43, 59),
-                                          height: 1)),
+                                          color: Color(0xFF18191F), height: 1)),
                                 ),
                               ),
                             ]),
@@ -205,7 +212,8 @@ class _signInPageState extends State<signInPage> {
                   ),
                 ),
                 Container(
-                    margin: const EdgeInsets.fromLTRB(30, 480, 30, 0),
+                    margin: EdgeInsets.fromLTRB(
+                        sWidth * .06, sHeigth * .055, sWidth * .06, 0),
                     child: Column(
                       children: [
                         Container(
@@ -217,7 +225,7 @@ class _signInPageState extends State<signInPage> {
                             style: ElevatedButton.styleFrom(
                               minimumSize: const Size(500, 50),
                               primary: const Color(0xFFFFBD12),
-                              shadowColor: Color.fromARGB(0, 0, 0, 0),
+                              shadowColor: Color(0xFF18191F),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
@@ -230,12 +238,11 @@ class _signInPageState extends State<signInPage> {
                                 Container(
                                   margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                   child: Text('Anmelden',
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 46, 43, 59))),
+                                      style:
+                                          TextStyle(color: Color(0xFF18191F))),
                                 ),
                                 Icon(Icons.arrow_forward,
-                                    color: Color.fromARGB(255, 46, 43, 59))
+                                    color: Color(0xFF18191F))
                               ],
                             ),
                             onPressed: () => sign_in(
@@ -252,7 +259,7 @@ class _signInPageState extends State<signInPage> {
                               margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
                               child: Text(signInStatusMessage.toString(),
                                   style: const TextStyle(
-                                      color: Color(0xFF103A24), fontSize: 14)),
+                                      color: Color(0xFF18191F), fontSize: 14)),
                             ),
                         ]))
                       ],
@@ -260,7 +267,8 @@ class _signInPageState extends State<signInPage> {
                 if (signInStatusMessage == 'Ladet...')
                   Center(
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(0, 600, 0, 0),
+                      margin: EdgeInsets.fromLTRB(
+                          0, MediaQuery.of(context).size.height * .05, 0, 0),
                       child: const CupertinoActivityIndicator(radius: 18),
                     ),
                   ),

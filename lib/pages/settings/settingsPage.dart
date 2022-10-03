@@ -28,7 +28,7 @@ class settingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      color: Color(0xFFECEBE7),
+      color: Colors.white,
       child: SafeArea(
           child: Column(
         children: [
@@ -36,9 +36,7 @@ class settingsPage extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               boxShadow: [
-                BoxShadow(
-                    offset: Offset(2, 2),
-                    color: Color.fromARGB(255, 46, 43, 59))
+                BoxShadow(offset: Offset(2, 2), color: Color(0xFF18191F))
               ],
             ),
             margin: EdgeInsets.fromLTRB(0, 0, 320, 0),
@@ -50,8 +48,10 @@ class settingsPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   shape: CircleBorder(),
                   padding: EdgeInsets.all(13),
-                  primary: const Color(0xFFDF5953),
-                  onPrimary: Color.fromARGB(255, 0, 0, 0),
+
+                  primary: Colors.white,
+                  onPrimary: Color(0xFF18191F),
+
                   side: BorderSide(width: 1, color: Color(0xFF103A24))),
             ),
           ),

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../user_data_cache.dart';
 import '../main.dart';
+import 'package:flutter/cupertino.dart';
 
 class changePassword extends StatefulWidget {
   changePassword({Key? key, required this.oldPasswordSug}) : super(key: key);
@@ -66,12 +67,12 @@ class _changePasswordState extends State<changePassword> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFFECEBE7),
+      color: Colors.white,
       child: Scaffold(
           body: SingleChildScrollView(
         reverse: true,
         child: Container(
-          color: Color(0xFFECEBE7),
+          color: Colors.white,
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
@@ -84,8 +85,7 @@ class _changePasswordState extends State<changePassword> {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                                offset: Offset(2, 2),
-                                color: Color.fromARGB(255, 46, 43, 59))
+                                offset: Offset(2, 2), color: Color(0xFF18191F))
                           ],
                         ),
                         margin: EdgeInsets.fromLTRB(0, 0, 320, 0),
@@ -97,17 +97,19 @@ class _changePasswordState extends State<changePassword> {
                           style: ElevatedButton.styleFrom(
                               shape: CircleBorder(),
                               padding: EdgeInsets.all(13),
-                              primary: const Color(0xFFDF5953),
-                              onPrimary: Color.fromARGB(255, 0, 0, 0),
+
+                              primary: Colors.white,
+                              onPrimary: Color(0xFF18191F),
+
                               side: BorderSide(
-                                  width: 1, color: Color(0xFF103A24))),
+                                  width: 1, color: Color(0xFF18191F))),
                         ),
                       ),
                     ),
                   Align(
                     alignment: Alignment.topLeft,
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 140, 0, 0),
+                      margin: EdgeInsets.fromLTRB(0, 200, 0, 0),
                       child: Column(
                         children: [
                           Align(
@@ -120,14 +122,13 @@ class _changePasswordState extends State<changePassword> {
                                         fontWeight: FontWeight.w400,
                                         letterSpacing: 0,
                                         fontSize: 30,
-                                        color:
-                                            Color.fromARGB(255, 46, 43, 59))),
+                                        color: Color(0xFF18191F))),
                               ),
                             ),
                           ),
                           Card(
                             margin: EdgeInsets.fromLTRB(25, 5, 25, 0),
-                            color: Color(0xFFE5613A).withOpacity(0),
+                            color: Color(0xFF18191F).withOpacity(0),
                             shadowColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
@@ -140,10 +141,9 @@ class _changePasswordState extends State<changePassword> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),
                                     side: BorderSide(
-                                      color: Color.fromARGB(255, 190, 194, 189),
-                                    ),
+                                        color: Color(0xFF18191F), width: 2),
                                   ),
-                                  color: Color(0xFFE8E8E6),
+                                  color: Colors.white,
                                   margin:
                                       const EdgeInsets.fromLTRB(0, 30, 0, 0),
                                   child: Container(
@@ -162,9 +162,9 @@ class _changePasswordState extends State<changePassword> {
                                                     suffixIcon: IconButton(
                                                       icon: isOldHidden
                                                           ? Icon(Icons
-                                                              .visibility_off)
-                                                          : Icon(
-                                                              Icons.visibility),
+                                                              .visibility_off_outlined)
+                                                          : Icon(Icons
+                                                              .visibility_outlined),
                                                       onPressed: () => {
                                                         setState(() => {
                                                               isOldHidden =
@@ -173,14 +173,14 @@ class _changePasswordState extends State<changePassword> {
                                                       },
                                                     ),
                                                     border: InputBorder.none,
-                                                    prefixIcon:
-                                                        Icon(Icons.lock),
+                                                    prefixIcon: Icon(
+                                                        Icons.lock_outlined),
                                                     labelText: 'Altes Password',
                                                     labelStyle: TextStyle(
-                                                        color: Color.fromARGB(
-                                                            255, 46, 43, 59))),
+                                                        color:
+                                                            Color(0xFF18191F))),
                                                 style: TextStyle(
-                                                    color: Color(0xFF494087),
+                                                    color: Color(0xFF18191F),
                                                     height: 1))
                                             : TextField(
                                                 controller:
@@ -190,9 +190,9 @@ class _changePasswordState extends State<changePassword> {
                                                     suffixIcon: IconButton(
                                                       icon: isOldHidden
                                                           ? Icon(Icons
-                                                              .visibility_off)
-                                                          : Icon(
-                                                              Icons.visibility),
+                                                              .visibility_off_outlined)
+                                                          : Icon(Icons
+                                                              .visibility_outlined),
                                                       onPressed: () => {
                                                         setState(() => {
                                                               isOldHidden =
@@ -201,28 +201,27 @@ class _changePasswordState extends State<changePassword> {
                                                       },
                                                     ),
                                                     border: InputBorder.none,
-                                                    prefixIcon:
-                                                        Icon(Icons.lock),
+                                                    prefixIcon: Icon(
+                                                        Icons.lock_outlined),
                                                     labelText: 'Altes Password',
                                                     labelStyle: TextStyle(
-                                                        color: Color.fromARGB(
-                                                            255, 46, 43, 59))),
+                                                        color:
+                                                            Color(0xFF18191F))),
                                                 style: TextStyle(
-                                                    color: Color(0xFF494087),
+                                                    color: Color(0xFF18191F),
                                                     height: 1)),
                                       ],
                                     ),
                                   ),
                                 ),
                                 Card(
-                                  shadowColor: Color.fromARGB(0, 0, 0, 0),
+                                  shadowColor: Color(0xFF18191F),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),
                                     side: BorderSide(
-                                      color: Color.fromARGB(255, 190, 194, 189),
-                                    ),
+                                        color: Color(0xFF18191F), width: 2),
                                   ),
-                                  color: Color(0xFFE8E8E6),
+                                  color: Colors.white,
                                   margin:
                                       const EdgeInsets.fromLTRB(0, 30, 0, 0),
                                   child: Container(
@@ -234,8 +233,10 @@ class _changePasswordState extends State<changePassword> {
                                         decoration: InputDecoration(
                                             suffixIcon: IconButton(
                                               icon: isNewHidden
-                                                  ? Icon(Icons.visibility_off)
-                                                  : Icon(Icons.visibility),
+                                                  ? Icon(Icons
+                                                      .visibility_off_outlined)
+                                                  : Icon(Icons
+                                                      .visibility_outlined),
                                               onPressed: () => {
                                                 setState(() => {
                                                       isNewHidden = !isNewHidden
@@ -243,13 +244,13 @@ class _changePasswordState extends State<changePassword> {
                                               },
                                             ),
                                             border: InputBorder.none,
-                                            prefixIcon: Icon(Icons.lock),
+                                            prefixIcon:
+                                                Icon(Icons.lock_outlined),
                                             labelText: 'Neues Password',
                                             labelStyle: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 46, 43, 59))),
+                                                color: Color(0xFF18191F))),
                                         style: TextStyle(
-                                            color: Color(0xFF494087),
+                                            color: Color(0xFF18191F),
                                             height: 1)),
                                   ),
                                 ),
@@ -261,44 +262,45 @@ class _changePasswordState extends State<changePassword> {
                     ),
                   ),
                   Container(
-                      margin: const EdgeInsets.fromLTRB(30, 480, 30, 0),
+                      margin: const EdgeInsets.fromLTRB(30, 540, 30, 0),
                       child: Column(
                         children: [
                           Container(
                             decoration: BoxDecoration(boxShadow: [
                               BoxShadow(
-                                  offset: Offset(8, 6),
-                                  color: Color.fromARGB(255, 46, 43, 59))
+                                  offset: Offset(4, 5),
+                                  color: Color(0xFF18191F))
                             ], borderRadius: BorderRadius.circular(15)),
                             child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(500, 50),
-                                  primary: const Color(0xFFDF5953),
-                                  shadowColor: Color.fromARGB(0, 0, 0, 0),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
+
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: const Size(500, 50),
+                                primary: const Color(0xFFFFBD12),
+                                shadowColor: Color(0xFF18191F),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+
+                                ),
+                                side: BorderSide(
+                                    width: 2, color: Color(0xFF18191F)),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                    child: Text('Anmelden',
+                                        style: TextStyle(
+                                            color: Color(0xFF18191F))),
                                   ),
-                                  side: BorderSide(
-                                      width: 1, color: Color(0xFF103A24)),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                      child: Text('Ändern',
-                                          style: TextStyle(
-                                              color: Color.fromARGB(
-                                                  255, 46, 43, 59))),
-                                    ),
-                                    Icon(Icons.arrow_forward,
-                                        color: Color.fromARGB(255, 46, 43, 59))
-                                  ],
-                                ),
-                                onPressed: () => {
-                                      resetPassword(oldPasswordController.text,
-                                          newPasswordController.text)
-                                    }),
+                                  Icon(Icons.arrow_forward,
+                                      color: Color(0xFF18191F))
+                                ],
+                              ),
+                              onPressed: () => resetPassword(
+                                  oldPasswordController.text,
+                                  newPasswordController.text),
+                            ),
                           ),
                           Align(
                               child: Column(children: [
@@ -307,7 +309,7 @@ class _changePasswordState extends State<changePassword> {
                                 margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
                                 child: Text(changePasswordStatus.toString(),
                                     style: const TextStyle(
-                                        color: Color(0xFF103A24),
+                                        color: Color(0xFF18191F),
                                         fontSize: 14)),
                               )
                             else
@@ -315,7 +317,7 @@ class _changePasswordState extends State<changePassword> {
                                 margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
                                 child: Text(changePasswordStatus.toString(),
                                     style: const TextStyle(
-                                        color: Color(0xFF103A24),
+                                        color: Color(0xFF18191F),
                                         fontSize: 14)),
                               ),
                           ])),
@@ -323,7 +325,8 @@ class _changePasswordState extends State<changePassword> {
                             Center(
                               child: Container(
                                 margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                child: const CircularProgressIndicator(),
+                                child: const CupertinoActivityIndicator(
+                                    radius: 18),
                               ),
                             ),
                         ],
