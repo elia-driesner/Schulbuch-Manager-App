@@ -97,8 +97,10 @@ class _changePasswordState extends State<changePassword> {
                           style: ElevatedButton.styleFrom(
                               shape: CircleBorder(),
                               padding: EdgeInsets.all(13),
+
                               primary: Colors.white,
                               onPrimary: Color(0xFF18191F),
+
                               side: BorderSide(
                                   width: 1, color: Color(0xFF18191F))),
                         ),
@@ -270,12 +272,14 @@ class _changePasswordState extends State<changePassword> {
                                   color: Color(0xFF18191F))
                             ], borderRadius: BorderRadius.circular(15)),
                             child: ElevatedButton(
+
                               style: ElevatedButton.styleFrom(
                                 minimumSize: const Size(500, 50),
                                 primary: const Color(0xFFFFBD12),
                                 shadowColor: Color(0xFF18191F),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
+
                                 ),
                                 side: BorderSide(
                                     width: 2, color: Color(0xFF18191F)),

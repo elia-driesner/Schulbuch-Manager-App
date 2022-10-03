@@ -33,7 +33,9 @@ void main() async {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
+
             primary: Color(0xFF18191F),
+
           ),
         ),
         home: App()));

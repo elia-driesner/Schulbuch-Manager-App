@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class book {
+
   late String name;
+
   late var alreadyPaid;
   late var damages;
   late var userHistory;
@@ -10,8 +12,11 @@ class book {
 }
 
 class bookCard extends StatefulWidget {
+
   const bookCard({Key? key}) : super(key: key);
 
+
+class _bookCardState extends State<bookCard> {
   @override
   State<bookCard> createState() => _bookCardState();
 }
@@ -35,6 +40,7 @@ class _bookCardState extends State<bookCard> {
                   ],
                 ),
               ),
+
               Column(
                 children: [
                   Container(
@@ -59,6 +65,7 @@ class _bookCardState extends State<bookCard> {
                       child: Text('Mathematik', style: TextStyle(fontSize: 20)))
                 ],
               ),
+
             ],
           ),
         ),
