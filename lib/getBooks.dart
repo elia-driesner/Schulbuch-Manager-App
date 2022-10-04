@@ -13,7 +13,7 @@ void getBooks() async {
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
-        debugPrint(documentSnapshot['name']);
+        userBooksVar.add(documentSnapshot);
       }
     });
   }

@@ -1,2 +1,2 @@
 var userDataVar;
-var userBooks;
+var userBooksVar = [];
