@@ -33,9 +33,7 @@ void main() async {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
-
             primary: Color(0xFF18191F),
-
           ),
         ),
         home: App()));
@@ -67,6 +65,7 @@ class _AppState extends State<App> {
           .then((DocumentSnapshot documentSnapshot) {
         if (documentSnapshot.exists) {
           userDataVar = {
+            'books': documentSnapshot['books'],
             'email': documentSnapshot['email'],
             'name': documentSnapshot['name'],
             'role': documentSnapshot['role']
