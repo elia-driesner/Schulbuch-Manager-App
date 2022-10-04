@@ -17,6 +17,7 @@ import 'pages/homepage/widgets/sideMenu.dart';
 
 import 'user_data_cache.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'getBooks.dart';
 
 import 'package:flutter/services.dart';
 
@@ -76,6 +77,7 @@ class _AppState extends State<App> {
                 else if (documentSnapshot['role'] == 'Lehrer')
                   {page = teacherHomepage()}
               });
+          getBooks();
         }
       });
     } else {
