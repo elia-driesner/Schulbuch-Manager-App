@@ -11,6 +11,7 @@
 migrate_working_dir/
 lib/firebaseSecrets
 lib/not_used_code
+lib/firebase_options.dart
 
 
 # IntelliJ related
