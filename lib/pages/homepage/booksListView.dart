@@ -1,13 +1,39 @@
 import 'package:flutter/material.dart';
 import 'widgets/bookCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../../user_data_cache.dart';
+import '../../getBooks.dart';
 
-class bookListView extends StatelessWidget {
-  const bookListView({Key? key}) : super(key: key);
+class bookListView extends StatefulWidget {
+  bookListView({Key? key}) : super(key: key);
 
-  Future<List<book>> getUserBooks() async {
-    return [book(name: '')];
+  @override
+  State<bookListView> createState() => _bookListViewState();
+}
+
+class _bookListViewState extends State<bookListView> {
+  var _user;
+
+  var bookCards = <Widget>[];
+
+  void creataBookCards() async {
+    var allBooks = await returnBooks();
+    var bookCardsPlaceholder = <Widget>[];
+
+    for (int i = 0; i < allBooks.length; i++) {
+      // bookCardsPlaceholder.add(Text(allBooks[i]['name']));
+      bookCardsPlaceholder.add(bookCard(bookName: allBooks[i]['name']));
+    }
+    setState(() {
+      bookCards = bookCardsPlaceholder;
+    });
+  }
+
+  @override
+  void initState() {
+    creataBookCards();
   }
 
   @override
@@ -18,16 +44,7 @@ class bookListView extends StatelessWidget {
         height: 220,
         child: ListView(
           scrollDirection: Axis.horizontal,
-          children: <Widget>[
-
-            bookCard(),
-            bookCard(),
-            bookCard(),
-            bookCard(),
-            bookCard(),
-            bookCard(),
-
-          ],
+          children: bookCards,
         ),
       )
     ]);

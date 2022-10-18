@@ -82,7 +82,7 @@ class studentHomepage extends StatelessWidget {
                       ])),
               Container(
                   margin: const EdgeInsets.fromLTRB(15, 35, 15, 0),
-                  child: const bookListView()),
+                  child: bookListView()),
               Container(
                   margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
                   child: homepageClassView()),

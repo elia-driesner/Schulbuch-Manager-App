@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 class book {
   late String name;
 
-  late var alreadyPaid;
-  late var damages;
-  late var userHistory;
-
-  book({required String name, var alreadyPaid, damages, userHistory});
+  // late var alreadyPaid;
+  // late var damages;
+  // late var userHistory;
+  // var alreadyPaid, damages, userHistory
+  book({required String name});
 }
 
 class bookCard extends StatelessWidget {
+  bookCard({Key? key, required this.bookName}) : super(key: key);
+  var bookName = '';
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,7 +53,8 @@ class bookCard extends StatelessWidget {
                   ),
                   Container(
                       margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Text('Mathematik', style: TextStyle(fontSize: 20)))
+                      child:
+                          Text(bookName, style: const TextStyle(fontSize: 20)))
                 ],
               ),
             ],

@@ -18,3 +18,22 @@ void getBooks() async {
     });
   }
 }
+
+Future<List> returnBooks() async {
+  var books = [];
+  for (int i = 0; i < userDataVar['books'].length; i++) {
+    await FirebaseFirestore.instance
+        .collection('Schools')
+        .doc('DBS')
+        .collection('Books')
+        .doc(userDataVar['books'][i])
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        books.add(documentSnapshot);
+      }
+    });
+  }
+
+  return books;
+}

@@ -77,7 +77,7 @@ class _AppState extends State<App> {
                 else if (documentSnapshot['role'] == 'Lehrer')
                   {page = teacherHomepage()}
               });
-          getBooks();
+          // getBooks();
         }
       });
     } else {
