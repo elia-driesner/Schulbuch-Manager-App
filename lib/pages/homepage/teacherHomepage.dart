@@ -4,8 +4,6 @@ import '../../user_data_cache.dart';
 import '../../codeScanner/qrCodeWidget.dart';
 import 'booksListView.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'classList/classMemberCard.dart';
-import 'classList/homepageClassView.dart';
 
 class teacherHomepage extends StatelessWidget {
   const teacherHomepage({Key? key}) : super(key: key);
@@ -42,9 +40,6 @@ class teacherHomepage extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                  margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
-                  child: homepageClassView()),
             ])),
           )),
     );
