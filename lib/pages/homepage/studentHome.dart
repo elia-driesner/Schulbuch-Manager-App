@@ -91,7 +91,7 @@ class studentHomepage extends StatelessWidget {
                   children: [
                     Container(child: addBookButton()),
                     Container(margin: const EdgeInsets.fromLTRB(7, 0, 7, 0)),
-                    Container(child: placeholder()),
+                    Container(child: reportDamageButton()),
                   ],
                 ),
               ),

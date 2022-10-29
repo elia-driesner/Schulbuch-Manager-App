@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../codeScanner/qrCodeWidget.dart';
 
 class addBookButton extends StatelessWidget {
   const addBookButton({Key? key}) : super(key: key);
@@ -27,21 +28,26 @@ class addBookButton extends StatelessWidget {
             Icon(Icons.add, color: Color(0xFF18191F))
           ],
         ),
-        onPressed: () => {},
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => qrCodeScannerWidget()),
+          )
+        },
       ),
     );
   }
 }
 
-class placeholder extends StatelessWidget {
-  const placeholder({Key? key}) : super(key: key);
+class reportDamageButton extends StatelessWidget {
+  const reportDamageButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          minimumSize: const Size(0, 50),
+          minimumSize: const Size(190, 50),
           primary: Color.fromARGB(0, 255, 188, 18),
           shadowColor: Color.fromARGB(0, 24, 25, 31),
           shape: RoundedRectangleBorder(
@@ -54,10 +60,10 @@ class placeholder extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-              child: Text('Placeholder button',
+              child: Text('Schaden melden',
                   style: TextStyle(color: Color(0xFF18191F))),
             ),
-            Icon(Icons.add, color: Color(0xFF18191F))
+            Icon(Icons.book_outlined, color: Color(0xFF18191F))
           ],
         ),
         onPressed: () => {},

@@ -38,24 +38,11 @@ class _qrCodeScannerWidgetState extends State<qrCodeScannerWidget> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              actions: [
-                ElevatedButton(
-                    child: Text('a'),
-                    onPressed: () => {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) => App(),
-                            ),
-                            (route) => false,
-                          )
-                        })
-              ],
+              actions: [],
             ),
             body: Stack(
               alignment: Alignment.center,
               children: <Widget>[
-                ElevatedButton(child: Text('a'), onPressed: () => {}),
                 buildQrView(context),
                 Positioned(child: buildResult(), bottom: 10)
               ],
@@ -70,10 +57,10 @@ class _qrCodeScannerWidgetState extends State<qrCodeScannerWidget> {
       key: qrKey,
       onQRViewCreated: onQRViewCreated,
       overlay: QrScannerOverlayShape(
-          borderRadius: 30,
+          borderRadius: 20,
           borderLength: 40,
-          borderWidth: 12,
-          borderColor: Color(0xFF7A6DA9),
+          borderWidth: 11,
+          borderColor: Color.fromARGB(255, 0, 0, 0),
           cutOutSize: MediaQuery.of(context).size.width * 0.60));
 
   void onQRViewCreated(QRViewController controller) {
