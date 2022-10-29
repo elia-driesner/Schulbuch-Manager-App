@@ -4,6 +4,8 @@ import '../../user_data_cache.dart';
 import '../../codeScanner/qrCodeWidget.dart';
 import 'booksListView.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'classList/classMemberCard.dart';
+import 'classList/homepageClassView.dart';
 
 class studentHomepage extends StatelessWidget {
   const studentHomepage({Key? key}) : super(key: key);
@@ -81,6 +83,9 @@ class studentHomepage extends StatelessWidget {
               Container(
                   margin: const EdgeInsets.fromLTRB(15, 35, 15, 0),
                   child: bookListView()),
+              Container(
+                  margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                  child: homepageClassView()),
             ])),
           )),
     );
