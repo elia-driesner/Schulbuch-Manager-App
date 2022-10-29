@@ -6,6 +6,7 @@ import 'booksListView.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'classList/classMemberCard.dart';
 import 'classList/homepageClassView.dart';
+import 'widgets/customActionButton.dart';
 
 class studentHomepage extends StatelessWidget {
   const studentHomepage({Key? key}) : super(key: key);
@@ -83,6 +84,9 @@ class studentHomepage extends StatelessWidget {
               Container(
                   margin: const EdgeInsets.fromLTRB(15, 35, 15, 0),
                   child: bookListView()),
+              Container(
+                  child: customActionButton(),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0)),
               Container(
                   margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
                   child: homepageClassView()),
