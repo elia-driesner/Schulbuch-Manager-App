@@ -14,14 +14,13 @@ import 'auth/changePassword.dart';
 
 import 'pages/homepage/studentHome.dart';
 import 'pages/homepage/widgets/sideMenu.dart';
+import 'pages/homepage/teacherHomepage.dart';
 
 import 'user_data_cache.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'getBooks.dart';
 
 import 'package:flutter/services.dart';
-
-import 'pages/homepage/teacherHomepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,6 +65,9 @@ class _AppState extends State<App> {
           .then((DocumentSnapshot documentSnapshot) {
         if (documentSnapshot.exists) {
           userDataVar = {
+            'id': _user.uid,
+            'class': documentSnapshot['class'],
+            'school': documentSnapshot['school'],
             'books': documentSnapshot['books'],
             'email': documentSnapshot['email'],
             'name': documentSnapshot['name'],
