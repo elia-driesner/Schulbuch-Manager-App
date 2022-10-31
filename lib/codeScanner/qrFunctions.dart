@@ -18,6 +18,11 @@ void addBook(bookCode) async {
       DocumentReference userRef = FirebaseFirestore.instance
           .collection('Accounts')
           .doc(userDataVar['id']);
+      userRef.update({
+        'books': FieldValue.arrayUnion([bookCode])
+      });
+    } else {
+      debugPrint('Buch existiert nicht :(');
     }
   });
 }
