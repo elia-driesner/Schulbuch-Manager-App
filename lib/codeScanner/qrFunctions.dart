@@ -6,7 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../user_data_cache.dart';
 
-void addBook(bookCode) async {
+Future<bool> addBook(bookCode) async {
+  var success = false;
   await FirebaseFirestore.instance
       .collection('Schools')
       .doc(userDataVar['school'])
@@ -21,8 +22,11 @@ void addBook(bookCode) async {
       userRef.update({
         'books': FieldValue.arrayUnion([bookCode])
       });
+      success = true;
     } else {
       debugPrint('Buch existiert nicht :(');
+      success = false;
     }
   });
+  return Future.value(success);
 }

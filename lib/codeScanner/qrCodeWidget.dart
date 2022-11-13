@@ -33,7 +33,7 @@ class _qrCodeScannerWidgetState extends State<qrCodeScannerWidget> {
 
   void initState() {
     setState(() => {});
-    addBook(bookCode);
+    debugPrint(addBook(bookCode).toString());
   }
 
   @override
