@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'classMemberCard.dart';
+import 'getClass.dart';
 
-class homepageClassView extends StatelessWidget {
-  const homepageClassView({Key? key}) : super(key: key);
+class homepageClassView extends StatefulWidget {
+  homepageClassView({Key? key}) : super(key: key);
+
+  @override
+  State<homepageClassView> createState() => _homepageClassViewState();
+}
+
+class _homepageClassViewState extends State<homepageClassView> {
+  var classMemberCards;
+
+  @override
+  void initState() {
+    var classMemberPlaceholder = getClassMember();
+    // debugPrint(classMemberPlaceholder.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
