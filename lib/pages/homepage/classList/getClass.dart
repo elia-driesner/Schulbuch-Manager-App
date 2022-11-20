@@ -24,15 +24,16 @@ Future<List> getClassMember() async {
       .then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       classMember = documentSnapshot['Member'];
+      for (var i = 0; i == classMember.length; i++) {
+        debugPrint(classMember[i]['name']);
+        memberCards.add(classMemberCard({
+          'name': classMember[i]['name'],
+          'role': classMember[i]['role'],
+          'rights': classMember[i]['rights']
+        }));
+      }
     }
   });
 
-  for (var i = 0; i >= classMember.length; i++) {
-    memberCards.add(classMemberCard({
-      'name': classMember[i]['name'],
-      'role': classMember[i]['role'],
-      'rights': classMember[i]['rights']
-    }));
-  }
   return memberCards;
 }
