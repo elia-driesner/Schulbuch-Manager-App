@@ -12,10 +12,22 @@ class homepageClassView extends StatefulWidget {
 class _homepageClassViewState extends State<homepageClassView> {
   var classMemberCards;
 
+  void createClassMemberCards() async {
+    var classList = await getClassMember();
+
+    for (int i = 0; i < classList.length; i++) {
+      classMemberCards.add(classMemberCard({
+        'name': classList[i]['name'],
+        'role': classList[i]['role'],
+        'rights': classList[i]['rights']
+      }));
+    }
+    // debugPrint(classMemberCards.length.toString());
+  }
+
   @override
   void initState() {
-    var classMemberPlaceholder = getClassMember();
-    // debugPrint(classMemberPlaceholder.toString());
+    createClassMemberCards();
   }
 
   @override
