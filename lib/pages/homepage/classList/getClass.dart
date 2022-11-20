@@ -23,7 +23,7 @@ Future<List> getClassMember() async {
       .get()
       .then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
-      classMember.add(documentSnapshot['member']);
+      classMember = documentSnapshot['Member'];
     }
   });
 
