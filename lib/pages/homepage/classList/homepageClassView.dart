@@ -10,10 +10,27 @@ class homepageClassView extends StatefulWidget {
 }
 
 class _homepageClassViewState extends State<homepageClassView> {
-  var classMemberCards;
+  List<Widget> classMemberCards = [];
 
   void createClassMemberCards() async {
     var classList = await getClassMember();
+
+    var classTeacher = [];
+    var classRepresentative = [];
+    var students = [];
+
+    for (int i = 0; i < classList.length; i++) {
+      if (classList[i]['role'] == 'Klassenlehrer') {
+        classTeacher.add(classList[i]);
+      } else if (classList[i]['role'] == 'classRepresentative') {
+        classRepresentative.add(classList[i]);
+      } else {
+        classTeacher.add(classList[i]);
+      }
+      classList = classTeacher;
+      classList.add(classRepresentative);
+      classList.add(students);
+    }
 
     for (int i = 0; i < classList.length; i++) {
       classMemberCards.add(classMemberCard({
@@ -22,7 +39,9 @@ class _homepageClassViewState extends State<homepageClassView> {
         'rights': classList[i]['rights']
       }));
     }
-    // debugPrint(classMemberCards.length.toString());
+    setState(() {
+      classMemberCards;
+    });
   }
 
   @override
@@ -48,31 +67,7 @@ class _homepageClassViewState extends State<homepageClassView> {
                 child: Icon(Icons.arrow_forward,
                     size: 25, color: Color(0xFF4B4E5B)))
           ]))),
-      Container(
-        margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-        child: classMemberCard(
-            {'name': 'Roman Martens', 'role': 'Klassenlehrer', 'rights': 500}),
-      ),
-      Container(
-        margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-        child: classMemberCard(
-            {'name': 'Erika Roth', 'role': 'Klassenlehrer', 'rights': 500}),
-      ),
-      Container(
-        margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-        child: classMemberCard(
-            {'name': 'Schüler 1', 'role': 'Klassensprecher', 'rights': 250}),
-      ),
-      Container(
-        margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-        child: classMemberCard(
-            {'name': 'Schüler 2', 'role': 'Klassensprecher', 'rights': 250}),
-      ),
-      Container(
-        margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-        child: classMemberCard(
-            {'name': 'Schüler 3', 'role': 'Schüler', 'rights': 200}),
-      ),
+      Column(children: classMemberCards)
     ]));
   }
 }

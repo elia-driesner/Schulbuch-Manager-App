@@ -8,29 +8,30 @@ class classMemberCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
         child: Row(
-      children: [
-        classMemberContainer(context),
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(data['name'],
-                    style: TextStyle(
-                        color: Color(0xFF18191F),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 22)),
-                Text(data['role'],
-                    style: TextStyle(
-                        color: Color(0xFF18191F),
-                        fontWeight: FontWeight.w400,
-                        fontSize: 17))
-              ]),
-        ),
-      ],
-    ));
+          children: [
+            classMemberContainer(context),
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(data['name'],
+                        style: TextStyle(
+                            color: Color(0xFF18191F),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 22)),
+                    Text(data['role'],
+                        style: TextStyle(
+                            color: Color(0xFF18191F),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 17))
+                  ]),
+            ),
+          ],
+        ));
   }
 
   @override
