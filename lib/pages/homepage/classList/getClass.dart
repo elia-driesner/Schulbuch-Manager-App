@@ -8,13 +8,8 @@ import 'classMemberCard.dart';
 //             {'name': 'Roman Martens', 'role': 'Klassenlehrer', 'rights': 500})
 
 Future<List> getClassMember() async {
-  var students;
-  var classRepresentative;
-  var classTeacher;
-
   var classMember;
 
-  var memberCards;
   await FirebaseFirestore.instance
       .collection('Schools')
       .doc(userDataVar['school'])
@@ -24,16 +19,8 @@ Future<List> getClassMember() async {
       .then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
       classMember = documentSnapshot['Member'];
-      for (var i = 0; i == classMember.length; i++) {
-        debugPrint(classMember[i]['name']);
-        memberCards.add(classMemberCard({
-          'name': classMember[i]['name'],
-          'role': classMember[i]['role'],
-          'rights': classMember[i]['rights']
-        }));
-      }
     }
   });
 
-  return memberCards;
+  return classMember;
 }
