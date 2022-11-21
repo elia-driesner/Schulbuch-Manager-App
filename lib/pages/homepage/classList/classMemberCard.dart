@@ -36,7 +36,7 @@ class classMemberCard extends StatelessWidget {
 
   @override
   Widget classMemberContainer(BuildContext context) {
-    if (data['rights'] >= 500)
+    if (data['role'] == 'Klassenlehrer')
       return Container(
           height: 55,
           width: 55,
@@ -48,7 +48,7 @@ class classMemberCard extends StatelessWidget {
             color: Color(0xFFF95A2C),
             borderRadius: BorderRadius.circular(10.0),
           ));
-    else if (data['rights'] == 250)
+    else if (data['role'] == 'Klassensprecher')
       return Container(
           height: 55,
           width: 55,
