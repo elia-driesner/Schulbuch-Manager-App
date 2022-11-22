@@ -43,8 +43,7 @@ class teacherHomepage extends StatelessWidget {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
-                  child: homepageClassView()),
+                  margin: EdgeInsets.fromLTRB(25, 0, 0, 0), child: Text('a')),
             ])),
           )),
     );
