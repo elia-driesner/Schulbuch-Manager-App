@@ -19,19 +19,19 @@ class _homepageClassViewState extends State<homepageClassView> {
     var classRepresentative = [];
     var students = [];
 
-    // for (int i = 0; i < classList.length; i++) {
-    //   var member = classList[i];
-    //   if (member['role'] == 'Klassenlehrer') {
-    //     classTeacher.add(member);
-    //   } else if (member['role'] == 'Klassensprecher') {
-    //     classRepresentative.add(member);
-    //   } else {
-    //     classTeacher.add(member);
-    //   }
-    //   classList = students;
-    //   classList.add(classRepresentative);
-    //   classList.add(classTeacher);
-    // }
+    for (int i = 0; i < classList.length; i++) {
+      var member = classList[i];
+      if (member['role'] == 'Klassenlehrer') {
+        classTeacher.add(member);
+      } else if (member['role'] == 'Klassensprecher') {
+        classRepresentative.add(member);
+      } else {
+        classTeacher.add(member);
+      }
+      classList = students;
+      classList.add(classRepresentative);
+      classList.add(classTeacher);
+    }
     var range;
     if (classList.length > 5) {
       range = 5;
