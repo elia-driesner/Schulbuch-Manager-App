@@ -64,15 +64,27 @@ class _AppState extends State<App> {
           .get()
           .then((DocumentSnapshot documentSnapshot) {
         if (documentSnapshot.exists) {
-          userDataVar = {
-            'id': _user.uid,
-            'class': documentSnapshot['class'],
-            'school': documentSnapshot['school'],
-            'books': documentSnapshot['books'],
-            'email': documentSnapshot['email'],
-            'name': documentSnapshot['name'],
-            'role': documentSnapshot['role']
-          };
+          if (documentSnapshot['role'] == 'Schüler' &&
+              documentSnapshot['role'] == 'Klassensprecher') {
+            userDataVar = {
+              'id': _user.uid,
+              'class': documentSnapshot['class'],
+              'school': documentSnapshot['school'],
+              'books': documentSnapshot['books'],
+              'email': documentSnapshot['email'],
+              'name': documentSnapshot['name'],
+              'role': documentSnapshot['role']
+            };
+          } else if (documentSnapshot['role'] == 'Lehrer') {
+            userDataVar = {
+              'id': _user.uid,
+              'school': documentSnapshot['school'],
+              'email': documentSnapshot['email'],
+              'name': documentSnapshot['name'],
+              'role': documentSnapshot['role']
+            };
+          }
+
           setState(() => {
                 if (documentSnapshot['role'] == 'Schüler')
                   {page = studentHomepage()}
