@@ -100,7 +100,7 @@ class studentHomepage extends StatelessWidget {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.fromLTRB(25, 20, 0, 0),
+                  margin: EdgeInsets.fromLTRB(25, 20, 0, 15),
                   child: homepageClassView()),
             ])),
           )),
