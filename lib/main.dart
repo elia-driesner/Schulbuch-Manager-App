@@ -64,7 +64,7 @@ class _AppState extends State<App> {
           .get()
           .then((DocumentSnapshot documentSnapshot) {
         if (documentSnapshot.exists) {
-          if (documentSnapshot['role'] == 'Schüler' &&
+          if (documentSnapshot['role'] == 'Schüler' ||
               documentSnapshot['role'] == 'Klassensprecher') {
             userDataVar = {
               'id': _user.uid,
