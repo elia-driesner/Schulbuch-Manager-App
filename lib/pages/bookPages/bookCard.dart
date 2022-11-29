@@ -18,7 +18,12 @@ class bookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: () => {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const bookView()),
+        )
+      },
       child: Container(
         margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
         child: Stack(

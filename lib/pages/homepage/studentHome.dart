@@ -86,12 +86,16 @@ class studentHomepage extends StatelessWidget {
                   child: bookListView()),
               Container(
                 margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(child: addBookButton()),
-                    Container(margin: const EdgeInsets.fromLTRB(7, 0, 7, 0)),
-                    Container(child: reportDamageButton()),
+                    Container(
+                        child: addBookButton(),
+                        margin: const EdgeInsets.fromLTRB(15, 0, 15, 0)),
+                    Container(margin: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                    Container(
+                        child: reportDamageButton(),
+                        margin: const EdgeInsets.fromLTRB(15, 0, 15, 0)),
                   ],
                 ),
               ),
