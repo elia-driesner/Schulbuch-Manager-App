@@ -43,7 +43,37 @@ class teacherHomepage extends StatelessWidget {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.fromLTRB(25, 0, 0, 0), child: Text('a')),
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                  child: Container(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Stack(
+                            children: <Widget>[
+                              Text(
+                                'Lehrer',
+                                style: TextStyle(
+                                  fontSize: 45,
+                                  fontWeight: FontWeight.bold,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 3
+                                    ..color = Color(0xFF18191F),
+                                ),
+                              ),
+                              const Text(
+                                'Lehrer',
+                                style: TextStyle(
+                                  fontSize: 45,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ]),
+                  )),
             ])),
           )),
     );
