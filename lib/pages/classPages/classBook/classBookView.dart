@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../user_data_cache.dart';
+import '../../../getBooks.dart';
 
 class classBookListView extends StatefulWidget {
   classBookListView({Key? key}) : super(key: key);
@@ -14,20 +15,20 @@ class classBookListView extends StatefulWidget {
 
 class _classBookListView extends State<classBookListView> {
   List<Widget> classBooks = [classBook(grade: 10, backgroundColor: 0xFF6796FF)];
-  // void creataBookCards() async {
-  //   var allBooks = await returnBooks();
-  //   userBooksVar = allBooks;
-  //   var bookCardsPlaceholder = <Widget>[];
+  void creataBookCards() async {
+    var allBooks = await returnClassBooks();
+    userBooksVar = allBooks;
+    var bookCardsPlaceholder = <Widget>[];
 
-  //   for (int i = 0; i < allBooks.length; i++) {
-  //     // bookCardsPlaceholder.add(Text(allBooks[i]['name']));
-  //     bookCardsPlaceholder
-  //         .add(classBook(grade: allBooks[i][0]['Title'], backgroundColor: 1));
-  //   }
-  //   setState(() {
-  //     classBooks = bookCardsPlaceholder;
-  //   });
-  // }
+    for (int i = 0; i < allBooks.length; i++) {
+      // bookCardsPlaceholder.add(Text(allBooks[i]['name']));
+      bookCardsPlaceholder
+          .add(classBook(grade: allBooks[i][0]['Title'], backgroundColor: 1));
+    }
+    setState(() {
+      classBooks = bookCardsPlaceholder;
+    });
+  }
 
   @override
   void initState() {}

@@ -7,7 +7,7 @@ void getBooks() async {
   for (int i = 0; i < userDataVar['books'].length; i++) {
     await FirebaseFirestore.instance
         .collection('Schools')
-        .doc('DBS')
+        .doc(userDataVar['school'])
         .collection('Books')
         .doc(userDataVar['books'][i])
         .get()
@@ -25,7 +25,7 @@ Future<List> returnBooks() async {
   for (int i = 0; i < userDataVar['books'].length; i++) {
     await FirebaseFirestore.instance
         .collection('Schools')
-        .doc('DBS')
+        .doc(userDataVar['school'])
         .collection('Books')
         .doc(userDataVar['books'][i])
         .get()
@@ -36,7 +36,7 @@ Future<List> returnBooks() async {
     });
     await FirebaseFirestore.instance
         .collection('Schools')
-        .doc('DBS')
+        .doc(userDataVar['school'])
         .collection('BookType')
         .doc(bookSnapshot['bookType'])
         .get()
@@ -56,7 +56,7 @@ Future<List> returnClassBooks() async {
 
   await FirebaseFirestore.instance
       .collection('Schools')
-      .doc('DBS')
+      .doc(userDataVar['school'])
       .collection('Classes')
       .doc(bookSnapshot['bookType'])
       .get()
