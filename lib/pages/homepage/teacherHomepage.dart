@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'widgets/sideMenu.dart';
 import '../../user_data_cache.dart';
-import '../../codeScanner/qrCodeWidget.dart';
-import '../bookPages/booksListView.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../classPages/classList/classMemberCard.dart';
-import '../classPages/classList/homepageClassView.dart';
+import '../classPages/classBook/classBookView.dart';
 
 class teacherHomepage extends StatelessWidget {
   const teacherHomepage({Key? key}) : super(key: key);
