@@ -4,7 +4,7 @@ class classBook extends StatelessWidget {
   classBook({Key? key, required this.grade, required this.backgroundColor})
       : super(key: key);
   int grade;
-  int backgroundColor;
+  String backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class classBook extends StatelessWidget {
                   width: 195,
                   child: Card(
                       shadowColor: Colors.transparent,
-                      color: Color(backgroundColor).withOpacity(1),
+                      color: Color(int.parse(backgroundColor)).withOpacity(1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
                         side: BorderSide(

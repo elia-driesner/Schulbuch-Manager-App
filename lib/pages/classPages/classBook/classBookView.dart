@@ -14,16 +14,16 @@ class classBookListView extends StatefulWidget {
 }
 
 class _classBookListView extends State<classBookListView> {
-  List<Widget> classBooks = [classBook(grade: 10, backgroundColor: 0xFF6796FF)];
+  List<Widget> classBooks = [];
   void creataBookCards() async {
     var allBooks = await returnClassBooks();
+    debugPrint(allBooks.toString());
     userBooksVar = allBooks;
     var bookCardsPlaceholder = <Widget>[];
-
     for (int i = 0; i < allBooks.length; i++) {
-      // bookCardsPlaceholder.add(Text(allBooks[i]['name']));
-      bookCardsPlaceholder
-          .add(classBook(grade: allBooks[i][0]['Title'], backgroundColor: 1));
+      bookCardsPlaceholder.add(classBook(
+          grade: allBooks[0][i]['grade'],
+          backgroundColor: allBooks[0][i]['color']));
     }
     setState(() {
       classBooks = bookCardsPlaceholder;
@@ -31,7 +31,9 @@ class _classBookListView extends State<classBookListView> {
   }
 
   @override
-  void initState() {}
+  void initState() {
+    creataBookCards();
+  }
 
   @override
   Widget build(BuildContext context) {

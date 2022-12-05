@@ -51,20 +51,19 @@ Future<List> returnBooks() async {
 }
 
 Future<List> returnClassBooks() async {
-  var books = [];
+  List books = [];
   var bookSnapshot;
 
   await FirebaseFirestore.instance
       .collection('Schools')
       .doc(userDataVar['school'])
       .collection('Classes')
-      .doc(bookSnapshot['bookType'])
+      .doc('classBooks')
       .get()
       .then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
-      books.add([documentSnapshot, bookSnapshot]);
+      books.add(documentSnapshot['classBooks']);
     }
   });
-
   return books;
 }
