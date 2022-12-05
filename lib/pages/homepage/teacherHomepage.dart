@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../classPages/classBook/classBookView.dart';
 
 class teacherHomepage extends StatelessWidget {
-  const teacherHomepage({Key? key}) : super(key: key);
+  teacherHomepage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +70,7 @@ class teacherHomepage extends StatelessWidget {
                           ),
                         ]),
                   )),
+              classBookListView()
             ])),
           )),
     );

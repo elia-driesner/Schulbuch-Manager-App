@@ -5,15 +5,30 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../user_data_cache.dart';
 
-class bookListView extends StatefulWidget {
-  bookListView({Key? key}) : super(key: key);
+class classBookListView extends StatefulWidget {
+  classBookListView({Key? key}) : super(key: key);
 
   @override
-  State<bookListView> createState() => _bookListViewState();
+  State<classBookListView> createState() => _classBookListView();
 }
 
-class _bookListViewState extends State<bookListView> {
-  var classBooks;
+class _classBookListView extends State<classBookListView> {
+  List<Widget> classBooks = [classBook(grade: 10, backgroundColor: 0xFF6796FF)];
+  // void creataBookCards() async {
+  //   var allBooks = await returnBooks();
+  //   userBooksVar = allBooks;
+  //   var bookCardsPlaceholder = <Widget>[];
+
+  //   for (int i = 0; i < allBooks.length; i++) {
+  //     // bookCardsPlaceholder.add(Text(allBooks[i]['name']));
+  //     bookCardsPlaceholder
+  //         .add(classBook(grade: allBooks[i][0]['Title'], backgroundColor: 1));
+  //   }
+  //   setState(() {
+  //     classBooks = bookCardsPlaceholder;
+  //   });
+  // }
+
   @override
   void initState() {}
 
@@ -22,7 +37,7 @@ class _bookListViewState extends State<bookListView> {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
         margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-        height: 220,
+        height: 500,
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: classBooks,

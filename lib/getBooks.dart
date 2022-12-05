@@ -49,3 +49,22 @@ Future<List> returnBooks() async {
 
   return books;
 }
+
+Future<List> returnClassBooks() async {
+  var books = [];
+  var bookSnapshot;
+
+  await FirebaseFirestore.instance
+      .collection('Schools')
+      .doc('DBS')
+      .collection('Classes')
+      .doc(bookSnapshot['bookType'])
+      .get()
+      .then((DocumentSnapshot documentSnapshot) {
+    if (documentSnapshot.exists) {
+      books.add([documentSnapshot, bookSnapshot]);
+    }
+  });
+
+  return books;
+}
