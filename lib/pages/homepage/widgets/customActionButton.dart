@@ -71,3 +71,69 @@ class reportDamageButton extends StatelessWidget {
     );
   }
 }
+
+class logoutBookButton extends StatelessWidget {
+  const logoutBookButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size(190, 50),
+          primary: Color.fromARGB(0, 255, 188, 18),
+          shadowColor: Color.fromARGB(0, 24, 25, 31),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          side: BorderSide(width: 3, color: Color(0xFF18191F)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+              child: Text('Buch abmelden',
+                  style: TextStyle(color: Color(0xFF18191F))),
+            ),
+            Icon(Icons.logout, color: Color(0xFF18191F))
+          ],
+        ),
+        onPressed: () => {},
+      ),
+    );
+  }
+}
+
+class loginBookButton extends StatelessWidget {
+  const loginBookButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size(190, 50),
+          primary: Color.fromARGB(0, 255, 188, 18),
+          shadowColor: Color.fromARGB(0, 24, 25, 31),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          side: BorderSide(width: 3, color: Color(0xFF18191F)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+              child: Text('Buch anmelden',
+                  style: TextStyle(color: Color(0xFF18191F))),
+            ),
+            Icon(Icons.login, color: Color(0xFF18191F))
+          ],
+        ),
+        onPressed: () => {},
+      ),
+    );
+  }
+}

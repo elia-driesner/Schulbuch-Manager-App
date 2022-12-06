@@ -74,7 +74,15 @@ class teacherHomepage extends StatelessWidget {
               Container(
                   child: classBookListView(),
                   margin: EdgeInsets.fromLTRB(0, 25, 0, 0)),
-              Container(child: reportDamageButton()),
+              Container(
+                  child: reportDamageButton(),
+                  margin: EdgeInsets.fromLTRB(15, 10, 15, 0)),
+              Container(
+                  child: logoutBookButton(),
+                  margin: EdgeInsets.fromLTRB(15, 10, 15, 0)),
+              Container(
+                  child: loginBookButton(),
+                  margin: EdgeInsets.fromLTRB(15, 10, 15, 0)),
             ])),
           )),
     );
