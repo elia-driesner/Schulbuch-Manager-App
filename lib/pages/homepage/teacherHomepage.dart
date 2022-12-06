@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../user_data_cache.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../classPages/classBook/classBookView.dart';
+import 'widgets/customActionButton.dart';
 
 class teacherHomepage extends StatelessWidget {
   teacherHomepage({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class teacherHomepage extends StatelessWidget {
               ),
               Container(
                   width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                  margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                   child: Container(
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,7 +71,10 @@ class teacherHomepage extends StatelessWidget {
                           ),
                         ]),
                   )),
-              classBookListView()
+              Container(
+                  child: classBookListView(),
+                  margin: EdgeInsets.fromLTRB(0, 25, 0, 0)),
+              Container(child: reportDamageButton()),
             ])),
           )),
     );

@@ -22,8 +22,7 @@ class _classBookListView extends State<classBookListView> {
     var bookCardsPlaceholder = <Widget>[];
     for (int i = 0; i < allBooks.length; i++) {
       bookCardsPlaceholder.add(classBook(
-          grade: allBooks[0][i]['grade'],
-          backgroundColor: allBooks[0][i]['color']));
+          grade: allBooks[i]['grade'], backgroundColor: allBooks[i]['color']));
     }
     setState(() {
       classBooks = bookCardsPlaceholder;
@@ -39,8 +38,11 @@ class _classBookListView extends State<classBookListView> {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
+          margin: EdgeInsets.fromLTRB(10, 0, 0, 10),
+          child: Text('Meine Klassen:', style: TextStyle(fontSize: 20))),
+      Container(
         margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-        height: 500,
+        height: 300,
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: classBooks,

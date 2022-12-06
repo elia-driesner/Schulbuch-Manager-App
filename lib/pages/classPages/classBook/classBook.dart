@@ -16,16 +16,16 @@ class classBook extends StatelessWidget {
         // )
       },
       child: Container(
-        margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+        margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
         child: Stack(
           children: [
             Container(
-              width: 124,
-              height: 167,
+              width: 185,
+              height: 275,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
-                  BoxShadow(offset: Offset(10, 4), color: Color(0xFF18191F))
+                  BoxShadow(offset: Offset(10, 6), color: Color(0xFF18191F))
                 ],
               ),
             ),

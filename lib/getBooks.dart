@@ -51,7 +51,7 @@ Future<List> returnBooks() async {
 }
 
 Future<List> returnClassBooks() async {
-  List books = [];
+  List<Map> books = [];
   var bookSnapshot;
 
   await FirebaseFirestore.instance
@@ -62,7 +62,9 @@ Future<List> returnClassBooks() async {
       .get()
       .then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
-      books.add(documentSnapshot['classBooks']);
+      documentSnapshot['classBooks'].forEach((book) {
+        books.add(book);
+      });
     }
   });
   return books;
