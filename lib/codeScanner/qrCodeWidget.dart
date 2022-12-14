@@ -5,8 +5,8 @@ import '../main.dart';
 import 'qrFunctions.dart';
 
 class qrCodeScannerWidget extends StatefulWidget {
-  qrCodeScannerWidget({Key? key}) : super(key: key);
-
+  qrCodeScannerWidget({Key? key, required this.purpose}) : super(key: key);
+  var purpose;
   @override
   State<qrCodeScannerWidget> createState() => _qrCodeScannerWidgetState();
 }
@@ -33,7 +33,7 @@ class _qrCodeScannerWidgetState extends State<qrCodeScannerWidget> {
 
   void initState() {
     setState(() => {});
-    debugPrint(addBook(bookCode).toString());
+    debugPrint(loginBook(bookCode).toString());
   }
 
   @override
@@ -53,7 +53,7 @@ class _qrCodeScannerWidgetState extends State<qrCodeScannerWidget> {
   }
 
   Widget buildResult() =>
-      Text(barcode != null ? 'Result: ${bookCode}' : 'Scan a code',
+      Text(barcode != null ? 'Result: ${barcode}' : 'Scan a code',
           maxLines: 3, style: TextStyle(color: Colors.white));
 
   Widget buildQrView(BuildContext context) => QRView(

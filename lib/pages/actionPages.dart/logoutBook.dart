@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-class logout extends StatelessWidget {
-  const logout({Key? key}) : super(key: key);
+class logoutBookPage extends StatelessWidget {
+  const logoutBookPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+        body: SafeArea(
+      child: Text('a'),
+    ));
   }
 }

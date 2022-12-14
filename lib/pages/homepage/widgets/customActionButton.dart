@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../codeScanner/qrCodeWidget.dart';
+import '../../actionPages.dart/logoutBook.dart';
 
 class addBookButton extends StatelessWidget {
   const addBookButton({Key? key}) : super(key: key);
@@ -31,7 +32,8 @@ class addBookButton extends StatelessWidget {
         onPressed: () => {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => qrCodeScannerWidget()),
+            MaterialPageRoute(
+                builder: (context) => qrCodeScannerWidget(purpose: 'login')),
           )
         },
       ),
@@ -99,7 +101,13 @@ class logoutBookButton extends StatelessWidget {
             Icon(Icons.logout, color: Color(0xFF18191F))
           ],
         ),
-        onPressed: () => {},
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => qrCodeScannerWidget(purpose: 'logout')),
+          )
+        },
       ),
     );
   }

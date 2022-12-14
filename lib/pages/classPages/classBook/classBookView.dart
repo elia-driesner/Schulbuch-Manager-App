@@ -17,7 +17,6 @@ class _classBookListView extends State<classBookListView> {
   List<Widget> classBooks = [];
   void creataBookCards() async {
     var allBooks = await returnClassBooks();
-    debugPrint(allBooks.toString());
     userBooksVar = allBooks;
     var bookCardsPlaceholder = <Widget>[];
     for (int i = 0; i < allBooks.length; i++) {
