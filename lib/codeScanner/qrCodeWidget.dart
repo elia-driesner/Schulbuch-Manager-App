@@ -5,8 +5,8 @@ import '../main.dart';
 import 'qrFunctions.dart';
 
 class qrCodeScannerWidget extends StatefulWidget {
+  final purpose;
   qrCodeScannerWidget({Key? key, required this.purpose}) : super(key: key);
-  var purpose;
   @override
   State<qrCodeScannerWidget> createState() => _qrCodeScannerWidgetState();
 }
@@ -16,7 +16,6 @@ class _qrCodeScannerWidgetState extends State<qrCodeScannerWidget> {
   final qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? barcode;
   var bookCode = 'GZIALGdzagfzdlgbailzuwfgbiazuGHfi';
-
   @override
   void dispose() {
     controller?.dispose();
@@ -33,7 +32,13 @@ class _qrCodeScannerWidgetState extends State<qrCodeScannerWidget> {
 
   void initState() {
     setState(() => {});
-    debugPrint(loginBook(bookCode).toString());
+    if (widget.purpose == 'login') {
+      debugPrint(loginBook(bookCode).toString());
+      debugPrint('login');
+    } else if (widget.purpose == 'logout') {
+      debugPrint(logoutBook(bookCode).toString());
+      debugPrint('logout');
+    }
   }
 
   @override

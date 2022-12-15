@@ -49,19 +49,11 @@ Future<bool> logoutBook(bookCode) async {
       .get()
       .then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
-      DocumentReference userRef = FirebaseFirestore.instance
-          .collection('Accounts')
-          .doc(userDataVar['id']);
+      DocumentReference userRef =
+          FirebaseFirestore.instance.collection('Accounts').doc('user');
       userRef.update({
         'books': FieldValue.arrayRemove([bookCode])
       });
-
-      FirebaseFirestore.instance
-          .collection('Schools')
-          .doc(userDataVar['school'])
-          .collection('Books')
-          .doc(bookCode.toString())
-          .update({'user': ''});
 
       success = true;
     } else {
@@ -69,6 +61,12 @@ Future<bool> logoutBook(bookCode) async {
       success = false;
     }
   });
+  FirebaseFirestore.instance
+      .collection('Schools')
+      .doc(userDataVar['school'])
+      .collection('Books')
+      .doc(bookCode.toString())
+      .update({'user': ''});
 
   return Future.value(success);
 }

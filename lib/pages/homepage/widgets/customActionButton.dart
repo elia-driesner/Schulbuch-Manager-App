@@ -140,7 +140,13 @@ class loginBookButton extends StatelessWidget {
             Icon(Icons.login, color: Color(0xFF18191F))
           ],
         ),
-        onPressed: () => {},
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => qrCodeScannerWidget(purpose: 'login')),
+          )
+        },
       ),
     );
   }
