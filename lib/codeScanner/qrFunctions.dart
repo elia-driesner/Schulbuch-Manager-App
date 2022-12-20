@@ -47,10 +47,11 @@ Future<bool> logoutBook(bookCode) async {
       .collection('Books')
       .doc(bookCode.toString())
       .get()
-      .then((DocumentSnapshot documentSnapshot) {
-    if (documentSnapshot.exists) {
-      DocumentReference userRef =
-          FirebaseFirestore.instance.collection('Accounts').doc('user');
+      .then((DocumentSnapshot bookSnapshot) {
+    if (bookSnapshot.exists) {
+      DocumentReference userRef = FirebaseFirestore.instance
+          .collection('Accounts')
+          .doc(bookSnapshot['user']);
       userRef.update({
         'books': FieldValue.arrayRemove([bookCode])
       });

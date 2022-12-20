@@ -134,7 +134,6 @@ class _AppState extends State<App> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         drawer: sideMenu(),
-        // ignore: avoid_unnecessary_containers
         body: Container(
           child: Column(
             children: [
