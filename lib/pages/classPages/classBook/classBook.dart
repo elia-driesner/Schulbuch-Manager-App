@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'classView.dart';
 
 class classBook extends StatelessWidget {
   classBook({Key? key, required this.grade, required this.backgroundColor})
@@ -10,10 +11,13 @@ class classBook extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => const bookView()),
-        // )
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => classPage(
+                    classNumber: grade,
+                  )),
+        )
       },
       child: Container(
         margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
