@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../classList/getClass.dart';
-import '../classList/classMemberCard.dart';
+import 'classViewCard.dart';
 
 class classPage extends StatefulWidget {
   var classNumber;
@@ -10,15 +10,16 @@ class classPage extends StatefulWidget {
 }
 
 class _classPageState extends State<classPage> {
-  var classMemberCards;
+  List<Widget> classMemberCards = [];
   void createClassMemberCards() async {
-    var classList = await getClassMember();
+    var classList = await getClassList(widget.classNumber);
 
     classList.forEach((member) {
-      classMemberCards.add(classMemberCard({
+      classMemberCards.add(classViewCard({
         'name': member['name'],
         'role': member['role'],
-        'rights': member['rights']
+        'rights': member['rights'],
+        'uid': member['uid'],
       }));
     });
 
@@ -27,14 +28,30 @@ class _classPageState extends State<classPage> {
     });
   }
 
+  void initState() {
+    createClassMemberCards();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
       child: Container(
-        margin: EdgeInsets.fromLTRB(30, 20, 0, 0),
-        child: Text('Klasse ' + widget.classNumber.toString(),
-            style: TextStyle(fontSize: 27)),
+        margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
+        child: Stack(
+          children: [
+            Text('Klasse ' + widget.classNumber.toString(),
+                style: TextStyle(fontSize: 27)),
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 50, 0, 0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: classMemberCards,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     ));
   }

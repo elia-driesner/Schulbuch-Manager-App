@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class classMemberCard extends StatelessWidget {
-  classMemberCard(this.data);
+class classViewCard extends StatelessWidget {
+  classViewCard(this.data);
 
   var data;
 
