@@ -10,12 +10,12 @@ class classPage extends StatefulWidget {
 }
 
 class _classPageState extends State<classPage> {
-  List<Widget> classMemberCards = [];
+  List<Widget> classBookCards = [];
   void createClassMemberCards() async {
     var classList = await getClassList(widget.classNumber);
 
     classList.forEach((member) {
-      classMemberCards.add(classViewCard({
+      classBookCards.add(classViewCard({
         'name': member['name'],
         'role': member['role'],
         'rights': member['rights'],
@@ -24,7 +24,7 @@ class _classPageState extends State<classPage> {
     });
 
     setState(() {
-      classMemberCards;
+      classBookCards;
     });
   }
 
@@ -57,15 +57,14 @@ class _classPageState extends State<classPage> {
                     ),
                   ),
                 ),
-                Text('Klasse ' + widget.classNumber.toString(),
-                    style: TextStyle(fontSize: 27)),
+                Text('Klasse auswählen', style: TextStyle(fontSize: 27)),
               ],
             ),
             Container(
               margin: EdgeInsets.fromLTRB(10, 50, 0, 0),
               child: SingleChildScrollView(
                 child: Column(
-                  children: classMemberCards,
+                  children: classBookCards,
                 ),
               ),
             )
