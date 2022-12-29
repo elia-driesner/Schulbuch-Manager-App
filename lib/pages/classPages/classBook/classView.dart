@@ -11,16 +11,30 @@ class classPage extends StatefulWidget {
 
 class _classPageState extends State<classPage> {
   List<Widget> classMemberCards = [];
+  final snackBar = SnackBar(
+    content: const Text(
+      'Bitte einen Schüler auswählen',
+      style: TextStyle(fontSize: 15),
+    ),
+  );
   void createClassMemberCards() async {
     var classList = await getClassList(widget.classNumber);
 
     classList.forEach((member) {
-      classMemberCards.add(classViewCard({
-        'name': member['name'],
-        'role': member['role'],
-        'rights': member['rights'],
-        'uid': member['uid'],
-      }));
+      classMemberCards.add(GestureDetector(
+        onTap: () {
+          if (member['role'] != 'Schüler' &&
+              member['role'] != 'Klassensprecher') {
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
+        },
+        child: classViewCard({
+          'name': member['name'],
+          'role': member['role'],
+          'rights': member['rights'],
+          'uid': member['uid'],
+        }),
+      ));
     });
 
     setState(() {

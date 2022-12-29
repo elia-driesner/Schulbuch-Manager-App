@@ -80,9 +80,6 @@ class teacherHomepage extends StatelessWidget {
               Container(
                   child: logoutBookButton(),
                   margin: EdgeInsets.fromLTRB(15, 10, 15, 0)),
-              Container(
-                  child: loginBookButton(),
-                  margin: EdgeInsets.fromLTRB(15, 10, 15, 0)),
             ])),
           )),
     );
