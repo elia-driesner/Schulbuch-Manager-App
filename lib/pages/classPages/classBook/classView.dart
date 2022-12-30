@@ -24,6 +24,7 @@ class _classPageState extends State<classPage> {
     classList.forEach((member) {
       classMemberCards.add(GestureDetector(
         onTap: () {
+          member['classNumber'] = widget.classNumber;
           if (member['role'] != 'Schüler' &&
               member['role'] != 'Klassensprecher') {
             ScaffoldMessenger.of(context).showSnackBar(snackBar);

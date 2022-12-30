@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../codeScanner/qrCodeWidget.dart';
-import '../../actionPages.dart/logoutBook.dart';
 
 class addBookButton extends StatelessWidget {
   const addBookButton({Key? key}) : super(key: key);
@@ -114,7 +113,8 @@ class logoutBookButton extends StatelessWidget {
 }
 
 class loginBookButton extends StatelessWidget {
-  const loginBookButton({Key? key}) : super(key: key);
+  var studentUid;
+  loginBookButton({Key? key, required this.studentUid}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +144,8 @@ class loginBookButton extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => qrCodeScannerWidget(purpose: 'login')),
+                builder: (context) =>
+                    qrCodeScannerWidget(purpose: 'login', uid: studentUid)),
           )
         },
       ),

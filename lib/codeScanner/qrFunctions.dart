@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../user_data_cache.dart';
 
-Future<bool> loginBook(bookCode) async {
+Future<bool> loginBook(bookCode, uid) async {
   var success = false;
   await FirebaseFirestore.instance
       .collection('Schools')
@@ -16,9 +16,8 @@ Future<bool> loginBook(bookCode) async {
       .get()
       .then((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.exists) {
-      DocumentReference userRef = FirebaseFirestore.instance
-          .collection('Accounts')
-          .doc(userDataVar['id']);
+      DocumentReference userRef =
+          FirebaseFirestore.instance.collection('Accounts').doc(uid);
       userRef.update({
         'books': FieldValue.arrayUnion([bookCode])
       });
@@ -28,7 +27,7 @@ Future<bool> loginBook(bookCode) async {
           .doc(userDataVar['school'])
           .collection('Books')
           .doc(bookCode.toString())
-          .update({'user': userDataVar['id']});
+          .update({'user': uid});
 
       success = true;
     } else {
