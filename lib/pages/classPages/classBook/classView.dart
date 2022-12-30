@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../classList/getClass.dart';
 import 'classViewCard.dart';
+import 'studentInfoView/studentView.dart';
 
 class classPage extends StatefulWidget {
   var classNumber;
@@ -26,6 +27,12 @@ class _classPageState extends State<classPage> {
           if (member['role'] != 'Schüler' &&
               member['role'] != 'Klassensprecher') {
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          } else {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => studentView(studentInfo: member)),
+            );
           }
         },
         child: classViewCard({
