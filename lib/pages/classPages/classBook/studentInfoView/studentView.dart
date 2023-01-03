@@ -49,8 +49,9 @@ class studentView extends StatelessWidget {
           ),
           Container(
               child: bookListView(userCred: [
-            this.studentInfo['books'],
-            this.studentInfo['school']
+            'undefined',
+            this.studentInfo['school'],
+            this.studentInfo['uid']
           ])),
           Container(
               child: loginBookButton(studentUid: this.studentInfo['uid']),

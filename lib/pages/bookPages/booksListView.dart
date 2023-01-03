@@ -20,6 +20,10 @@ class _bookListViewState extends State<bookListView> {
   var bookCards = <Widget>[];
 
   void creataBookCards() async {
+    if (widget.userCred[0] == 'undefined') {
+      widget.userCred[0] = await getStudentBooks(widget.userCred[2]);
+    }
+    debugPrint(widget.userCred[1]);
     var allBooks = await returnBooks(widget.userCred[0], widget.userCred[1]);
     userBooksVar = allBooks;
     var bookCardsPlaceholder = <Widget>[];

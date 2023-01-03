@@ -41,6 +41,7 @@ class _classPageState extends State<classPage> {
           'role': member['role'],
           'rights': member['rights'],
           'uid': member['uid'],
+          'books': member['books'],
         }),
       ));
     });

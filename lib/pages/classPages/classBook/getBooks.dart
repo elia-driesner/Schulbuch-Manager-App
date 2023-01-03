@@ -22,6 +22,7 @@ void getBooks() async {
 Future<List> returnBooks(userBooks, userSchool) async {
   var books = [];
   var bookSnapshot;
+
   for (int i = 0; i < userBooks.length; i++) {
     await FirebaseFirestore.instance
         .collection('Schools')
@@ -47,6 +48,21 @@ Future<List> returnBooks(userBooks, userSchool) async {
     });
   }
 
+  return books;
+}
+
+Future<List> getStudentBooks(uid) async {
+  var books;
+
+  await FirebaseFirestore.instance
+      .collection('Accounts')
+      .doc(uid)
+      .get()
+      .then((DocumentSnapshot documentSnapshot) {
+    if (documentSnapshot.exists) {
+      books = documentSnapshot['books'];
+    }
+  });
   return books;
 }
 
