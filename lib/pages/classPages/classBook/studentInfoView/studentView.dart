@@ -48,11 +48,23 @@ class studentView extends StatelessWidget {
             ],
           ),
           Container(
-              child: bookListView(userCred: [
-            'undefined',
-            this.studentInfo['school'],
-            this.studentInfo['uid']
-          ])),
+            margin: EdgeInsets.fromLTRB(27, 15, 0, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Text('Bücher:', style: TextStyle(fontSize: 20)),
+                ),
+                Container(
+                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: bookListView(userCred: [
+                      'undefined',
+                      this.studentInfo['school'],
+                      this.studentInfo['uid']
+                    ])),
+              ],
+            ),
+          ),
           Container(
               child: loginBookButton(studentUid: this.studentInfo['uid']),
               margin: EdgeInsets.fromLTRB(25, 30, 25, 0))
