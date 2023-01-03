@@ -19,15 +19,15 @@ void getBooks() async {
   }
 }
 
-Future<List> returnBooks() async {
+Future<List> returnBooks(userBooks, userSchool) async {
   var books = [];
   var bookSnapshot;
-  for (int i = 0; i < userDataVar['books'].length; i++) {
+  for (int i = 0; i < userBooks.length; i++) {
     await FirebaseFirestore.instance
         .collection('Schools')
-        .doc(userDataVar['school'])
+        .doc(userSchool)
         .collection('Books')
-        .doc(userDataVar['books'][i])
+        .doc(userBooks[i])
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
@@ -36,7 +36,7 @@ Future<List> returnBooks() async {
     });
     await FirebaseFirestore.instance
         .collection('Schools')
-        .doc(userDataVar['school'])
+        .doc(userSchool)
         .collection('BookType')
         .doc(bookSnapshot['bookType'])
         .get()

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../homepage/widgets/customActionButton.dart';
+import '../../../bookPages/booksListView.dart';
 
 class studentView extends StatelessWidget {
   var studentInfo;
@@ -13,8 +14,23 @@ class studentView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back, size: 20),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(13),
+                elevation: 0,
+                primary: Colors.transparent,
+                onPrimary: Color(0xFF18191F),
+              ),
+            ),
+          ),
+          Container(
               child: Container(
-            margin: EdgeInsets.fromLTRB(27, 20, 0, 0),
+            margin: EdgeInsets.fromLTRB(27, 0, 0, 0),
             child: Text(this.studentInfo['name'],
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           )),
@@ -31,6 +47,11 @@ class studentView extends StatelessWidget {
                       style: TextStyle(fontSize: 17)))
             ],
           ),
+          Container(
+              child: bookListView(userCred: [
+            this.studentInfo['books'],
+            this.studentInfo['school']
+          ])),
           Container(
               child: loginBookButton(studentUid: this.studentInfo['uid']),
               margin: EdgeInsets.fromLTRB(25, 30, 25, 0))

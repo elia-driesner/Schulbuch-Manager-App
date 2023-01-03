@@ -7,7 +7,8 @@ import '../../../user_data_cache.dart';
 import '../classPages/classBook/getBooks.dart';
 
 class bookListView extends StatefulWidget {
-  bookListView({Key? key}) : super(key: key);
+  var userCred;
+  bookListView({Key? key, required this.userCred}) : super(key: key);
 
   @override
   State<bookListView> createState() => _bookListViewState();
@@ -19,7 +20,7 @@ class _bookListViewState extends State<bookListView> {
   var bookCards = <Widget>[];
 
   void creataBookCards() async {
-    var allBooks = await returnBooks();
+    var allBooks = await returnBooks(widget.userCred[0], widget.userCred[1]);
     userBooksVar = allBooks;
     var bookCardsPlaceholder = <Widget>[];
 

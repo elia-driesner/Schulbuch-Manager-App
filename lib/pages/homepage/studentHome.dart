@@ -83,7 +83,8 @@ class studentHomepage extends StatelessWidget {
                       ])),
               Container(
                   margin: const EdgeInsets.fromLTRB(15, 35, 15, 0),
-                  child: bookListView()),
+                  child: bookListView(
+                      userCred: [userDataVar['books'], userDataVar['school']])),
               Container(
                 margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Column(
