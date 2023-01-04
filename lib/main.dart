@@ -129,6 +129,10 @@ class _AppState extends State<App> {
     super.dispose();
   }
 
+  void reloadApp() {
+    setState(() => {page = page});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -32,15 +32,21 @@ class _qrCodeScannerWidgetState extends State<qrCodeScannerWidget> {
     controller!.resumeCamera();
   }
 
+  void runFunctions(bookCode) async {
+    if (widget.purpose == 'login') {
+      await loginBook(bookCode, widget.uid);
+      await Future.delayed(const Duration(seconds: 3));
+      Navigator.pop(context, true);
+    } else if (widget.purpose == 'logout') {
+      await logoutBook(bookCode);
+      await Future.delayed(const Duration(seconds: 3));
+      Navigator.pop(context, true);
+    }
+  }
+
   void initState() {
     setState(() => {});
-    if (widget.purpose == 'login') {
-      debugPrint(loginBook(bookCode, widget.uid).toString());
-      debugPrint('login');
-    } else if (widget.purpose == 'logout') {
-      debugPrint(logoutBook(bookCode).toString());
-      debugPrint('logout');
-    }
+    runFunctions(bookCode);
   }
 
   @override
