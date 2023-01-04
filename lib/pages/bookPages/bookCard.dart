@@ -12,8 +12,8 @@ class book {
 }
 
 class bookCard extends StatelessWidget {
-  bookCard({Key? key, required this.bookName}) : super(key: key);
-  var bookName = '';
+  bookCard({Key? key, required this.bookInfo}) : super(key: key);
+  var bookInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,10 @@ class bookCard extends StatelessWidget {
       onTap: () => {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const bookView()),
+          MaterialPageRoute(
+              builder: (context) => bookView(
+                    bookInfo: bookInfo,
+                  )),
         )
       },
       child: Container(
@@ -59,7 +62,8 @@ class bookCard extends StatelessWidget {
                 ),
                 Container(
                     margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: Text(bookName, style: const TextStyle(fontSize: 20)))
+                    child: Text(bookInfo[0]['Title'],
+                        style: const TextStyle(fontSize: 20)))
               ],
             ),
           ],

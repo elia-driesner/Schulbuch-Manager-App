@@ -30,7 +30,7 @@ class _bookListViewState extends State<bookListView> {
 
     for (int i = 0; i < allBooks.length; i++) {
       // bookCardsPlaceholder.add(Text(allBooks[i]['name']));
-      bookCardsPlaceholder.add(bookCard(bookName: allBooks[i][0]['Title']));
+      bookCardsPlaceholder.add(bookCard(bookInfo: allBooks[i]));
     }
     setState(() {
       bookCards = bookCardsPlaceholder;
