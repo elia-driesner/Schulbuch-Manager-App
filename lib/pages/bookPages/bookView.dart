@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'bookCard.dart';
+import '../../user_data_cache.dart';
 
 class bookView extends StatelessWidget {
   var bookInfo;
@@ -12,6 +13,7 @@ class bookView extends StatelessWidget {
             child: SafeArea(
                 child: Container(
                     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           child: ElevatedButton(
@@ -29,7 +31,15 @@ class bookView extends StatelessWidget {
           ),
         ),
         Row(
-          children: [],
+          children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(27, 20, 0, 0),
+              child: bookCard(
+                bookInfo: bookInfo,
+              ),
+            ),
+            Container(child: Text(selectedUserData['name']))
+          ],
         )
       ],
     )))));

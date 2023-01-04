@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import '../../../homepage/widgets/customActionButton.dart';
 import '../../../bookPages/booksListView.dart';
+import '../../../../user_data_cache.dart';
 
-class studentView extends StatelessWidget {
+class studentView extends StatefulWidget {
   var studentInfo;
   studentView({Key? key, required this.studentInfo}) : super(key: key);
+
+  @override
+  State<studentView> createState() => _studentViewState();
+}
+
+class _studentViewState extends State<studentView> {
+  void initState() {
+    selectedUserData = this.widget.studentInfo;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +41,7 @@ class studentView extends StatelessWidget {
           Container(
               child: Container(
             margin: EdgeInsets.fromLTRB(27, 0, 0, 0),
-            child: Text(this.studentInfo['name'],
+            child: Text(this.widget.studentInfo['name'],
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           )),
           Row(
@@ -39,11 +49,12 @@ class studentView extends StatelessWidget {
               Container(
                   margin: EdgeInsets.fromLTRB(27, 5, 0, 0),
                   child: Text(
-                      'Klasse ' + this.studentInfo['classNumber'].toString(),
+                      'Klasse ' +
+                          this.widget.studentInfo['classNumber'].toString(),
                       style: TextStyle(fontSize: 17))),
               Container(
                   margin: EdgeInsets.fromLTRB(20, 5, 0, 0),
-                  child: Text(this.studentInfo['role'].toString(),
+                  child: Text(this.widget.studentInfo['role'].toString(),
                       style: TextStyle(fontSize: 17)))
             ],
           ),
@@ -59,14 +70,15 @@ class studentView extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                     child: bookListView(userCred: [
                       'undefined',
-                      this.studentInfo['school'],
-                      this.studentInfo['uid']
+                      this.widget.studentInfo['school'],
+                      this.widget.studentInfo['uid']
                     ])),
               ],
             ),
           ),
           Container(
-              child: loginBookButton(studentUid: this.studentInfo['uid']),
+              child:
+                  loginBookButton(studentUid: this.widget.studentInfo['uid']),
               margin: EdgeInsets.fromLTRB(25, 30, 25, 0))
         ],
       ),
