@@ -6,9 +6,10 @@ import 'package:flutter/cupertino.dart';
 
 import '../not_used_code/registerSelectionPage.dart';
 import '../main.dart';
-// import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'changePassword.dart';
+
+import '../config/palette.dart';
 
 class signInPage extends StatefulWidget {
   const signInPage({Key? key}) : super(key: key);
@@ -97,7 +98,7 @@ class _signInPageState extends State<signInPage> {
         body: SingleChildScrollView(
       child: Container(
         height: 1000,
-        color: Color.fromARGB(255, 255, 255, 255),
+        color: WHITE,
         child: Column(
           children: [
             Column(
@@ -125,7 +126,7 @@ class _signInPageState extends State<signInPage> {
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 0,
                                       fontSize: 35,
-                                      color: Color(0xFF18191F))),
+                                      color: BLACK)),
                             ),
                           ),
                         ),
@@ -143,10 +144,9 @@ class _signInPageState extends State<signInPage> {
                                 shadowColor: Colors.transparent,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.0),
-                                  side: BorderSide(
-                                      color: Color(0xFF18191F), width: 2),
+                                  side: BorderSide(color: BLACK, width: 2),
                                 ),
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: WHITE,
                                 margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 child: Container(
                                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -160,20 +160,18 @@ class _signInPageState extends State<signInPage> {
                                           labelText: 'Email',
                                           prefixIcon:
                                               Icon(Icons.email_outlined),
-                                          labelStyle: TextStyle(
-                                              color: Color(0xFF18191F))),
-                                      style: TextStyle(
-                                          color: Color(0xFF18191F), height: 1)),
+                                          labelStyle: TextStyle(color: BLACK)),
+                                      style:
+                                          TextStyle(color: BLACK, height: 1)),
                                 ),
                               ),
                               Card(
                                 shadowColor: Color.fromARGB(0, 0, 0, 0),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.0),
-                                  side: BorderSide(
-                                      color: Color(0xFF18191F), width: 2),
+                                  side: BorderSide(color: BLACK, width: 2),
                                 ),
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: WHITE,
                                 margin: EdgeInsets.fromLTRB(
                                     0, sHeigth * 0.035, 0, 0),
                                 child: Container(
@@ -198,10 +196,9 @@ class _signInPageState extends State<signInPage> {
                                           border: InputBorder.none,
                                           prefixIcon: Icon(Icons.lock_outlined),
                                           labelText: 'Password',
-                                          labelStyle: TextStyle(
-                                              color: Color(0xFF18191F))),
-                                      style: TextStyle(
-                                          color: Color(0xFF18191F), height: 1)),
+                                          labelStyle: TextStyle(color: BLACK)),
+                                      style:
+                                          TextStyle(color: BLACK, height: 1)),
                                 ),
                               ),
                             ]),
@@ -218,19 +215,17 @@ class _signInPageState extends State<signInPage> {
                       children: [
                         Container(
                           decoration: BoxDecoration(boxShadow: [
-                            BoxShadow(
-                                offset: Offset(4, 5), color: Color(0xFF18191F))
+                            BoxShadow(offset: Offset(4, 5), color: BLACK)
                           ], borderRadius: BorderRadius.circular(15)),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               minimumSize: const Size(500, 50),
-                              primary: const Color(0xFFFFBD12),
-                              shadowColor: Color(0xFF18191F),
+                              primary: ACCENT,
+                              shadowColor: BLACK,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
-                              side: BorderSide(
-                                  width: 2, color: Color(0xFF18191F)),
+                              side: BorderSide(width: 2, color: BLACK),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -238,11 +233,9 @@ class _signInPageState extends State<signInPage> {
                                 Container(
                                   margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                   child: Text('Anmelden',
-                                      style:
-                                          TextStyle(color: Color(0xFF18191F))),
+                                      style: TextStyle(color: BLACK)),
                                 ),
-                                Icon(Icons.arrow_forward,
-                                    color: Color(0xFF18191F))
+                                Icon(Icons.arrow_forward, color: BLACK)
                               ],
                             ),
                             onPressed: () => sign_in(
@@ -259,7 +252,7 @@ class _signInPageState extends State<signInPage> {
                               margin: const EdgeInsets.fromLTRB(0, 25, 0, 10),
                               child: Text(signInStatusMessage.toString(),
                                   style: const TextStyle(
-                                      color: Color(0xFF18191F), fontSize: 14)),
+                                      color: BLACK, fontSize: 14)),
                             ),
                         ]))
                       ],
