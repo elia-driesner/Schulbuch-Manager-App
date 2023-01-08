@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../user_data_cache.dart';
 import 'changePassword/changePasswordCard.dart';
 
+import '../../config/palette.dart';
+
 class settingsPage extends StatelessWidget {
   const settingsPage({Key? key}) : super(key: key);
 
@@ -28,31 +30,24 @@ class settingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      color: Colors.white,
+      color: WHITE,
       child: SafeArea(
           child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(offset: Offset(2, 2), color: Color(0xFF18191F))
-              ],
-            ),
-            margin: EdgeInsets.fromLTRB(0, 0, 320, 0),
             child: ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
               child: Icon(Icons.arrow_back, size: 20),
               style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(13),
-
-                  primary: Colors.white,
-                  onPrimary: Color(0xFF18191F),
-
-                  side: BorderSide(width: 1, color: Color(0xFF103A24))),
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(13),
+                elevation: 0,
+                primary: Colors.transparent,
+                onPrimary: BLACK,
+              ),
             ),
           ),
           changePasswordCard(),
