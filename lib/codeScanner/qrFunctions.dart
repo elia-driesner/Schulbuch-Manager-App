@@ -8,6 +8,7 @@ import '../user_data_cache.dart';
 
 Future<bool> loginBook(bookCode, uid) async {
   var success = false;
+  debugPrint(uid);
   await FirebaseFirestore.instance
       .collection('Schools')
       .doc(userDataVar['school'])
@@ -27,7 +28,7 @@ Future<bool> loginBook(bookCode, uid) async {
           .doc(userDataVar['school'])
           .collection('Books')
           .doc(bookCode.toString())
-          .update({'user': uid});
+          .update({'user': uid, 'lastActivity': FieldValue.serverTimestamp()});
 
       success = true;
     } else {
@@ -66,7 +67,7 @@ Future<bool> logoutBook(bookCode) async {
       .doc(userDataVar['school'])
       .collection('Books')
       .doc(bookCode.toString())
-      .update({'user': ''});
+      .update({'user': '', 'lastActivity': FieldValue.serverTimestamp()});
 
   return Future.value(success);
 }

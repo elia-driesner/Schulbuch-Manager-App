@@ -91,11 +91,15 @@ class studentHomepage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                        child: addBookButton(),
+                        child: addBookButton(uid: userDataVar['uid']),
                         margin: const EdgeInsets.fromLTRB(15, 0, 15, 0)),
                     Container(margin: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
                     Container(
                         child: reportDamageButton(),
+                        margin: const EdgeInsets.fromLTRB(15, 0, 15, 0)),
+                    Container(margin: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                    Container(
+                        child: logoutBookButton(),
                         margin: const EdgeInsets.fromLTRB(15, 0, 15, 0)),
                   ],
                 ),

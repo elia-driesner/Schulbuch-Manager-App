@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import '../../../codeScanner/qrCodeWidget.dart';
 
 class addBookButton extends StatelessWidget {
-  const addBookButton({Key? key}) : super(key: key);
+  final uid;
+  addBookButton({Key? key, required this.uid}) : super(key: key);
+
+  void initState() {
+    debugPrint(uid);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,8 @@ class addBookButton extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => qrCodeScannerWidget(purpose: 'login')),
+                builder: (context) =>
+                    qrCodeScannerWidget(purpose: 'login', uid: this.uid)),
           )
         },
       ),

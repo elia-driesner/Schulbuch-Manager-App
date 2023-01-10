@@ -67,7 +67,7 @@ class _AppState extends State<App> {
           if (documentSnapshot['role'] == 'Schüler' ||
               documentSnapshot['role'] == 'Klassensprecher') {
             userDataVar = {
-              'id': _user.uid,
+              'uid': _user.uid,
               'class': documentSnapshot['class'],
               'school': documentSnapshot['school'],
               'books': documentSnapshot['books'],
@@ -122,6 +122,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     getUser();
+    selectedUserData = userDataVar;
   }
 
   @override
