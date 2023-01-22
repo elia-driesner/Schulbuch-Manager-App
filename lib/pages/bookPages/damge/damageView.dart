@@ -10,12 +10,17 @@ class bookDamageView extends StatefulWidget {
 }
 
 class _bookDamageViewState extends State<bookDamageView> {
+  List<Widget> damageCards = [];
+  void createDmageCards() {}
   void initState() {
     getDamages(widget.bookInfo);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('a'));
+    return Container(
+        child: Column(
+      children: damageCards,
+    ));
   }
 }
