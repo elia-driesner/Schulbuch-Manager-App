@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'getDamages.dart';
+import 'damageCard.dart';
 
 class bookDamageView extends StatefulWidget {
   var bookInfo;
@@ -11,16 +12,27 @@ class bookDamageView extends StatefulWidget {
 
 class _bookDamageViewState extends State<bookDamageView> {
   List<Widget> damageCards = [];
-  void createDmageCards() {}
+  void createDmageCards() async {
+    var damages = await getDamages(widget.bookInfo);
+    for (var bookDamages in damages) {
+      debugPrint(bookDamages.toString());
+      damageCards.add(damageCard(damageInfo: bookDamages));
+    }
+    setState(() {
+      damageCards;
+    });
+  }
+
   void initState() {
-    getDamages(widget.bookInfo);
+    createDmageCards();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(
-      children: damageCards,
-    ));
+      child: Column(
+        children: damageCards,
+      ),
+    );
   }
 }

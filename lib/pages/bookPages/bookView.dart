@@ -69,13 +69,16 @@ class bookView extends StatelessWidget {
                             style: TextStyle(fontSize: 17)),
                       ],
                     )),
-                bookDamageView(
-                  bookInfo: bookInfo,
-                ),
               ],
-            )
+            ),
           ],
-        )
+        ),
+        Container(
+          margin: EdgeInsets.fromLTRB(10, 0, 0, 10),
+          child: bookDamageView(
+            bookInfo: bookInfo,
+          ),
+        ),
       ],
     )))));
   }

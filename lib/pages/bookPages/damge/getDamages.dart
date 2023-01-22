@@ -11,5 +11,6 @@ Future<List> getDamages(bookInfo) async {
       .collection('Damages')
       .get();
   final bookDamages = querySnapshot.docs.map((doc) => doc.data()).toList();
+
   return bookDamages;
 }
