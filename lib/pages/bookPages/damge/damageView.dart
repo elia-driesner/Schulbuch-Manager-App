@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'getDamages.dart';
 import 'damageCard.dart';
+import '../../../functions.dart';
 
 class bookDamageView extends StatefulWidget {
   var bookInfo;
@@ -15,8 +16,13 @@ class _bookDamageViewState extends State<bookDamageView> {
   void createDmageCards() async {
     var damages = await getDamages(widget.bookInfo);
     for (var bookDamages in damages) {
-      debugPrint(bookDamages.toString());
-      damageCards.add(damageCard(damageInfo: bookDamages));
+      var extraBookInfos = bookDamages;
+      extraBookInfos['responsibleName'] =
+          await getNameByUid(bookDamages['responsible']);
+      debugPrint(extraBookInfos.toString());
+      damageCards.add(Container(
+          margin: EdgeInsets.fromLTRB(20, 15, 20, 0),
+          child: damageCard(damageInfo: bookDamages)));
     }
     setState(() {
       damageCards;

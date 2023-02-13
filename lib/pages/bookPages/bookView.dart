@@ -5,10 +5,29 @@ import '../../user_data_cache.dart';
 import 'package:intl/intl.dart';
 import 'damge/getDamages.dart';
 import 'damge/DamageView.dart';
+import '../../functions.dart';
 
-class bookView extends StatelessWidget {
+class bookView extends StatefulWidget {
   var bookInfo;
   bookView({Key? key, required this.bookInfo}) : super(key: key);
+
+  @override
+  State<bookView> createState() => _bookViewState();
+}
+
+class _bookViewState extends State<bookView> {
+  var user = "";
+
+  void getUserName() async {
+    var userName = await getNameByUid(widget.bookInfo[1]['user'].toString());
+    setState(() {
+      user = userName;
+    });
+  }
+
+  void initState() {
+    getUserName();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +58,7 @@ class bookView extends StatelessWidget {
             Container(
               margin: EdgeInsets.fromLTRB(27, 20, 0, 0),
               child: bookCard(
-                bookInfo: bookInfo,
+                bookInfo: widget.bookInfo,
               ),
             ),
             Column(
@@ -51,8 +70,7 @@ class bookView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Benutzer:', style: TextStyle(fontSize: 20)),
-                        Text(selectedUserData['name'],
-                            style: TextStyle(fontSize: 17)),
+                        Text(user, style: TextStyle(fontSize: 17)),
                       ],
                     )),
                 Container(
@@ -63,8 +81,10 @@ class bookView extends StatelessWidget {
                         Text('Seit:', style: TextStyle(fontSize: 20)),
                         Text(
                             DateFormat('dd.MM.yyyy, HH:mm')
-                                .format(
-                                    this.bookInfo[1]['lastActivity'].toDate())
+                                .format(this
+                                    .widget
+                                    .bookInfo[1]['lastActivity']
+                                    .toDate())
                                 .toString(),
                             style: TextStyle(fontSize: 17)),
                       ],
@@ -76,7 +96,7 @@ class bookView extends StatelessWidget {
         Container(
           margin: EdgeInsets.fromLTRB(10, 0, 0, 10),
           child: bookDamageView(
-            bookInfo: bookInfo,
+            bookInfo: widget.bookInfo,
           ),
         ),
       ],
